@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0001",
+  "title": "Missing aria-invalid on all error-prop components",
+  "description": "All components with error prop (Input, Textarea, Select, Checkbox, Radio, Switch) apply visual red ring but don't set aria-invalid={true}. Screen readers cannot perceive validation errors.",
+  "phase": "R",
+  "agent": "review-inspector",
+  "severity": "high",
+  "status": "closed",
+  "blocking": true,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-25T21:59:05.837Z",
+  "updated": "2026-05-25T22:05:04.711Z",
+  "closedAt": "2026-05-25T22:05:04.711Z",
+  "closedBy": "implement-coder",
+  "resolution": "Added aria-invalid={error ? true : undefined} to Input, Textarea, SelectTrigger, Checkbox, Radio, Switch components",
+  "comments": []
+}

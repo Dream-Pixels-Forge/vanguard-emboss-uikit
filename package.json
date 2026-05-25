@@ -29,11 +29,10 @@
   "types": "./dist/components/ui/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/components/ui/index.d.ts",
       "import": "./dist/vanguard-emboss-uikit.es.js",
-      "require": "./dist/vanguard-emboss-uikit.cjs.js",
-      "types": "./dist/components/ui/index.d.ts"
-    },
-    "./styles": "./dist/style.css"
+      "require": "./dist/vanguard-emboss-uikit.cjs.js"
+    }
   },
   "files": [
     "dist",
@@ -41,6 +40,31 @@
     "README.md"
   ],
   "type": "module",
+  "size-limit": [
+    {
+      "path": "dist/vanguard-emboss-uikit.es.js",
+      "limit": "35 KB",
+      "import": "{ Button }",
+      "ignore": [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "class-variance-authority",
+        "clsx",
+        "tailwind-merge",
+        "lucide-react",
+        "@radix-ui/react-checkbox",
+        "@radix-ui/react-dialog",
+        "@radix-ui/react-label",
+        "@radix-ui/react-navigation-menu",
+        "@radix-ui/react-radio-group",
+        "@radix-ui/react-select",
+        "@radix-ui/react-slider",
+        "@radix-ui/react-switch",
+        "@radix-ui/react-tabs"
+      ]
+    }
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -53,7 +77,10 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx,json,css}\"",
     "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx,json,css}\"",
-    "clean": "rm -rf dist node_modules/.vite"
+    "size": "size-limit",
+    "clean": "rm -rf dist node_modules/.vite",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.3.3",
@@ -73,6 +100,14 @@
     "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
+    "@chromatic-com/storybook": "^5.2.1",
+    "@size-limit/preset-small-lib": "^12.1.0",
+    "@storybook/addon-a11y": "^10.4.1",
+    "@storybook/addon-docs": "^10.4.1",
+    "@storybook/addon-mcp": "^0.6.0",
+    "@storybook/addon-themes": "^10.4.1",
+    "@storybook/addon-vitest": "^10.4.1",
+    "@storybook/react-vite": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.1",
@@ -82,13 +117,19 @@
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react": "^4.0.0",
+    "@vitest/browser": "3.2.4",
+    "@vitest/coverage-v8": "3.2.4",
     "autoprefixer": "^10.5.0",
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.0",
+    "eslint-plugin-storybook": "^10.4.1",
     "happy-dom": "^20.9.0",
     "jsdom": "^29.1.1",
+    "playwright": "^1.60.0",
     "postcss": "^8.5.15",
+    "size-limit": "^12.1.0",
+    "storybook": "^10.4.1",
     "tailwindcss": "^3.4.19",
     "tsx": "^4.22.3",
     "typescript": "^5.0.0",

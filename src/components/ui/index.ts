@@ -24,6 +24,7 @@ export {
   SelectSeparator
 } from './select'
 export { Slider } from './slider'
+export { Separator } from './separator'
 
 // Advanced Components
 export { Tabs, TabsList, TabsTrigger, TabsContent } from './tabs'
@@ -80,6 +81,7 @@ export type {
   SelectSeparatorProps
 } from './select'
 export type { SliderProps } from './slider'
+export type { SeparatorProps } from './separator'
 export type { TabsProps, TabsListProps, TabsTriggerProps, TabsContentProps } from './tabs'
 export type { 
   NavigationMenuProps,

@@ -54,25 +54,28 @@ export interface ButtonProps
   loading?: boolean
 }
 
-export function Button({
-  className,
-  variant,
-  size,
-  loading = false,
-  disabled,
-  children,
-  ...props
-}: ButtonProps) {
-  return (
-    <button
-      className={cn(buttonVariants({ variant, size, className }))}
-      disabled={disabled || loading}
-      {...props}
-    >
-      {loading ? (
-        <span className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
-      ) : null}
-      {children}
-    </button>
-  )
-}
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  function Button({
+    className,
+    variant,
+    size,
+    loading = false,
+    disabled,
+    children,
+    ...props
+  }, ref) {
+    return (
+      <button
+        ref={ref}
+        className={cn(buttonVariants({ variant, size, className }))}
+        disabled={disabled || loading}
+        {...props}
+      >
+        {loading ? (
+          <span className="mr-2 h-4 w-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
+        ) : null}
+        {children}
+      </button>
+    )
+  }
+)

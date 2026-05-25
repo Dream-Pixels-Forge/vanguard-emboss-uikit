@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0005",
+  "title": "DialogTrigger is overly opinionated with forced emboss styling",
+  "description": "DialogTrigger forces emboss styling on all triggers. No way to use arbitrary elements as trigger without overriding all classes. Should support asChild pattern.",
+  "phase": "R",
+  "agent": "review-inspector",
+  "severity": "high",
+  "status": "closed",
+  "blocking": true,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-25T21:59:08.458Z",
+  "updated": "2026-05-25T22:05:06.502Z",
+  "closedAt": "2026-05-25T22:05:06.502Z",
+  "closedBy": "implement-coder",
+  "resolution": "Added asChild prop support to DialogTrigger - when asChild is true, no default styling is applied and consumers can use Radix's asChild pattern",
+  "comments": []
+}

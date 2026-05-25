@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "phase": "R",
+  "label": "Completed deep code inspection",
+  "data": {
+    "findings": "25 issues found (5 high, 10 medium, 10 low)",
+    "filesInspected": 25,
+    "inspector": "review-inspector"
+  },
+  "created": "2026-05-25T21:58:59.262Z",
+  "immutable": true
+}

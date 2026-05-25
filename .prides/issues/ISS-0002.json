@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0002",
+  "title": "Label component missing aria-required",
+  "description": "Label component renders visual asterisk for required fields but doesn't set aria-required on the label element.",
+  "phase": "R",
+  "agent": "review-inspector",
+  "severity": "high",
+  "status": "closed",
+  "blocking": true,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-25T21:59:06.493Z",
+  "updated": "2026-05-25T22:05:05.091Z",
+  "closedAt": "2026-05-25T22:05:05.091Z",
+  "closedBy": "implement-coder",
+  "resolution": "Added aria-required={required ? true : undefined} to Label component",
+  "comments": []
+}

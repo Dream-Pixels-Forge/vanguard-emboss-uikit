@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0003",
+  "title": "No library distribution configuration",
+  "description": "Package is private: true with no main/module/types/exports fields. Vite config has no build.lib. Cannot be consumed as npm dependency.",
+  "phase": "R",
+  "agent": "review-inspector",
+  "severity": "high",
+  "status": "closed",
+  "blocking": true,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-25T21:59:07.245Z",
+  "updated": "2026-05-25T22:05:05.543Z",
+  "closedAt": "2026-05-25T22:05:05.543Z",
+  "closedBy": "implement-coder",
+  "resolution": "Configured vite build.lib for library mode, added package.json exports (main/module/types/files), installed vite-plugin-dts for type declarations",
+  "comments": []
+}
