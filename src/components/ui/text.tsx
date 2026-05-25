@@ -87,9 +87,8 @@ export function Text({
       className: cn(
         config.classes,
         weightClass,
-        muted && 'text-muted-foreground',
+        muted ? 'text-muted-foreground' : 'text-foreground',
         accentClass,
-        'text-foreground',
         className
       ),
       ...props,

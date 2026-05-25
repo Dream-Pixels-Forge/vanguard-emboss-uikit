@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { forwardRef } from 'react'
 import * as DialogPrimitive from '@radix-ui/react-dialog'
 import { X } from 'lucide-react'
 import { cn } from '../../lib/utils'
@@ -32,19 +32,22 @@ export function DialogPortal({ ...props }: DialogPortalProps) {
 
 export interface DialogOverlayProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay> {}
 
-export function DialogOverlay({ className, ...props }: DialogOverlayProps) {
-  return (
-    <DialogPrimitive.Overlay
-      className={cn(
-        'fixed inset-0 z-50 bg-black/50',
-        'data-[state=open]:animate-in data-[state=closed]:animate-out',
-        'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
-        className
-      )}
-      {...props}
-    />
-  )
-}
+export const DialogOverlay = forwardRef<React.ElementRef<typeof DialogPrimitive.Overlay>, DialogOverlayProps>(
+  function DialogOverlay({ className, ...props }, ref) {
+    return (
+      <DialogPrimitive.Overlay
+        ref={ref}
+        className={cn(
+          'fixed inset-0 z-50 bg-black/50',
+          'data-[state=open]:animate-in data-[state=closed]:animate-out',
+          'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
+          className
+        )}
+        {...props}
+      />
+    )
+  }
+)
 
 export interface DialogContentProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> {
   showClose?: boolean
