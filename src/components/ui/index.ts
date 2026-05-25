@@ -26,6 +26,9 @@ export {
 export { Slider } from './slider'
 export { Separator } from './separator'
 
+// Input Enhancements
+export { Knob } from './knob'
+
 // Advanced Components
 export { Tabs, TabsList, TabsTrigger, TabsContent } from './tabs'
 export { 
@@ -82,6 +85,7 @@ export type {
 } from './select'
 export type { SliderProps } from './slider'
 export type { SeparatorProps } from './separator'
+export type { KnobProps } from './knob'
 export type { TabsProps, TabsListProps, TabsTriggerProps, TabsContentProps } from './tabs'
 export type { 
   NavigationMenuProps,
