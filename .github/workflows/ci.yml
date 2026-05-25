@@ -29,6 +29,8 @@ jobs:
 
       - run: pnpm type-check
 
+      - run: pnpm build:registry
+
       - run: pnpm lint
 
       - run: pnpm build

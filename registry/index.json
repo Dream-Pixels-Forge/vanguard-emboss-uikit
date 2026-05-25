@@ -1,0 +1,91 @@
+{
+  "name": "vanguard-emboss-uikit",
+  "description": "Premium neumorphic React component library",
+  "homepage": "https://github.com/Dream-Pixels-Forge/vanguard-emboss-uikit",
+  "items": {
+    "general": [
+      {
+        "name": "button",
+        "type": "registry:ui"
+      },
+      {
+        "name": "badge",
+        "type": "registry:ui"
+      }
+    ],
+    "layout": [
+      {
+        "name": "box",
+        "type": "registry:ui"
+      },
+      {
+        "name": "text",
+        "type": "registry:ui"
+      },
+      {
+        "name": "card",
+        "type": "registry:ui"
+      },
+      {
+        "name": "emboss-box",
+        "type": "registry:ui"
+      }
+    ],
+    "navigation": [
+      {
+        "name": "alert",
+        "type": "registry:ui"
+      },
+      {
+        "name": "tabs",
+        "type": "registry:ui"
+      },
+      {
+        "name": "dialog",
+        "type": "registry:ui"
+      },
+      {
+        "name": "breadcrumb",
+        "type": "registry:ui"
+      },
+      {
+        "name": "navigation-menu",
+        "type": "registry:ui"
+      }
+    ],
+    "forms": [
+      {
+        "name": "input",
+        "type": "registry:ui"
+      },
+      {
+        "name": "textarea",
+        "type": "registry:ui"
+      },
+      {
+        "name": "label",
+        "type": "registry:ui"
+      },
+      {
+        "name": "checkbox",
+        "type": "registry:ui"
+      },
+      {
+        "name": "radio",
+        "type": "registry:ui"
+      },
+      {
+        "name": "switch",
+        "type": "registry:ui"
+      },
+      {
+        "name": "slider",
+        "type": "registry:ui"
+      },
+      {
+        "name": "select",
+        "type": "registry:ui"
+      }
+    ]
+  }
+}

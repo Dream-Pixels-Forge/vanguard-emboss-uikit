@@ -1,0 +1,13 @@
+{
+  "name": "emboss-box",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/emboss-box.tsx",
+      "type": "registry:ui",
+      "content": "aW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JwppbXBvcnQgeyBjbiB9IGZyb20gJy4uLy4uL2xpYi91dGlscycKaW1wb3J0IHsgZ2V0RW1ib3NzU2hhZG93LCBnZXRFbWJvc3NCYWNrZ3JvdW5kIH0gZnJvbSAnLi4vLi4vbGliL3RhaWx3aW5kLXV0aWxzJwoKLyoqIEBkZXByZWNhdGVkIFVzZSBCb3ggY29tcG9uZW50IGluc3RlYWQuIEVtYm9zc0JveCBpcyBrZXB0IGZvciBiYWNrd2FyZCBjb21wYXRpYmlsaXR5LiAqLwppbnRlcmZhY2UgRW1ib3NzQm94UHJvcHMgZXh0ZW5kcyBSZWFjdC5IVE1MQXR0cmlidXRlczxIVE1MRGl2RWxlbWVudD4gewogIGNoaWxkcmVuOiBSZWFjdC5SZWFjdE5vZGUKICByYWlzZWQ/OiBib29sZWFuCiAgc2l6ZT86ICdzdGFuZGFyZCcgfCAnc21hbGwnCiAgY2xhc3NOYW1lPzogc3RyaW5nCn0KCmV4cG9ydCBmdW5jdGlvbiBFbWJvc3NCb3goewogIGNoaWxkcmVuLAogIHJhaXNlZCA9IHRydWUsCiAgc2l6ZSA9ICdzdGFuZGFyZCcsCiAgY2xhc3NOYW1lLAogIC4uLnByb3BzCn06IEVtYm9zc0JveFByb3BzKSB7CiAgY29uc3Qgc2hhZG93Q2xhc3MgPSBnZXRFbWJvc3NTaGFkb3cocmFpc2VkID8gJ291dCcgOiAnaW4nLCBzaXplKQogIGNvbnN0IGJhY2tncm91bmRDbGFzcyA9IGdldEVtYm9zc0JhY2tncm91bmQoKQogIAogIHJldHVybiAoCiAgICA8ZGl2CiAgICAgIGNsYXNzTmFtZT17Y24oCiAgICAgICAgYmFja2dyb3VuZENsYXNzLAogICAgICAgIHNoYWRvd0NsYXNzLAogICAgICAgICdyb3VuZGVkLWxnIHAtNCB0cmFuc2l0aW9uLWFsbCBkdXJhdGlvbi0yMDAnLAogICAgICAgIGNsYXNzTmFtZQogICAgICApfQogICAgICB7Li4ucHJvcHN9CiAgICA+CiAgICAgIHtjaGlsZHJlbn0KICAgIDwvZGl2PgogICkKfQo="
+    }
+  ]
+}

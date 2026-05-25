@@ -1,0 +1,13 @@
+{
+  "name": "label",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/label.tsx",
+      "type": "registry:ui",
+      "content": "aW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JwppbXBvcnQgeyBjbiB9IGZyb20gJy4uLy4uL2xpYi91dGlscycKCmV4cG9ydCBpbnRlcmZhY2UgTGFiZWxQcm9wcyBleHRlbmRzIFJlYWN0LkxhYmVsSFRNTEF0dHJpYnV0ZXM8SFRNTExhYmVsRWxlbWVudD4gewogIHJlcXVpcmVkPzogYm9vbGVhbgp9CgpleHBvcnQgZnVuY3Rpb24gTGFiZWwoeyBjbGFzc05hbWUsIHJlcXVpcmVkLCBjaGlsZHJlbiwgLi4ucHJvcHMgfTogTGFiZWxQcm9wcykgewogIHJldHVybiAoCiAgICA8bGFiZWwKICAgICAgYXJpYS1yZXF1aXJlZD17cmVxdWlyZWQgPyB0cnVlIDogdW5kZWZpbmVkfQogICAgICBjbGFzc05hbWU9e2NuKAogICAgICAgICd0ZXh0LXNtIGZvbnQtbWVkaXVtIGxlYWRpbmctbm9uZScsCiAgICAgICAgJ3RleHQtZm9yZWdyb3VuZCcsCiAgICAgICAgJ3BlZXItZGlzYWJsZWQ6Y3Vyc29yLW5vdC1hbGxvd2VkIHBlZXItZGlzYWJsZWQ6b3BhY2l0eS03MCcsCiAgICAgICAgY2xhc3NOYW1lCiAgICAgICl9CiAgICAgIHsuLi5wcm9wc30KICAgID4KICAgICAge2NoaWxkcmVufQogICAgICB7cmVxdWlyZWQgJiYgPHNwYW4gY2xhc3NOYW1lPSJtbC0xIHRleHQtcmVkLTUwMCI+Kjwvc3Bhbj59CiAgICA8L2xhYmVsPgogICkKfQ=="
+    }
+  ]
+}
