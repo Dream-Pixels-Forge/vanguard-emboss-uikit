@@ -68,6 +68,16 @@ describe('Button', () => {
     render(<Button data-testid="test-btn">Test</Button>)
     expect(screen.getByTestId('test-btn')).toBeInTheDocument()
   })
+
+  it('renders as child element with asChild', () => {
+    render(
+      <Button asChild>
+        <a href="/test">Link Button</a>
+      </Button>
+    )
+    expect(screen.getByRole('link')).toHaveTextContent('Link Button')
+    expect(screen.getByRole('link')).toHaveAttribute('href', '/test')
+  })
 })
 
 describe('Badge', () => {
@@ -89,6 +99,16 @@ describe('Badge', () => {
   it('applies custom className', () => {
     const { container } = render(<Badge className="custom">Badge</Badge>)
     expect(container.firstChild).toHaveClass('custom')
+  })
+
+  it('renders as child element with asChild', () => {
+    render(
+      <Badge asChild>
+        <a href="/tag">Tag</a>
+      </Badge>
+    )
+    expect(screen.getByRole('link')).toHaveTextContent('Tag')
+    expect(screen.getByRole('link')).toHaveAttribute('href', '/tag')
   })
 })
 
@@ -116,6 +136,15 @@ describe('Box', () => {
   it('raised takes precedence over recessed', () => {
     const { container } = render(<Box raised recessed>Both</Box>)
     expect(container.firstChild).toHaveClass('shadow-emboss-out-light')
+  })
+
+  it('renders as child element with asChild', () => {
+    render(
+      <Box asChild>
+        <article>Article Box</article>
+      </Box>
+    )
+    expect(screen.getByText('Article Box').tagName).toBe('ARTICLE')
   })
 })
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Slot } from '@radix-ui/react-slot'
 import { cn } from '../../lib/utils'
 import { getEmbossShadow, getEmbossBackground } from '../../lib/tailwind-utils'
 import { cva, type VariantProps } from 'class-variance-authority'
@@ -34,10 +35,13 @@ const badgeVariants = cva(
 
 export interface BadgeProps
   extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {}
+    VariantProps<typeof badgeVariants> {
+  asChild?: boolean
+}
 
-export function Badge({ className, variant, size, ...props }: BadgeProps) {
+export function Badge({ className, variant, size, asChild = false, ...props }: BadgeProps) {
+  const Comp = asChild ? Slot : 'div'
   return (
-    <div className={cn(badgeVariants({ variant, size }), className)} {...props} />
+    <Comp className={cn(badgeVariants({ variant, size }), className)} {...props} />
   )
 }

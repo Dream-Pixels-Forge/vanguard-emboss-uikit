@@ -1,4 +1,5 @@
 import React from 'react'
+import { Slot } from '@radix-ui/react-slot'
 import { cn } from '../../lib/utils'
 import { getEmbossBackground, withActiveShadow } from '../../lib/tailwind-utils'
 import { cva, type VariantProps } from 'class-variance-authority'
@@ -51,6 +52,7 @@ const buttonVariants = cva(
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
+  asChild?: boolean
   loading?: boolean
 }
 
@@ -59,11 +61,23 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     className,
     variant,
     size,
+    asChild = false,
     loading = false,
     disabled,
     children,
     ...props
   }, ref) {
+    if (asChild) {
+      return (
+        <Slot
+          ref={ref}
+          className={cn(buttonVariants({ variant, size, className }))}
+          {...props}
+        >
+          {children}
+        </Slot>
+      )
+    }
     return (
       <button
         ref={ref}

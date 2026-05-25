@@ -1,9 +1,11 @@
 import React from 'react'
+import { Slot } from '@radix-ui/react-slot'
 import { cn } from '../../lib/utils'
 import { getEmbossShadow, getEmbossBackground, getEmbossBorder } from '../../lib/tailwind-utils'
 
 export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
+  asChild?: boolean
   raised?: boolean
   recessed?: boolean
   size?: 'standard' | 'small'
@@ -13,6 +15,7 @@ export interface BoxProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export function Box({
   children,
+  asChild = false,
   raised = false,
   recessed = false,
   size = 'standard',
@@ -20,12 +23,12 @@ export function Box({
   className,
   ...props
 }: BoxProps) {
-  // Determine shadow type: raised takes precedence over recessed
+  const Comp = asChild ? Slot : 'div'
   const shadowType = raised ? 'out' : recessed ? 'in' : undefined
   const shadowClass = shadowType ? getEmbossShadow(shadowType, size) : ''
   
   return (
-    <div
+    <Comp
       className={cn(
         getEmbossBackground(),
         shadowClass,
@@ -36,6 +39,6 @@ export function Box({
       {...props}
     >
       {children}
-    </div>
+    </Comp>
   )
 }
