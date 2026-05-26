@@ -2,6 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * ─── Vanguard Emboss Design Tokens ───
+ *
+ * To customize the emboss look, override these CSS variables in your app:
+ *
+ *   :root {
+ *     --emboss-bg-light: 210 20% 94%;       /* Background color (HSL) */
+ *     --emboss-highlight-light: 0 0% 100%;  /* Upper-left highlight */
+ *     --emboss-shadow-light: 210 16% 80%;   /* Bottom-right shadow */
+ *     --emboss-accent-blue: 217 91% 60%;    /* Primary accent */
+ *     --emboss-accent-orange: 14 90% 55%;   /* Warning accent */
+ *     --emboss-accent-green: 150 70% 50%;   /* Success accent */
+ *     --radius: 1.5rem;                     /* Border radius */
+ *   }
+ *   .dark {
+ *     --emboss-bg-dark: 215 15% 18%;
+ *     --emboss-highlight-dark: 215 15% 24%;
+ *     --emboss-shadow-dark: 215 25% 10%;
+ *   }
+ *
+ * Each token is HSL (hue saturation lightness) — override only the values
+ * you need. The semantic shadcn/ui variables (--background, --foreground,
+ * etc.) derive from these emboss tokens automatically.
+ *
+ * No !important needed — your :root will have higher specificity than
+ * the library's stylesheet.
+ */
+
 @layer base {
   :root {
     /* Vanguard Light Emboss (Soft Clay Wood & Ash) */
@@ -73,5 +101,25 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* ─── Spring Physics Transitions ─── */
+@layer utilities {
+  .spring-transform {
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform;
+  }
+  .spring-shadow {
+    transition: box-shadow 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .spring-all {
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform;
+  }
+  .spring-press {
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+                box-shadow 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    will-change: transform;
   }
 }

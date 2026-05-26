@@ -118,7 +118,7 @@ export function Knob({
           getEmbossBackground(),
           getEmbossShadow(isDragging ? 'in' : 'out'),
           isDragging && 'scale-95',
-          'transition-[shadow,transform] duration-150 select-none',
+          'spring-press select-none',
           disabled && 'opacity-50 cursor-not-allowed active:cursor-not-allowed',
         )}
       >

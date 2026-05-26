@@ -1,5 +1,29 @@
 # Changelog
 
+## [0.2.0] - 2026-05-26
+
+### Added
+- Storybook 10 with 18 CSF3 component stories (themes, a11y, docs, vitest addons)
+- Knob/Dial rotary component (mouse drag, keyboard, ARIA slider, 3 sizes)
+- Polymorphic `asChild` support for Button, Badge, Box (via `@radix-ui/react-slot`)
+- Separator component (previously missing)
+- Popover, Accordion, DropdownMenu (15 sub-components), Tooltip, Toast/Sonner wrapper
+- MIT LICENSE with Dream Pixels Forge copyright
+- Bundle size CI check (size-limit, 35 KB ESM limit)
+- React Hook Form integration example with zod validation
+- Spring-like press physics utilities in `globals.css`
+- CSS custom property theming documentation
+
+### Changed
+- All components use `React.forwardRef` for Slot compatibility
+- Bundle size ignore list updated for all peer deps
+
+### Infrastructure
+- CI: type-check, build, lint, test, size-limit, build-storybook
+- Release: GitHub Release + npm publish on `v*` tags (NPM_TOKEN configured)
+- Storybook addon-mcp for agentic control
+- Added Storybook addon-vitest integration
+
 ## [0.1.0] - 2026-05-25
 
 ### Added

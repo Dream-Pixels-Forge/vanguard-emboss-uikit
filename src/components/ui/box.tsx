@@ -33,7 +33,7 @@ export function Box({
         getEmbossBackground(),
         shadowClass,
         border && getEmbossBorder(),
-        'rounded-lg transition-all duration-200',
+        'rounded-lg spring-all',
         className
       )}
       {...props}

@@ -8,7 +8,7 @@ const buttonVariants = cva(
   cn(
     getEmbossBackground(),
     'inline-flex items-center justify-center rounded-lg font-medium',
-    'transition-all duration-200',
+    'spring-press',
     'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
     'disabled:pointer-events-none disabled:opacity-50'
   ),

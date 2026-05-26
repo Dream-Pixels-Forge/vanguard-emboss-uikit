@@ -20,6 +20,8 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from './tabs'
 import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogHeader, DialogFooter } from './dialog'
 import { Knob } from './knob'
 
+import * as UI from './index'
+
 describe('Button', () => {
   it('renders children', () => {
     render(<Button>Click me</Button>)
@@ -531,9 +533,313 @@ describe('Knob', () => {
   })
 })
 
+describe('Tooltip', () => {
+  it('renders trigger', () => {
+    render(
+      <UI.TooltipProvider>
+        <UI.Tooltip>
+          <UI.TooltipTrigger>Hover me</UI.TooltipTrigger>
+          <UI.TooltipContent>Tooltip text</UI.TooltipContent>
+        </UI.Tooltip>
+      </UI.TooltipProvider>
+    )
+    expect(screen.getByText('Hover me')).toBeInTheDocument()
+  })
+
+  it('exports TooltipContent component', () => {
+    expect(UI.TooltipContent).toBeDefined()
+  })
+})
+
+describe('ToastProvider', () => {
+  it('renders without crashing', () => {
+    const { container } = render(<UI.ToastProvider />)
+    expect(container.querySelector('[aria-label]')).toBeInTheDocument()
+  })
+})
+
 describe('EmbossBox', () => {
   it('is exported and renders with deprecation notice', async () => {
     const mod = await import('./emboss-box')
     expect(mod.EmbossBox).toBeDefined()
+  })
+})
+
+describe('Popover', () => {
+  it('renders trigger and shows content on click', async () => {
+    const user = userEvent.setup()
+    render(
+      <UI.Popover>
+        <UI.PopoverTrigger>Open</UI.PopoverTrigger>
+        <UI.PopoverContent>Content</UI.PopoverContent>
+      </UI.Popover>
+    )
+    expect(screen.getByText('Open')).toBeInTheDocument()
+    expect(screen.queryByText('Content')).not.toBeInTheDocument()
+    await user.click(screen.getByText('Open'))
+    expect(screen.getByText('Content')).toBeInTheDocument()
+  })
+
+  it('trigger applies emboss background class', () => {
+    const { container } = render(
+      <UI.Popover>
+        <UI.PopoverTrigger>Trigger</UI.PopoverTrigger>
+        <UI.PopoverContent>Content</UI.PopoverContent>
+      </UI.Popover>
+    )
+    expect(container.querySelector('button')).toHaveClass('bg-emboss-bg-light')
+  })
+
+  it('trigger applies default button styling when not asChild', () => {
+    const { container } = render(
+      <UI.Popover>
+        <UI.PopoverTrigger>Trigger</UI.PopoverTrigger>
+        <UI.PopoverContent>Content</UI.PopoverContent>
+      </UI.Popover>
+    )
+    const button = container.querySelector('button')
+    expect(button).toHaveClass('inline-flex')
+    expect(button).toHaveClass('rounded-md')
+  })
+
+  it('content applies emboss background, shadow, and border classes', async () => {
+    const user = userEvent.setup()
+    render(
+      <UI.Popover>
+        <UI.PopoverTrigger>Open</UI.PopoverTrigger>
+        <UI.PopoverContent>Content</UI.PopoverContent>
+      </UI.Popover>
+    )
+    await user.click(screen.getByText('Open'))
+    const content = screen.getByText('Content')
+    expect(content).toHaveClass('bg-emboss-bg-light')
+    expect(content).toHaveClass('shadow-emboss-out-light')
+    expect(content).toHaveClass('border-emboss-shadow-light/30')
+  })
+
+  it('content applies z-50, w-72, rounded-xl, p-4', async () => {
+    const user = userEvent.setup()
+    render(
+      <UI.Popover>
+        <UI.PopoverTrigger>Open</UI.PopoverTrigger>
+        <UI.PopoverContent>Content</UI.PopoverContent>
+      </UI.Popover>
+    )
+    await user.click(screen.getByText('Open'))
+    const content = screen.getByText('Content')
+    expect(content).toHaveClass('z-50')
+    expect(content).toHaveClass('w-72')
+    expect(content).toHaveClass('rounded-xl')
+    expect(content).toHaveClass('p-4')
+  })
+
+  it('content forwards sideOffset and align', async () => {
+    const user = userEvent.setup()
+    render(
+      <UI.Popover>
+        <UI.PopoverTrigger>Open</UI.PopoverTrigger>
+        <UI.PopoverContent sideOffset={8} align="start">Content</UI.PopoverContent>
+      </UI.Popover>
+    )
+    await user.click(screen.getByText('Open'))
+    const content = screen.getByText('Content')
+    expect(content).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Popover).toBeDefined()
+    expect(UI.PopoverTrigger).toBeDefined()
+    expect(UI.PopoverContent).toBeDefined()
+  })
+})
+
+describe('Accordion', () => {
+  it('renders items and toggles content on click', async () => {
+    const user = userEvent.setup()
+    render(
+      <UI.Accordion type="single" collapsible>
+        <UI.AccordionItem value="item-1">
+          <UI.AccordionTrigger>Section 1</UI.AccordionTrigger>
+          <UI.AccordionContent>Content 1</UI.AccordionContent>
+        </UI.AccordionItem>
+        <UI.AccordionItem value="item-2">
+          <UI.AccordionTrigger>Section 2</UI.AccordionTrigger>
+          <UI.AccordionContent>Content 2</UI.AccordionContent>
+        </UI.AccordionItem>
+      </UI.Accordion>
+    )
+
+    expect(screen.getByText('Section 1')).toBeInTheDocument()
+    expect(screen.getByText('Section 2')).toBeInTheDocument()
+    expect(screen.queryByText('Content 1')).not.toBeInTheDocument()
+
+    await user.click(screen.getByText('Section 1'))
+    expect(screen.getByText('Content 1')).toBeInTheDocument()
+    expect(screen.queryByText('Content 2')).not.toBeInTheDocument()
+  })
+
+  it('trigger contains chevron icon', () => {
+    render(
+      <UI.Accordion type="single">
+        <UI.AccordionItem value="item-1">
+          <UI.AccordionTrigger>Section 1</UI.AccordionTrigger>
+          <UI.AccordionContent>Content</UI.AccordionContent>
+        </UI.AccordionItem>
+      </UI.Accordion>
+    )
+
+    const trigger = screen.getByText('Section 1').closest('button')
+    expect(trigger?.querySelector('svg')).toBeInTheDocument()
+  })
+
+  it('trigger shows expanded state', () => {
+    render(
+      <UI.Accordion type="single" defaultValue="item-1">
+        <UI.AccordionItem value="item-1">
+          <UI.AccordionTrigger>Section 1</UI.AccordionTrigger>
+          <UI.AccordionContent>Content</UI.AccordionContent>
+        </UI.AccordionItem>
+      </UI.Accordion>
+    )
+
+    const trigger = screen.getByText('Section 1').closest('button')
+    expect(trigger).toHaveAttribute('data-state', 'open')
+  })
+
+  it('items have border class', () => {
+    const { container } = render(
+      <UI.Accordion type="single">
+        <UI.AccordionItem value="item-1">
+          <UI.AccordionTrigger>Section 1</UI.AccordionTrigger>
+          <UI.AccordionContent>Content</UI.AccordionContent>
+        </UI.AccordionItem>
+      </UI.Accordion>
+    )
+
+    const itemElement = container.querySelector('.border-b')
+    expect(itemElement).toBeInTheDocument()
+  })
+
+  it('content appears when expanded', async () => {
+    const user = userEvent.setup()
+    render(
+      <UI.Accordion type="single" collapsible>
+        <UI.AccordionItem value="item-1">
+          <UI.AccordionTrigger>Section 1</UI.AccordionTrigger>
+          <UI.AccordionContent>Content 1</UI.AccordionContent>
+        </UI.AccordionItem>
+      </UI.Accordion>
+    )
+
+    expect(screen.queryByText('Content 1')).not.toBeInTheDocument()
+    await user.click(screen.getByText('Section 1'))
+    expect(screen.getByText('Content 1')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Accordion).toBeDefined()
+    expect(UI.AccordionItem).toBeDefined()
+    expect(UI.AccordionTrigger).toBeDefined()
+    expect(UI.AccordionContent).toBeDefined()
+  })
+})
+
+describe('DropdownMenu', () => {
+  it('renders trigger', () => {
+    render(
+      <UI.DropdownMenu>
+        <UI.DropdownMenuTrigger>Open</UI.DropdownMenuTrigger>
+        <UI.DropdownMenuContent>
+          <UI.DropdownMenuItem>Item</UI.DropdownMenuItem>
+        </UI.DropdownMenuContent>
+      </UI.DropdownMenu>
+    )
+    expect(screen.getByText('Open')).toBeInTheDocument()
+  })
+
+  it('opens content on click', async () => {
+    const user = userEvent.setup()
+    render(
+      <UI.DropdownMenu>
+        <UI.DropdownMenuTrigger>Open</UI.DropdownMenuTrigger>
+        <UI.DropdownMenuContent>
+          <UI.DropdownMenuItem>Item</UI.DropdownMenuItem>
+        </UI.DropdownMenuContent>
+      </UI.DropdownMenu>
+    )
+    expect(screen.queryByText('Item')).not.toBeInTheDocument()
+    await user.click(screen.getByText('Open'))
+    expect(screen.getByText('Item')).toBeInTheDocument()
+  })
+
+  it('renders menu items', async () => {
+    const user = userEvent.setup()
+    render(
+      <UI.DropdownMenu>
+        <UI.DropdownMenuTrigger>Open</UI.DropdownMenuTrigger>
+        <UI.DropdownMenuContent>
+          <UI.DropdownMenuItem>Profile</UI.DropdownMenuItem>
+          <UI.DropdownMenuItem>Settings</UI.DropdownMenuItem>
+          <UI.DropdownMenuItem>Logout</UI.DropdownMenuItem>
+        </UI.DropdownMenuContent>
+      </UI.DropdownMenu>
+    )
+    await user.click(screen.getByText('Open'))
+    expect(screen.getByText('Profile')).toBeInTheDocument()
+    expect(screen.getByText('Settings')).toBeInTheDocument()
+    expect(screen.getByText('Logout')).toBeInTheDocument()
+  })
+
+  it('renders separator', async () => {
+    const user = userEvent.setup()
+    render(
+      <UI.DropdownMenu>
+        <UI.DropdownMenuTrigger>Open</UI.DropdownMenuTrigger>
+        <UI.DropdownMenuContent>
+          <UI.DropdownMenuItem>Item</UI.DropdownMenuItem>
+          <UI.DropdownMenuSeparator />
+          <UI.DropdownMenuItem>After</UI.DropdownMenuItem>
+        </UI.DropdownMenuContent>
+      </UI.DropdownMenu>
+    )
+    await user.click(screen.getByText('Open'))
+    const items = screen.getAllByRole('menuitem')
+    expect(items).toHaveLength(2)
+    expect(items[0]).toHaveTextContent('Item')
+    expect(items[1]).toHaveTextContent('After')
+  })
+
+  it('renders checkbox items', async () => {
+    const user = userEvent.setup()
+    render(
+      <UI.DropdownMenu>
+        <UI.DropdownMenuTrigger>Open</UI.DropdownMenuTrigger>
+        <UI.DropdownMenuContent>
+          <UI.DropdownMenuCheckboxItem checked>Checkbox</UI.DropdownMenuCheckboxItem>
+        </UI.DropdownMenuContent>
+      </UI.DropdownMenu>
+    )
+    await user.click(screen.getByText('Open'))
+    const checkboxItem = screen.getByText('Checkbox')
+    expect(checkboxItem).toBeInTheDocument()
+    expect(checkboxItem.closest('[role="menuitemcheckbox"]')).toHaveAttribute('data-state', 'checked')
+  })
+
+  it('is exported from index', () => {
+    expect(UI.DropdownMenu).toBeDefined()
+    expect(UI.DropdownMenuTrigger).toBeDefined()
+    expect(UI.DropdownMenuContent).toBeDefined()
+    expect(UI.DropdownMenuItem).toBeDefined()
+    expect(UI.DropdownMenuCheckboxItem).toBeDefined()
+    expect(UI.DropdownMenuRadioItem).toBeDefined()
+    expect(UI.DropdownMenuSeparator).toBeDefined()
+    expect(UI.DropdownMenuLabel).toBeDefined()
+    expect(UI.DropdownMenuShortcut).toBeDefined()
+    expect(UI.DropdownMenuGroup).toBeDefined()
+    expect(UI.DropdownMenuPortal).toBeDefined()
+    expect(UI.DropdownMenuSub).toBeDefined()
+    expect(UI.DropdownMenuRadioGroup).toBeDefined()
+    expect(UI.DropdownMenuSubTrigger).toBeDefined()
+    expect(UI.DropdownMenuSubContent).toBeDefined()
   })
 })
