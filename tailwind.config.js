@@ -16,10 +16,10 @@ export default {
         'emboss-highlight-dark': '#353d4a',
         'emboss-shadow-dark': '#13171c',
         
-        // Accent Colors
-        'emboss-accent-blue': '#3b82f6',
-        'emboss-accent-orange': '#f97316',
-        'emboss-accent-green': '#10b981',
+        // Accent Colors (referenced from CSS variables so consumers can override)
+        'emboss-accent-blue': 'hsl(var(--emboss-accent-blue))',
+        'emboss-accent-orange': 'hsl(var(--emboss-accent-orange))',
+        'emboss-accent-green': 'hsl(var(--emboss-accent-green))',
         
         // Shadcn/ui Semantic Colors (Light Theme)
         background: 'hsl(var(--background))',
