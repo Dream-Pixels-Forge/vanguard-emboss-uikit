@@ -1,6 +1,6 @@
 {
   "name": "vanguard-emboss-uikit",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Premium neumorphic (soft UI) React component library with 45° light-source emboss effects. Built with Radix UI primitives and Tailwind CSS.",
   "author": "Dream Pixels Forge (https://github.com/Dream-Pixels-Forge)",
   "license": "MIT",
@@ -106,10 +106,12 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lucide-react": "^1.16.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.6.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^5.2.1",
@@ -141,6 +143,9 @@
     "jsdom": "^29.1.1",
     "playwright": "^1.60.0",
     "postcss": "^8.5.15",
+    "prettier": "^3.8.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-hook-form": "^7.76.1",
     "size-limit": "^12.1.0",
     "storybook": "^10.4.1",

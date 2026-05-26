@@ -26,6 +26,14 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - run: pnpm type-check
+
+      - run: pnpm lint
+
+      - run: pnpm test
+
+      - run: pnpm size
+
       - run: pnpm build
 
       - name: Create GitHub Release

@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.2.1] - 2026-05-26
+
+### Fixed
+- Bundle size bloat: 6 packages missing from `vite.config.ts` externals (`@radix-ui/react-accordion`, `@radix-ui/react-dropdown-menu`, `@radix-ui/react-popover`, `@radix-ui/react-slot`, `@radix-ui/react-tooltip`, `sonner`) causing 230 KB ESM bundle instead of ~34 KB. Published bundle size restored to expected size.
+- `react` and `react-dom` moved from `dependencies` to `peerDependencies` to prevent duplicate React instances for consumers.
+- Release workflow now runs type-check, lint, test, and size checks before publishing.
+- Duplicate `@layer base` blocks in `globals.css` merged into a single block.
+- Added `.prettierrc` and `.editorconfig` for consistent code formatting.
+
+### Added
+- Tests: Separator component (orientation, emboss class), Tooltip (styling, delay), Toast (duration, rendering).
+- Prettier as devDependency with configuration.
+
 ## [0.2.0] - 2026-05-26
 
 ### Added

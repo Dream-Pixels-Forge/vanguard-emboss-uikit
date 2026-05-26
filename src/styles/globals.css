@@ -92,9 +92,7 @@
     --input: var(--emboss-shadow-dark);
     --ring: var(--emboss-accent-blue);
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }

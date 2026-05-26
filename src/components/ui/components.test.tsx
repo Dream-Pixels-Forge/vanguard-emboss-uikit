@@ -549,12 +549,87 @@ describe('Tooltip', () => {
   it('exports TooltipContent component', () => {
     expect(UI.TooltipContent).toBeDefined()
   })
+
+  it('exports TooltipProvider and TooltipTrigger', () => {
+    expect(UI.TooltipProvider).toBeDefined()
+    expect(UI.TooltipTrigger).toBeDefined()
+  })
+
+  it('trigger has emboss styling classes', () => {
+    const { container } = render(
+      <UI.TooltipProvider>
+        <UI.Tooltip>
+          <UI.TooltipTrigger>Hover</UI.TooltipTrigger>
+          <UI.TooltipContent>Content</UI.TooltipContent>
+        </UI.Tooltip>
+      </UI.TooltipProvider>
+    )
+    const trigger = container.querySelector('button')
+    expect(trigger).toHaveClass('inline-flex')
+  })
+
+  it('default open delay is set', () => {
+    const { container } = render(
+      <UI.TooltipProvider delayDuration={300}>
+        <UI.Tooltip>
+          <UI.TooltipTrigger>Hover</UI.TooltipTrigger>
+          <UI.TooltipContent>Content</UI.TooltipContent>
+        </UI.Tooltip>
+      </UI.TooltipProvider>
+    )
+    expect(container.querySelector('button')).toBeInTheDocument()
+  })
 })
 
 describe('ToastProvider', () => {
   it('renders without crashing', () => {
     const { container } = render(<UI.ToastProvider />)
     expect(container.querySelector('[aria-label]')).toBeInTheDocument()
+  })
+
+  it('renders with custom position', () => {
+    const { container } = render(<UI.ToastProvider position="top-right" />)
+    expect(container.querySelector('[aria-label]')).toBeInTheDocument()
+  })
+
+  it('can render with toaster class', () => {
+    const { container } = render(<UI.ToastProvider />)
+    const toaster = container.firstChild as HTMLElement
+    expect(toaster).toBeInTheDocument()
+  })
+})
+
+describe('Separator', () => {
+  it('renders as hr element', () => {
+    const { container } = render(<UI.Separator />)
+    const hr = container.querySelector('hr')
+    expect(hr).toBeInTheDocument()
+  })
+
+  it('renders with horizontal orientation by default', () => {
+    const { container } = render(<UI.Separator />)
+    const hr = container.querySelector('hr')
+    expect(hr).toHaveClass('h-[1px]')
+    expect(hr).toHaveClass('w-full')
+  })
+
+  it('renders with vertical orientation', () => {
+    const { container } = render(<UI.Separator orientation="vertical" />)
+    const hr = container.querySelector('hr')
+    expect(hr).toHaveClass('h-full')
+    expect(hr).toHaveClass('w-[1px]')
+  })
+
+  it('applies emboss decorative class', () => {
+    const { container } = render(<UI.Separator />)
+    const hr = container.querySelector('hr')
+    expect(hr).toHaveClass('bg-emboss-shadow-light/30')
+  })
+
+  it('sets aria-orientation for vertical', () => {
+    const { container } = render(<UI.Separator orientation="vertical" />)
+    const hr = container.querySelector('hr')
+    expect(hr).toHaveAttribute('aria-orientation', 'vertical')
   })
 })
 
