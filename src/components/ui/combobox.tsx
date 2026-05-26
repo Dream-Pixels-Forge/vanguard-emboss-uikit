@@ -42,6 +42,7 @@ export function Combobox({
           disabled={disabled}
           role="combobox"
           aria-expanded={open}
+          aria-label={selectedLabel ?? placeholder}
           className={cn(
             getEmbossBackground(),
             getEmbossShadow('in', 'small'),

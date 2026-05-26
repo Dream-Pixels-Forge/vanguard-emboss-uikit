@@ -1992,13 +1992,14 @@ describe('Direction', () => {
     expect(screen.getByText('Content')).toBeInTheDocument()
   })
 
-  it('useDirection returns ltr by default', () => {
+  it('useDirection throws when no DirectionProvider is present', () => {
     function TestComponent() {
       const dir = UI.useDirection()
       return <span data-testid="dir">{dir}</span>
     }
-    render(<TestComponent />)
-    expect(screen.getByTestId('dir')).toHaveTextContent('ltr')
+    expect(() => render(<TestComponent />)).toThrow(
+      'useDirection must be used within a DirectionProvider'
+    )
   })
 
   it('useDirection returns rtl when wrapped in DirectionProvider with dir="rtl"', () => {

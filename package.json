@@ -1,6 +1,6 @@
 {
   "name": "vanguard-emboss-uikit",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Premium neumorphic (soft UI) React component library with 45° light-source emboss effects. Built with Radix UI primitives and Tailwind CSS.",
   "author": "Dream Pixels Forge (https://github.com/Dream-Pixels-Forge)",
   "license": "MIT",
@@ -32,6 +32,10 @@
       "types": "./dist/components/ui/index.d.ts",
       "import": "./dist/vanguard-emboss-uikit.es.js",
       "require": "./dist/vanguard-emboss-uikit.cjs.js"
+    },
+    "./styles": {
+      "import": "./dist/style.css",
+      "require": "./dist/style.css"
     }
   },
   "files": [
@@ -43,7 +47,7 @@
   "size-limit": [
     {
       "path": "dist/vanguard-emboss-uikit.es.js",
-      "limit": "35 KB",
+      "limit": "40 KB",
       "import": "{ Button }",
       "ignore": [
         "react",
@@ -54,6 +58,7 @@
         "tailwind-merge",
         "lucide-react",
         "sonner",
+        "tailwindcss-animate",
         "@radix-ui/react-accordion",
         "@radix-ui/react-checkbox",
         "@radix-ui/react-dialog",
@@ -149,6 +154,7 @@
     "recharts": "^3.8.1",
     "sonner": "^2.0.7",
     "tailwind-merge": "^3.6.0",
+    "tailwindcss-animate": "^1.0.7",
     "vaul": "^1.1.2"
   },
   "peerDependencies": {

@@ -2,7 +2,7 @@ import React from 'react'
 
 type Direction = 'ltr' | 'rtl'
 
-const DirectionContext = React.createContext<Direction>('ltr')
+const DirectionContext = React.createContext<Direction | undefined>(undefined)
 
 export interface DirectionProviderProps {
   children: React.ReactNode
@@ -23,7 +23,7 @@ export function DirectionProvider({
 export function useDirection(): Direction {
   const ctx = React.useContext(DirectionContext)
   if (ctx === undefined) {
-    return 'ltr'
+    throw new Error('useDirection must be used within a DirectionProvider. Wrap your app with <DirectionProvider>.')
   }
   return ctx
 }

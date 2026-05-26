@@ -1,4 +1,4 @@
-import { Toaster as SonnerToaster } from 'sonner'
+import { Toaster as SonnerToaster, toast as sonnerToast } from 'sonner'
 import { cn } from '../../lib/utils'
 
 export interface ToastProviderProps {
@@ -26,3 +26,30 @@ export function ToastProvider({
     />
   )
 }
+
+type ToastData = Record<string, unknown>
+
+interface ToastAPI {
+  (message: string, data?: ToastData): string | number
+  success: (message: string, data?: ToastData) => string | number
+  error: (message: string, data?: ToastData) => string | number
+  info: (message: string, data?: ToastData) => string | number
+  warning: (message: string, data?: ToastData) => string | number
+  dismiss: (id?: string | number) => void
+  loading: (message: string, data?: ToastData) => string | number
+  promise: <T>(promise: Promise<T>, data?: ToastData) => string | number
+}
+
+/**
+ * Thin wrapper around sonner's toast function.
+ *
+ * This insulates consumers from sonner's raw API — if sonner makes a
+ * breaking change, only this wrapper needs updating rather than every
+ * consumer's import.
+ *
+ * @example
+ *   toast('Hello world')
+ *   toast.success('Saved!')
+ *   toast.error('Something went wrong')
+ */
+export const toast: ToastAPI = sonnerToast as unknown as ToastAPI

@@ -8,6 +8,9 @@ export default defineConfig({
         dts({
             include: ['src'],
             exclude: ['src/App.tsx', 'src/main.tsx'],
+            compilerOptions: {
+                skipLibCheck: true,
+            },
         }),
     ],
     build: {
@@ -63,6 +66,7 @@ export default defineConfig({
                 '@radix-ui/react-context-menu',
                 'react-hook-form',
                 '@hookform/resolvers',
+                'tailwindcss-animate',
             ],
         },
         cssCodeSplit: false,

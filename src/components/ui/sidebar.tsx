@@ -68,12 +68,16 @@ export function SidebarProvider({
       const openState = typeof value === 'function' ? value(open) : value
       _setOpen(openState)
       setOpenRef.current?.(openState)
-      try {
-        document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
-      } catch {}
     },
     [open]
   )
+
+  // Write cookie in a useEffect to avoid Strict Mode double-invocation
+  React.useEffect(() => {
+    try {
+      document.cookie = `${SIDEBAR_COOKIE_NAME}=${open}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
+    } catch {}
+  }, [open])
 
   const toggleSidebar = React.useCallback(() => {
     setOpen((prev: boolean) => !prev)

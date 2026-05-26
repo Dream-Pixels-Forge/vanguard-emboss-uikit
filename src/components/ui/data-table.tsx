@@ -12,7 +12,7 @@ import {
   type VisibilityState,
 } from '@tanstack/react-table'
 import { cn } from '../../lib/utils'
-import { getEmbossBackground } from '../../lib/tailwind-utils'
+import { getEmbossBackground, getEmbossShadow } from '../../lib/tailwind-utils'
 import { ChevronUp, ChevronDown, ChevronsUpDown, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Input } from './input'
 
@@ -54,11 +54,13 @@ export function DataTable<TData, TValue>({
     state: { sorting, columnFilters, columnVisibility, pagination },
   })
 
-  const filterCol = filterColumn || (columns[0]?.id as string) || ''
+  const filterCol = filterColumn ?? (columns[0]?.id ? String(columns[0].id) : '')
+
+  const hasValidFilterColumn = filterCol && table.getColumn(filterCol)
 
   return (
     <div className={cn('w-full', className)}>
-      {filterable && (
+      {filterable && hasValidFilterColumn && (
         <div className="flex items-center py-4">
           <Input
             placeholder={filterPlaceholder}
@@ -133,7 +135,7 @@ export function DataTable<TData, TValue>({
             onClick={() => table.previousPage()}
             className={cn(
               getEmbossBackground(),
-              'shadow-emboss-out-light-sm dark:shadow-emboss-out-dark-sm',
+              getEmbossShadow('out', 'small'),
               'flex h-8 w-8 items-center justify-center rounded-lg',
               'transition-all hover:scale-105 active:scale-95',
               'disabled:pointer-events-none disabled:opacity-50'
@@ -146,7 +148,7 @@ export function DataTable<TData, TValue>({
             onClick={() => table.nextPage()}
             className={cn(
               getEmbossBackground(),
-              'shadow-emboss-out-light-sm dark:shadow-emboss-out-dark-sm',
+              getEmbossShadow('out', 'small'),
               'flex h-8 w-8 items-center justify-center rounded-lg',
               'transition-all hover:scale-105 active:scale-95',
               'disabled:pointer-events-none disabled:opacity-50'

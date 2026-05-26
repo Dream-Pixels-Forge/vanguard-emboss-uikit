@@ -1,3 +1,6 @@
+// Import global styles so consumers get design tokens out of the box
+import '../../styles/globals.css'
+
 export { Box } from './box'
 export { Text } from './text'
 export { Typography } from './typography'
@@ -6,6 +9,7 @@ export { ButtonGroup } from './button-group'
 export { DirectionProvider, useDirection } from './direction'
 export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './card'
 export { Badge } from './badge'
+/** @deprecated Use Box component instead. Deprecated since v0.1.0. */
 export { EmbossBox } from './emboss-box'
 
 export { Input } from './input'
@@ -144,7 +148,6 @@ export {
   DialogDescription
 } from './dialog'
 
-export type { BoxProps } from './box'
 export type { TextProps } from './text'
 export type { TypographyProps, TypographyVariant } from './typography'
 export type { ButtonProps } from './button'
@@ -275,9 +278,11 @@ export type {
   FormMessageProps,
 } from './form'
 
-export { ToastProvider } from './toast'
-export { toast } from 'sonner'
+export { ToastProvider, toast } from './toast'
 export type { ToastProviderProps } from './toast'
+
+export { ThemeProvider, useTheme } from '../../providers/theme-provider'
+export type { ThemeProviderProps } from '../../providers/theme-provider'
 
 export { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from './tooltip'
 export type { TooltipProps, TooltipTriggerProps, TooltipContentProps } from './tooltip'

@@ -33,10 +33,12 @@ export function ChartContainer({ config, className, children, ...props }: ChartC
   )
 }
 
+/** @deprecated ChartTooltip is a no-op wrapper with no recharts integration. Use recharts's <Tooltip /> directly with <ChartTooltipContent /> for styling. */
 export interface ChartTooltipProps {
   children: React.ReactNode
 }
 
+/** @deprecated ChartTooltip is a no-op wrapper. Use recharts's <Tooltip /> directly with <ChartTooltipContent />. */
 export function ChartTooltip({ children }: ChartTooltipProps) {
   return <>{children}</>
 }
@@ -105,10 +107,12 @@ export function ChartTooltipContent({
   )
 }
 
+/** @deprecated ChartLegend is a no-op wrapper with no recharts integration. Use recharts's <Legend /> directly with <ChartLegendContent /> for styling. */
 export interface ChartLegendProps {
   children: React.ReactNode
 }
 
+/** @deprecated ChartLegend is a no-op wrapper. Use recharts's <Legend /> directly with <ChartLegendContent />. */
 export function ChartLegend({ children }: ChartLegendProps) {
   return <>{children}</>
 }

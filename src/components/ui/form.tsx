@@ -76,8 +76,9 @@ export function useFormField() {
   const { name } = fieldContext
   const { id } = itemContext
 
-  // Narrow subscription to only this field's error state
-  const { errors, dirtyFields, touchedFields, isValidating } = useFormState({ name: name as unknown as undefined })
+  // Narrow subscription to only this field's error state.
+  // Cast via Control<any> to satisfy react-hook-form's generic constraint.
+  const { errors, dirtyFields, touchedFields, isValidating } = useFormState({ name } as Parameters<typeof useFormState>[0])
 
   return {
     id,

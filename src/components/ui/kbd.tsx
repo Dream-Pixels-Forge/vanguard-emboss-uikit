@@ -11,7 +11,6 @@ export function Kbd({ className, ...props }: KbdProps) {
         'border-emboss-shadow-light/30 dark:border-emboss-shadow-dark/30',
         'bg-emboss-bg-light dark:bg-emboss-bg-dark',
         'text-muted-foreground',
-        'opacity-100',
         className
       )}
       {...props}

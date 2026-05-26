@@ -1,8 +1,10 @@
 import React from 'react'
 import { cn } from '../../lib/utils'
 
+/** @deprecated Use `Text` component instead. Typography is kept for backward compatibility but `Text` provides more variants, weight control, accent colors, and muted support. */
 export type TypographyVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'p' | 'lead' | 'large' | 'small' | 'muted'
 
+/** @deprecated Use `Text` component instead. Will be removed in a future major version. */
 export interface TypographyProps extends React.HTMLAttributes<HTMLElement> {
   variant?: TypographyVariant
   as?: React.ElementType
@@ -32,6 +34,7 @@ const defaultTags: Record<TypographyVariant, React.ElementType> = {
   muted: 'p',
 }
 
+/** @deprecated Use `Text` component instead. Will be removed in a future major version. */
 export function Typography({
   className,
   variant = 'p',

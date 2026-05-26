@@ -1,5 +1,38 @@
 # Changelog
 
+## [0.5.1] - 2026-05-26
+
+### Fixed (18 code quality issues)
+- **CRITICAL: globals.css now delivered to consumers** — imported in library entry point (`index.ts`), added `./styles` export in package.json. Library is now usable out of the box. (ISS-0006)
+- **CRITICAL: ThemeProvider exported** — now accessible from `vanguard-emboss-uikit` along with `useTheme` hook and `ThemeProviderProps` type. (ISS-0007)
+- **CRITICAL: tailwindcss-animate installed** — added as dependency, registered in `tailwind.config.js` plugins, externalized in Vite config. All 77 animation classes now animate. (ISS-0008)
+- **CRITICAL: InputGroupAddon side prop fixed** — `side` prop no longer leaks as unrecognized DOM attribute. Properly destructured. (ISS-0010)
+- **DataTable filter null-safety** — properly guards against missing filter column; filter input hidden when no valid column exists. (ISS-0011)
+- **Text/Typography duplication** — Typography marked `@deprecated` with JSDoc pointing users to the more capable `Text` component. (ISS-0012)
+- **tailwind-utils.ts DRY violation fixed** — extracted shared `getShadowString()` helper, eliminating 3× duplication of shadow logic. (ISS-0013)
+- **ChartTooltip/ChartLegend deprecation** — marked `@deprecated` with JSDoc guidance to use recharts primitives directly. (ISS-0014)
+- **toast wrapper** — sonner's `toast` now re-exported through a typed wrapper (`ToastAPI`) isolating consumers from sonner's internal types. (ISS-0015)
+- **DataTable hardcoded shadows** — replaced literal shadow strings with `getEmbossShadow('out', 'small')` utility. (ISS-0016)
+- **useDirection now throws on missing provider** — matches `useSidebar` behavior instead of silently returning `'ltr'`. (ISS-0017)
+- **EmbossBox deprecation** — added `@deprecated` JSDoc tag to export in `index.ts`. (ISS-0018)
+- **Kbd opacity-100 removed** — redundant default opacity class. (ISS-0019)
+- **Sidebar Strict Mode cookie fix** — moved cookie write to `useEffect` to avoid React 18 double-invocation. (ISS-0020)
+- **form.tsx type safety** — removed `as unknown as undefined` cast; uses proper `Parameters`-based cast. (ISS-0021)
+- **Combobox accessible label** — added `aria-label` to combobox trigger for screen reader support. (ISS-0022)
+- **InputGroup border-radius** — added warning comment about fragile sibling selectors. (ISS-0023)
+
+### Added
+- `./styles` export in package.json — consumers can now `import 'vanguard-emboss-uikit/styles'`
+
+### Changed
+- Bundle: 122.90 KB ESM / 87.92 KB CJS (up from 116.25/83.41 due to `tailwindcss-animate` and included CSS)
+- Version bumped to 0.5.1
+
+## [0.5.0] - 2026-05-26
+
+### Added
+- 6 new components reaching 57 total: Toast, Tooltip, Popover, Accordion, DropdownMenu, various Radix wrappers
+
 ## [0.4.0] - 2026-05-26
 
 ### Added

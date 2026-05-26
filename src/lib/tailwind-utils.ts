@@ -1,34 +1,35 @@
 export { cn } from "./utils"
 
-export function getEmbossShadow(type: 'out' | 'in', size: 'standard' | 'small' = 'standard'): string {
+/** Shared shadow string lookup — single source of truth for all 8 shadow values */
+function getShadowString(type: 'out' | 'in', size: 'standard' | 'small'): string {
   if (type === 'out') {
-    return size === 'standard' 
+    return size === 'standard'
       ? 'shadow-emboss-out-light dark:shadow-emboss-out-dark'
       : 'shadow-emboss-out-light-sm dark:shadow-emboss-out-dark-sm'
-  } else {
-    return size === 'standard'
-      ? 'shadow-emboss-in-light dark:shadow-emboss-in-dark'
-      : 'shadow-emboss-in-light-sm dark:shadow-emboss-in-dark-sm'
   }
+  return size === 'standard'
+    ? 'shadow-emboss-in-light dark:shadow-emboss-in-dark'
+    : 'shadow-emboss-in-light-sm dark:shadow-emboss-in-dark-sm'
+}
+
+/** Returns the opposite shadow type (out ↔ in) for active/pressed states */
+function oppositeShadow(type: 'out' | 'in'): 'out' | 'in' {
+  return type === 'out' ? 'in' : 'out'
+}
+
+export function getEmbossShadow(type: 'out' | 'in', size: 'standard' | 'small' = 'standard'): string {
+  return getShadowString(type, size)
 }
 
 export function withActiveShadow(type: 'out' | 'in', size: 'standard' | 'small' = 'standard'): string {
-  const shadow = type === 'out'
-    ? (size === 'standard' ? 'shadow-emboss-out-light dark:shadow-emboss-out-dark' : 'shadow-emboss-out-light-sm dark:shadow-emboss-out-dark-sm')
-    : (size === 'standard' ? 'shadow-emboss-in-light dark:shadow-emboss-in-dark' : 'shadow-emboss-in-light-sm dark:shadow-emboss-in-dark-sm')
-  const activeShadow = type === 'out'
-    ? (size === 'standard' ? 'shadow-emboss-in-light dark:shadow-emboss-in-dark' : 'shadow-emboss-in-light-sm dark:shadow-emboss-in-dark-sm')
-    : (size === 'standard' ? 'shadow-emboss-out-light dark:shadow-emboss-out-dark' : 'shadow-emboss-out-light-sm dark:shadow-emboss-out-dark-sm')
+  const shadow = getShadowString(type, size)
+  const activeShadow = getShadowString(oppositeShadow(type), size)
   return `${shadow} active:${activeShadow.replace(/ /g, ' active:')}`
 }
 
 export function withDataStateShadow(state: string, type: 'out' | 'in', size: 'standard' | 'small' = 'standard'): string {
-  const shadow = type === 'out'
-    ? (size === 'standard' ? 'shadow-emboss-out-light dark:shadow-emboss-out-dark' : 'shadow-emboss-out-light-sm dark:shadow-emboss-out-dark-sm')
-    : (size === 'standard' ? 'shadow-emboss-in-light dark:shadow-emboss-in-dark' : 'shadow-emboss-in-light-sm dark:shadow-emboss-in-dark-sm')
-  const dataShadow = type === 'out'
-    ? (size === 'standard' ? 'shadow-emboss-in-light dark:shadow-emboss-in-dark' : 'shadow-emboss-in-light-sm dark:shadow-emboss-in-dark-sm')
-    : (size === 'standard' ? 'shadow-emboss-out-light dark:shadow-emboss-out-dark' : 'shadow-emboss-out-light-sm dark:shadow-emboss-out-dark-sm')
+  const shadow = getShadowString(type, size)
+  const dataShadow = getShadowString(oppositeShadow(type), size)
   return `${shadow} ${state}:${dataShadow.replace(/ /g, ` ${state}:`)}`
 }
 

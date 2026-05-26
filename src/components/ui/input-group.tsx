@@ -17,8 +17,11 @@ export function InputGroup({
       className={cn(
         'flex items-stretch',
         fullWidth && 'w-full',
-        '[&>*:first-child]:rounded-l-lg [&>*:first-child]:rounded-r-none',
-        '[&>*:last-child]:rounded-r-lg [&>*:last-child]:rounded-l-none',
+        // Border-radius is applied via sibling selectors targeting direct children.
+        // ⚠️ Wrapping children in arbitrary fragments/divs will break the radius.
+        // Pass direct children (Input, InputGroupAddon, etc.) without extra wrappers.
+        '[&>:first-child]:rounded-l-lg [&>:first-child]:rounded-r-none',
+        '[&>:last-child]:rounded-r-lg [&>:last-child]:rounded-l-none',
         '[&>:not(:first-child):not(:last-child)]:rounded-none',
         className
       )}
@@ -37,6 +40,7 @@ export interface InputGroupAddonProps extends React.HTMLAttributes<HTMLDivElemen
 export function InputGroupAddon({
   className,
   children,
+  side,
   ...props
 }: InputGroupAddonProps) {
   return (
