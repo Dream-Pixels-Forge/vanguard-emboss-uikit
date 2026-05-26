@@ -1,5 +1,8 @@
 # Vanguard Emboss UI Kit
 
+<img width="1920" height="1080" alt="Screenshot from 2026-05-26 12-19-02" src="https://github.com/user-attachments/assets/7784487f-cb66-4385-bc12-1e6c56400f9a" />
+
+
 [![npm version](https://badge.fury.io/js/vanguard-emboss-uikit.svg)](https://badge.fury.io/js/vanguard-emboss-uikit)
 [![CI](https://github.com/Dream-Pixels-Forge/vanguard-emboss-uikit/actions/workflows/ci.yml/badge.svg)](https://github.com/Dream-Pixels-Forge/vanguard-emboss-uikit/actions/workflows/ci.yml)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
