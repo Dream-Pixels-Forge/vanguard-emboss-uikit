@@ -8,13 +8,13 @@
  * To customize the emboss look, override these CSS variables in your app:
  *
  *   :root {
- *     --emboss-bg-light: 210 20% 94%;       /* Background color (HSL) */
- *     --emboss-highlight-light: 0 0% 100%;  /* Upper-left highlight */
- *     --emboss-shadow-light: 210 16% 80%;   /* Bottom-right shadow */
- *     --emboss-accent-blue: 217 91% 60%;    /* Primary accent */
- *     --emboss-accent-orange: 14 90% 55%;   /* Warning accent */
- *     --emboss-accent-green: 150 70% 50%;   /* Success accent */
- *     --radius: 1.5rem;                     /* Border radius */
+ *     --emboss-bg-light: 210 20% 94%;           // Background color (HSL)
+ *     --emboss-highlight-light: 0 0% 100%;      // Upper-left highlight
+ *     --emboss-shadow-light: 210 16% 80%;       // Bottom-right shadow
+ *     --emboss-accent-blue: 217 91% 60%;        // Primary accent
+ *     --emboss-accent-orange: 14 90% 55%;       // Warning accent
+ *     --emboss-accent-green: 150 70% 50%;       // Success accent
+ *     --radius: 1.5rem;                         // Border radius
  *   }
  *   .dark {
  *     --emboss-bg-dark: 215 15% 18%;

@@ -1,0 +1,12 @@
+{
+  "name": "direction",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/direction.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

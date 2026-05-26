@@ -1,0 +1,12 @@
+{
+  "name": "native-select",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/native-select.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "name": "button-group",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/button-group.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

@@ -75,6 +75,10 @@
       {
         "name": "chart",
         "type": "registry:ui"
+      },
+      {
+        "name": "button-group",
+        "type": "registry:ui"
       }
     ],
     "layout": [
@@ -92,6 +96,10 @@
       },
       {
         "name": "emboss-box",
+        "type": "registry:ui"
+      },
+      {
+        "name": "typography",
         "type": "registry:ui"
       }
     ],
@@ -185,6 +193,14 @@
       {
         "name": "form",
         "type": "registry:ui"
+      },
+      {
+        "name": "native-select",
+        "type": "registry:ui"
+      },
+      {
+        "name": "input-group",
+        "type": "registry:ui"
       }
     ],
     "feedback": [
@@ -216,6 +232,14 @@
       },
       {
         "name": "context-menu",
+        "type": "registry:ui"
+      },
+      {
+        "name": "direction",
+        "type": "registry:ui"
+      },
+      {
+        "name": "item",
         "type": "registry:ui"
       }
     ]

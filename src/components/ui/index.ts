@@ -1,6 +1,9 @@
 export { Box } from './box'
 export { Text } from './text'
+export { Typography } from './typography'
 export { Button } from './button'
+export { ButtonGroup } from './button-group'
+export { DirectionProvider, useDirection } from './direction'
 export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from './card'
 export { Badge } from './badge'
 export { EmbossBox } from './emboss-box'
@@ -23,8 +26,11 @@ export {
 } from './select'
 export { Slider } from './slider'
 export { Separator } from './separator'
+export { NativeSelect } from './native-select'
+export { InputGroup, InputGroupAddon } from './input-group'
 
 export { Field } from './field'
+export { Item, ItemMedia, ItemContent, ItemTitle, ItemDescription, ItemActions } from './item'
 export { DatePicker } from './date-picker'
 export { Combobox } from './combobox'
 
@@ -140,7 +146,11 @@ export {
 
 export type { BoxProps } from './box'
 export type { TextProps } from './text'
+export type { TypographyProps, TypographyVariant } from './typography'
 export type { ButtonProps } from './button'
+export type { ButtonGroupProps } from './button-group'
+export type { NativeSelectProps } from './native-select'
+export type { DirectionProviderProps } from './direction'
 export type {
   CardProps,
   CardHeaderProps,

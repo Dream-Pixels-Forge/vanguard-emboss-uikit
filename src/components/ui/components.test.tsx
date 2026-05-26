@@ -1924,3 +1924,337 @@ describe('Select', () => {
     expect(UI.SelectItem).toBeDefined()
   })
 })
+
+// ─── ButtonGroup ───
+
+describe('ButtonGroup', () => {
+  it('renders children', () => {
+    render(
+      <UI.ButtonGroup>
+        <button>One</button>
+        <button>Two</button>
+      </UI.ButtonGroup>
+    )
+    expect(screen.getByText('One')).toBeInTheDocument()
+    expect(screen.getByText('Two')).toBeInTheDocument()
+  })
+
+  it('renders with horizontal orientation by default', () => {
+    const { container } = render(
+      <UI.ButtonGroup>
+        <button>A</button>
+      </UI.ButtonGroup>
+    )
+    const group = container.firstChild as HTMLElement
+    expect(group).toHaveAttribute('data-orientation', 'horizontal')
+    expect(group).not.toHaveClass('flex-col')
+  })
+
+  it('renders with vertical orientation', () => {
+    const { container } = render(
+      <UI.ButtonGroup orientation="vertical">
+        <button>A</button>
+      </UI.ButtonGroup>
+    )
+    const group = container.firstChild as HTMLElement
+    expect(group).toHaveAttribute('data-orientation', 'vertical')
+    expect(group).toHaveClass('flex-col')
+  })
+
+  it('has role="group"', () => {
+    render(
+      <UI.ButtonGroup>
+        <button>A</button>
+      </UI.ButtonGroup>
+    )
+    expect(screen.getByRole('group')).toBeInTheDocument()
+  })
+
+  it('applies custom className', () => {
+    const { container } = render(
+      <UI.ButtonGroup className="custom-class">
+        <button>A</button>
+      </UI.ButtonGroup>
+    )
+    expect(container.firstChild).toHaveClass('custom-class')
+  })
+
+  it('exports from index', () => {
+    expect(UI.ButtonGroup).toBeDefined()
+  })
+})
+
+// ─── Direction ───
+
+describe('Direction', () => {
+  it('renders children', () => {
+    render(<UI.DirectionProvider>Content</UI.DirectionProvider>)
+    expect(screen.getByText('Content')).toBeInTheDocument()
+  })
+
+  it('useDirection returns ltr by default', () => {
+    function TestComponent() {
+      const dir = UI.useDirection()
+      return <span data-testid="dir">{dir}</span>
+    }
+    render(<TestComponent />)
+    expect(screen.getByTestId('dir')).toHaveTextContent('ltr')
+  })
+
+  it('useDirection returns rtl when wrapped in DirectionProvider with dir="rtl"', () => {
+    function TestComponent() {
+      const dir = UI.useDirection()
+      return <span data-testid="dir">{dir}</span>
+    }
+    render(
+      <UI.DirectionProvider dir="rtl">
+        <TestComponent />
+      </UI.DirectionProvider>
+    )
+    expect(screen.getByTestId('dir')).toHaveTextContent('rtl')
+  })
+
+  it('exports from index', () => {
+    expect(UI.DirectionProvider).toBeDefined()
+    expect(UI.useDirection).toBeDefined()
+  })
+})
+
+// ─── NativeSelect ───
+
+describe('NativeSelect', () => {
+  it('renders a select element', () => {
+    render(<UI.NativeSelect aria-label="Choose" />)
+    expect(screen.getByRole('combobox')).toBeInTheDocument()
+  })
+
+  it('renders placeholder option', () => {
+    render(
+      <UI.NativeSelect placeholder="Select an option">
+        <option value="1">Option 1</option>
+      </UI.NativeSelect>
+    )
+    expect(screen.getByText('Select an option')).toBeInTheDocument()
+  })
+
+  it('renders children (options)', () => {
+    render(
+      <UI.NativeSelect>
+        <option value="1">Option 1</option>
+        <option value="2">Option 2</option>
+      </UI.NativeSelect>
+    )
+    expect(screen.getByText('Option 1')).toBeInTheDocument()
+    expect(screen.getByText('Option 2')).toBeInTheDocument()
+  })
+
+  it('applies emboss styling classes', () => {
+    const { container } = render(<UI.NativeSelect aria-label="Select" />)
+    const select = container.querySelector('select')
+    expect(select).toHaveClass('shadow-emboss-out-light-sm')
+  })
+
+  it('can be disabled', () => {
+    render(<UI.NativeSelect disabled aria-label="Disabled" />)
+    expect(screen.getByRole('combobox')).toBeDisabled()
+  })
+
+  it('exports from index', () => {
+    expect(UI.NativeSelect).toBeDefined()
+  })
+})
+
+// ─── Typography ───
+
+describe('Typography', () => {
+  it('renders children', () => {
+    render(<UI.Typography>Hello</UI.Typography>)
+    expect(screen.getByText('Hello')).toBeInTheDocument()
+  })
+
+  it('renders as p by default', () => {
+    const { container } = render(<UI.Typography>Text</UI.Typography>)
+    expect(container.querySelector('p')).toBeInTheDocument()
+  })
+
+  it('renders as h1 with h1 variant', () => {
+    render(<UI.Typography variant="h1">Heading</UI.Typography>)
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Heading')
+  })
+
+  it('renders as h2 with h2 variant', () => {
+    render(<UI.Typography variant="h2">Heading 2</UI.Typography>)
+    expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent('Heading 2')
+  })
+
+  it('renders as h3 with h3 variant', () => {
+    render(<UI.Typography variant="h3">Heading 3</UI.Typography>)
+    expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent('Heading 3')
+  })
+
+  it('renders as h4 with h4 variant', () => {
+    render(<UI.Typography variant="h4">Heading 4</UI.Typography>)
+    expect(screen.getByRole('heading', { level: 4 })).toHaveTextContent('Heading 4')
+  })
+
+  it('renders as small element with small variant', () => {
+    const { container } = render(<UI.Typography variant="small">Small</UI.Typography>)
+    expect(container.querySelector('small')).toBeInTheDocument()
+  })
+
+  it('renders as custom element with as prop', () => {
+    const { container } = render(<UI.Typography as="span">Custom</UI.Typography>)
+    expect(container.querySelector('span')).toBeInTheDocument()
+  })
+
+  it('applies variant-specific classes', () => {
+    const { container } = render(<UI.Typography variant="h1">Heading</UI.Typography>)
+    expect(container.firstChild).toHaveClass('text-4xl')
+    expect(container.firstChild).toHaveClass('font-bold')
+  })
+
+  it('applies muted class for muted variant', () => {
+    const { container } = render(<UI.Typography variant="muted">Muted</UI.Typography>)
+    expect(container.firstChild).toHaveClass('text-muted-foreground')
+  })
+
+  it('applies custom className', () => {
+    const { container } = render(<UI.Typography className="custom">Text</UI.Typography>)
+    expect(container.firstChild).toHaveClass('custom')
+  })
+
+  it('exports from index', () => {
+    expect(UI.Typography).toBeDefined()
+  })
+})
+
+// ─── InputGroup ───
+
+describe('InputGroup', () => {
+  it('renders children', () => {
+    render(
+      <UI.InputGroup>
+        <input placeholder="Test" />
+      </UI.InputGroup>
+    )
+    expect(screen.getByPlaceholderText('Test')).toBeInTheDocument()
+  })
+
+  it('renders with addon', () => {
+    render(
+      <UI.InputGroup>
+        <UI.InputGroupAddon>$</UI.InputGroupAddon>
+        <input placeholder="Amount" />
+      </UI.InputGroup>
+    )
+    expect(screen.getByText('$')).toBeInTheDocument()
+    expect(screen.getByPlaceholderText('Amount')).toBeInTheDocument()
+  })
+
+  it('renders multiple addons', () => {
+    render(
+      <UI.InputGroup>
+        <UI.InputGroupAddon>$</UI.InputGroupAddon>
+        <input placeholder="Amount" />
+        <UI.InputGroupAddon>.00</UI.InputGroupAddon>
+      </UI.InputGroup>
+    )
+    expect(screen.getByText('$')).toBeInTheDocument()
+    expect(screen.getByText('.00')).toBeInTheDocument()
+  })
+
+  it('renders with full width by default', () => {
+    const { container } = render(
+      <UI.InputGroup>
+        <input />
+      </UI.InputGroup>
+    )
+    expect(container.firstChild).toHaveClass('w-full')
+  })
+
+  it('can have fullWidth disabled', () => {
+    const { container } = render(
+      <UI.InputGroup fullWidth={false}>
+        <input />
+      </UI.InputGroup>
+    )
+    expect(container.firstChild).not.toHaveClass('w-full')
+  })
+
+  it('exports from index', () => {
+    expect(UI.InputGroup).toBeDefined()
+    expect(UI.InputGroupAddon).toBeDefined()
+  })
+})
+
+// ─── Item ───
+
+describe('Item', () => {
+  it('renders children', () => {
+    render(<UI.Item><p>Content</p></UI.Item>)
+    expect(screen.getByText('Content')).toBeInTheDocument()
+  })
+
+  it('renders with title and description', () => {
+    render(
+      <UI.Item>
+        <UI.ItemContent>
+          <UI.ItemTitle>Title</UI.ItemTitle>
+          <UI.ItemDescription>Description</UI.ItemDescription>
+        </UI.ItemContent>
+      </UI.Item>
+    )
+    expect(screen.getByText('Title')).toBeInTheDocument()
+    expect(screen.getByText('Description')).toBeInTheDocument()
+  })
+
+  it('renders media slot', () => {
+    render(
+      <UI.Item>
+        <UI.ItemMedia>
+          <div data-testid="media">Icon</div>
+        </UI.ItemMedia>
+        <UI.ItemContent>
+          <UI.ItemTitle>Title</UI.ItemTitle>
+        </UI.ItemContent>
+      </UI.Item>
+    )
+    expect(screen.getByTestId('media')).toBeInTheDocument()
+  })
+
+  it('renders actions slot', () => {
+    render(
+      <UI.Item>
+        <UI.ItemContent>
+          <UI.ItemTitle>Title</UI.ItemTitle>
+        </UI.ItemContent>
+        <UI.ItemActions>
+          <button>Edit</button>
+        </UI.ItemActions>
+      </UI.Item>
+    )
+    expect(screen.getByRole('button', { name: /edit/i })).toBeInTheDocument()
+  })
+
+  it('renders with card variant', () => {
+    const { container } = render(
+      <UI.Item variant="card">
+        <UI.ItemContent>
+          <UI.ItemTitle>Card Item</UI.ItemTitle>
+        </UI.ItemContent>
+      </UI.Item>
+    )
+    expect(container.firstChild).toHaveClass('rounded-lg')
+    expect(container.firstChild).toHaveClass('border')
+    expect(container.firstChild).toHaveClass('p-3')
+  })
+
+  it('exports from index', () => {
+    expect(UI.Item).toBeDefined()
+    expect(UI.ItemMedia).toBeDefined()
+    expect(UI.ItemContent).toBeDefined()
+    expect(UI.ItemTitle).toBeDefined()
+    expect(UI.ItemDescription).toBeDefined()
+    expect(UI.ItemActions).toBeDefined()
+  })
+})
