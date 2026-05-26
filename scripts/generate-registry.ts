@@ -36,6 +36,14 @@ const components: ComponentMeta[] = [
   { name: 'breadcrumb', dependencies: ['lucide-react'] },
   { name: 'navigation-menu', dependencies: ['@radix-ui/react-navigation-menu', 'lucide-react'] },
   { name: 'emboss-box' },
+  { name: 'progress', dependencies: ['@radix-ui/react-progress'] },
+  { name: 'skeleton' },
+  { name: 'avatar', dependencies: ['@radix-ui/react-avatar'] },
+  { name: 'sheet', dependencies: ['@radix-ui/react-dialog', 'lucide-react'], registryDependencies: ['button'] },
+  { name: 'toggle', dependencies: ['@radix-ui/react-toggle-group'] },
+  { name: 'collapsible', dependencies: ['@radix-ui/react-collapsible', 'lucide-react'] },
+  { name: 'tilt-card' },
+  { name: 'progress-circle' },
 ]
 
 mkdirSync(REGISTRY_UI_DIR, { recursive: true })
@@ -74,7 +82,9 @@ for (const meta of components) {
   if (['button', 'badge'].includes(meta.name)) category = 'general'
   else if (['box', 'card', 'text', 'emboss-box'].includes(meta.name)) category = 'layout'
   else if (['input', 'textarea', 'label', 'checkbox', 'radio', 'switch', 'slider', 'select'].includes(meta.name)) category = 'forms'
-  else if (['tabs', 'dialog', 'breadcrumb', 'navigation-menu', 'alert'].includes(meta.name)) category = 'navigation'
+  else if (['tabs', 'dialog', 'breadcrumb', 'navigation-menu', 'alert', 'sheet'].includes(meta.name)) category = 'navigation'
+  else if (['progress', 'skeleton', 'progress-circle'].includes(meta.name)) category = 'feedback'
+  else if (['avatar', 'toggle', 'collapsible', 'tilt-card'].includes(meta.name)) category = 'general'
   
   if (!indexItems[category]) indexItems[category] = []
   indexItems[category].push({ name: meta.name, type: 'registry:ui' })

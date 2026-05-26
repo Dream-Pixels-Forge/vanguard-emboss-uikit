@@ -1,0 +1,13 @@
+{
+  "name": "skeleton",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/skeleton.tsx",
+      "type": "registry:ui",
+      "content": "aW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JwppbXBvcnQgeyBjbiB9IGZyb20gJy4uLy4uL2xpYi91dGlscycKaW1wb3J0IHsgZ2V0RW1ib3NzQmFja2dyb3VuZCwgZ2V0RW1ib3NzU2hhZG93IH0gZnJvbSAnLi4vLi4vbGliL3RhaWx3aW5kLXV0aWxzJwoKZXhwb3J0IGludGVyZmFjZSBTa2VsZXRvblByb3BzIGV4dGVuZHMgUmVhY3QuSFRNTEF0dHJpYnV0ZXM8SFRNTERpdkVsZW1lbnQ+IHsKICB2YXJpYW50PzogJ3RleHQnIHwgJ2NpcmNsZScgfCAnY2FyZCcKfQoKZXhwb3J0IGZ1bmN0aW9uIFNrZWxldG9uKHsgY2xhc3NOYW1lLCB2YXJpYW50ID0gJ3RleHQnLCAuLi5wcm9wcyB9OiBTa2VsZXRvblByb3BzKSB7CiAgcmV0dXJuICgKICAgIDxkaXYKICAgICAgY2xhc3NOYW1lPXtjbigKICAgICAgICBnZXRFbWJvc3NCYWNrZ3JvdW5kKCksCiAgICAgICAgZ2V0RW1ib3NzU2hhZG93KCdpbicsICdzbWFsbCcpLAogICAgICAgICdhbmltYXRlLXB1bHNlJywKICAgICAgICB2YXJpYW50ID09PSAnY2lyY2xlJyAmJiAncm91bmRlZC1mdWxsJywKICAgICAgICB2YXJpYW50ID09PSAndGV4dCcgJiYgJ2gtNCB3LWZ1bGwgcm91bmRlZC1tZCcsCiAgICAgICAgdmFyaWFudCA9PT0gJ2NhcmQnICYmICdoLTMyIHctZnVsbCByb3VuZGVkLXhsJywKICAgICAgICBjbGFzc05hbWUKICAgICAgKX0KICAgICAgey4uLnByb3BzfQogICAgLz4KICApCn0K"
+    }
+  ]
+}

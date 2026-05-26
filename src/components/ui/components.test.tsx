@@ -19,6 +19,14 @@ import { Breadcrumb } from './breadcrumb'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './tabs'
 import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogHeader, DialogFooter } from './dialog'
 import { Knob } from './knob'
+import { Progress } from './progress'
+import { Skeleton } from './skeleton'
+import { Avatar } from './avatar'
+import { Sheet, SheetTrigger, SheetContent, SheetTitle } from './sheet'
+import { ToggleGroup, ToggleGroupItem } from './toggle'
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from './collapsible'
+import { TiltCard } from './tilt-card'
+import { ProgressCircle } from './progress-circle'
 
 import * as UI from './index'
 
@@ -916,5 +924,184 @@ describe('DropdownMenu', () => {
     expect(UI.DropdownMenuRadioGroup).toBeDefined()
     expect(UI.DropdownMenuSubTrigger).toBeDefined()
     expect(UI.DropdownMenuSubContent).toBeDefined()
+  })
+})
+
+// ─── Progress ───
+
+describe('Progress', () => {
+  it('renders with value', () => {
+    render(<Progress value={60} />)
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
+  })
+
+  it('applies size classes', () => {
+    const { container } = render(<Progress value={50} size="lg" />)
+    const root = container.firstChild as HTMLElement
+    expect(root.className).toContain('h-4')
+  })
+
+  it('renders with 0 value', () => {
+    render(<Progress value={0} />)
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Progress).toBeDefined()
+  })
+})
+
+// ─── Skeleton ───
+
+describe('Skeleton', () => {
+  it('renders text variant', () => {
+    const { container } = render(<Skeleton variant="text" />)
+    const el = container.firstChild as HTMLElement
+    expect(el.className).toContain('animate-pulse')
+  })
+
+  it('renders circle variant', () => {
+    const { container } = render(<Skeleton variant="circle" className="h-12 w-12" />)
+    const el = container.firstChild as HTMLElement
+    expect(el.className).toContain('rounded-full')
+  })
+
+  it('renders card variant', () => {
+    const { container } = render(<Skeleton variant="card" />)
+    const el = container.firstChild as HTMLElement
+    expect(el.className).toContain('rounded-xl')
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Skeleton).toBeDefined()
+  })
+})
+
+// ─── Avatar ───
+
+describe('Avatar', () => {
+  it('renders fallback when no image', () => {
+    render(<Avatar fallback="AK" />)
+    expect(screen.getByText('AK')).toBeInTheDocument()
+  })
+
+  it('renders with image (shows container)', () => {
+    const { container } = render(<Avatar src="https://example.com/avatar.png" alt="User" fallback="AK" />)
+    const root = container.firstChild as HTMLElement
+    expect(root.className).toContain('rounded-full')
+  })
+
+  it('applies size classes', () => {
+    const { container } = render(<Avatar size="lg" fallback="L" />)
+    const root = container.firstChild as HTMLElement
+    expect(root.className).toContain('h-14')
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Avatar).toBeDefined()
+  })
+})
+
+// ─── Sheet ───
+
+describe('Sheet', () => {
+  it('renders trigger and opens content', async () => {
+    render(
+      <Sheet>
+        <SheetTrigger asChild>
+          <button>Open</button>
+        </SheetTrigger>
+        <SheetContent>
+          <SheetTitle>Test Sheet</SheetTitle>
+          <p>Sheet content</p>
+        </SheetContent>
+      </Sheet>
+    )
+    const user = userEvent.setup()
+    const trigger = screen.getByText('Open')
+    await user.click(trigger)
+    expect(screen.getByText('Sheet content')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Sheet).toBeDefined()
+    expect(UI.SheetTrigger).toBeDefined()
+    expect(UI.SheetContent).toBeDefined()
+  })
+})
+
+// ─── ToggleGroup ───
+
+describe('ToggleGroup', () => {
+  it('renders with items', () => {
+    render(
+      <ToggleGroup type="single">
+        <ToggleGroupItem value="a">A</ToggleGroupItem>
+        <ToggleGroupItem value="b">B</ToggleGroupItem>
+      </ToggleGroup>
+    )
+    expect(screen.getByText('A')).toBeInTheDocument()
+    expect(screen.getByText('B')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.ToggleGroup).toBeDefined()
+    expect(UI.ToggleGroupItem).toBeDefined()
+  })
+})
+
+// ─── Collapsible ───
+
+describe('Collapsible', () => {
+  it('renders trigger and toggles content', async () => {
+    render(
+      <Collapsible>
+        <CollapsibleTrigger>Show More</CollapsibleTrigger>
+        <CollapsibleContent>Hidden content</CollapsibleContent>
+      </Collapsible>
+    )
+    expect(screen.getByText('Show More')).toBeInTheDocument()
+    const user = userEvent.setup()
+    const trigger = screen.getByText('Show More')
+    await user.click(trigger)
+    expect(screen.getByText('Hidden content')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Collapsible).toBeDefined()
+    expect(UI.CollapsibleTrigger).toBeDefined()
+    expect(UI.CollapsibleContent).toBeDefined()
+  })
+})
+
+// ─── TiltCard ───
+
+describe('TiltCard', () => {
+  it('renders children', () => {
+    render(<TiltCard><p>Tilt content</p></TiltCard>)
+    expect(screen.getByText('Tilt content')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.TiltCard).toBeDefined()
+  })
+})
+
+// ─── ProgressCircle ───
+
+describe('ProgressCircle', () => {
+  it('renders with value', () => {
+    render(<ProgressCircle value={75} label="Test" />)
+    expect(screen.getByText('75')).toBeInTheDocument()
+    expect(screen.getByText('Test')).toBeInTheDocument()
+  })
+
+  it('renders with default value', () => {
+    render(<ProgressCircle defaultValue={50} />)
+    expect(screen.getByText('50')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.ProgressCircle).toBeDefined()
   })
 })

@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.3.0] - 2026-05-26
+
+### Added
+- **Progress** — Embossed track with recessed shadow, raised accent fill, spring animation, 3 sizes
+- **Skeleton** — Loading placeholder with 3 variants (text/circle/card), embossed recessed shimmer
+- **Avatar** — Image avatar with embossed raised ring, fallback initials, 3 sizes
+- **Sheet** — Slide-over drawer (top/bottom/left/right), Radix Dialog-backed with backdrop blur
+- **ToggleGroup** — Segmented control with pressed/recessed state, single and multiple selection
+- **Collapsible** — Expand/collapse section with embossed trigger, animated content
+- **TiltCard** — Flagship 3D perspective tilt card with mouse-follow, glare overlay, spring reset
+- **ProgressCircle** — SVG circular progress with spring arc animation, sibling to Knob
+- Stories and tests for all 8 new components (27 total components, 147 unit tests)
+
+### Changed
+- Bundle: 57.42 KB ESM / 41.00 KB CJS (up from 44.76/32.65 due to 8 new components)
+
 ## [0.2.1] - 2026-05-26
 
 ### Fixed

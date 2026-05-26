@@ -29,6 +29,37 @@ export { Separator } from './separator'
 // Input Enhancements
 export { Knob } from './knob'
 
+// Progress & Loading
+export { Progress } from './progress'
+export { Skeleton } from './skeleton'
+export { ProgressCircle } from './progress-circle'
+
+// Data Display
+export { Avatar } from './avatar'
+
+// Overlay Variants
+export {
+  Sheet,
+  SheetTrigger,
+  SheetClose,
+  SheetPortal,
+  SheetOverlay,
+  SheetContent,
+  SheetHeader,
+  SheetFooter,
+  SheetTitle,
+  SheetDescription,
+} from './sheet'
+
+// Toggle
+export { ToggleGroup, ToggleGroupItem } from './toggle'
+
+// Collapsible
+export { Collapsible, CollapsibleTrigger, CollapsibleContent } from './collapsible'
+
+// Flagship
+export { TiltCard } from './tilt-card'
+
 // Advanced Components
 export { Tabs, TabsList, TabsTrigger, TabsContent } from './tabs'
 export { 
@@ -172,3 +203,24 @@ export type {
   DropdownMenuSubTriggerProps,
   DropdownMenuSubContentProps,
 } from './dropdown-menu'
+
+// New Components (v0.3.0)
+export type { ProgressProps } from './progress'
+export type { SkeletonProps } from './skeleton'
+export type { AvatarProps } from './avatar'
+export type {
+  SheetProps,
+  SheetTriggerProps,
+  SheetCloseProps,
+  SheetPortalProps,
+  SheetOverlayProps,
+  SheetContentProps,
+  SheetHeaderProps,
+  SheetFooterProps,
+  SheetTitleProps,
+  SheetDescriptionProps,
+} from './sheet'
+export type { ToggleGroupProps, ToggleGroupItemProps } from './toggle'
+export type { CollapsibleProps, CollapsibleTriggerProps, CollapsibleContentProps } from './collapsible'
+export type { TiltCardProps } from './tilt-card'
+export type { ProgressCircleProps } from './progress-circle'
