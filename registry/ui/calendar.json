@@ -1,0 +1,17 @@
+{
+  "name": "calendar",
+  "type": "registry:ui",
+  "dependencies": [
+    "react-day-picker",
+    "date-fns",
+    "lucide-react"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/calendar.tsx",
+      "type": "registry:ui",
+      "content": "aW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JwppbXBvcnQgeyBEYXlQaWNrZXIgfSBmcm9tICdyZWFjdC1kYXktcGlja2VyJwppbXBvcnQgeyBjbiB9IGZyb20gJy4uLy4uL2xpYi91dGlscycKCmV4cG9ydCB0eXBlIENhbGVuZGFyUHJvcHMgPSBSZWFjdC5Db21wb25lbnRQcm9wczx0eXBlb2YgRGF5UGlja2VyPgoKZXhwb3J0IGZ1bmN0aW9uIENhbGVuZGFyKHsgY2xhc3NOYW1lLCBzaG93T3V0c2lkZURheXMgPSB0cnVlLCAuLi5wcm9wcyB9OiBDYWxlbmRhclByb3BzKSB7CiAgcmV0dXJuICgKICAgIDxEYXlQaWNrZXIKICAgICAgc2hvd091dHNpZGVEYXlzPXtzaG93T3V0c2lkZURheXN9CiAgICAgIGNsYXNzTmFtZT17Y24oJ3AtMycsIGNsYXNzTmFtZSl9CiAgICAgIHsuLi5wcm9wc30KICAgIC8+CiAgKQp9Cg=="
+    }
+  ]
+}

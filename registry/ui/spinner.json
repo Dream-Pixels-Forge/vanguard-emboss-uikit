@@ -1,0 +1,13 @@
+{
+  "name": "spinner",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/spinner.tsx",
+      "type": "registry:ui",
+      "content": "aW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JwppbXBvcnQgeyBjbiB9IGZyb20gJy4uLy4uL2xpYi91dGlscycKCmV4cG9ydCB0eXBlIFNwaW5uZXJQcm9wcyA9IFJlYWN0LkhUTUxBdHRyaWJ1dGVzPEhUTUxEaXZFbGVtZW50PiAmIHsKICBzaXplPzogJ3NtJyB8ICdtZCcgfCAnbGcnCn0KCmNvbnN0IHNwaW5uZXJTaXplTWFwID0gewogIHNtOiAnaC00IHctNCBib3JkZXItMicsCiAgbWQ6ICdoLTYgdy02IGJvcmRlci0yJywKICBsZzogJ2gtOCB3LTggYm9yZGVyLVszcHhdJywKfQoKZXhwb3J0IGZ1bmN0aW9uIFNwaW5uZXIoeyBjbGFzc05hbWUsIHNpemUgPSAnbWQnLCAuLi5wcm9wcyB9OiBTcGlubmVyUHJvcHMpIHsKICByZXR1cm4gKAogICAgPGRpdgogICAgICBjbGFzc05hbWU9e2NuKAogICAgICAgICdhbmltYXRlLXNwaW4gcm91bmRlZC1mdWxsJywKICAgICAgICAnYm9yZGVyLWVtYm9zcy1zaGFkb3ctbGlnaHQvMzAgZGFyazpib3JkZXItZW1ib3NzLXNoYWRvdy1kYXJrLzMwJywKICAgICAgICAnYm9yZGVyLXQtZW1ib3NzLWFjY2VudC1ibHVlIGRhcms6Ym9yZGVyLXQtZW1ib3NzLWFjY2VudC1ibHVlJywKICAgICAgICBzcGlubmVyU2l6ZU1hcFtzaXplXSwKICAgICAgICBjbGFzc05hbWUKICAgICAgKX0KICAgICAgcm9sZT0ic3RhdHVzIgogICAgICBhcmlhLWxhYmVsPSJMb2FkaW5nIgogICAgICB7Li4ucHJvcHN9CiAgICA+CiAgICAgIDxzcGFuIGNsYXNzTmFtZT0ic3Itb25seSI+TG9hZGluZy4uLjwvc3Bhbj4KICAgIDwvZGl2PgogICkKfQo="
+    }
+  ]
+}

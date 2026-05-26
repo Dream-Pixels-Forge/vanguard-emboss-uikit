@@ -1,0 +1,13 @@
+{
+  "name": "kbd",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/kbd.tsx",
+      "type": "registry:ui",
+      "content": "aW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JwppbXBvcnQgeyBjbiB9IGZyb20gJy4uLy4uL2xpYi91dGlscycKCmV4cG9ydCB0eXBlIEtiZFByb3BzID0gUmVhY3QuSFRNTEF0dHJpYnV0ZXM8SFRNTEVsZW1lbnQ+CgpleHBvcnQgZnVuY3Rpb24gS2JkKHsgY2xhc3NOYW1lLCAuLi5wcm9wcyB9OiBLYmRQcm9wcykgewogIHJldHVybiAoCiAgICA8a2JkCiAgICAgIGNsYXNzTmFtZT17Y24oCiAgICAgICAgJ3BvaW50ZXItZXZlbnRzLW5vbmUgaW5saW5lLWZsZXggaC01IHNlbGVjdC1ub25lIGl0ZW1zLWNlbnRlciBnYXAtMSByb3VuZGVkIGJvcmRlciBweC0xLjUgZm9udC1tb25vIHRleHQtWzEwcHhdIGZvbnQtbWVkaXVtJywKICAgICAgICAnYm9yZGVyLWVtYm9zcy1zaGFkb3ctbGlnaHQvMzAgZGFyazpib3JkZXItZW1ib3NzLXNoYWRvdy1kYXJrLzMwJywKICAgICAgICAnYmctZW1ib3NzLWJnLWxpZ2h0IGRhcms6YmctZW1ib3NzLWJnLWRhcmsnLAogICAgICAgICd0ZXh0LW11dGVkLWZvcmVncm91bmQnLAogICAgICAgICdvcGFjaXR5LTEwMCcsCiAgICAgICAgY2xhc3NOYW1lCiAgICAgICl9CiAgICAgIHsuLi5wcm9wc30KICAgIC8+CiAgKQp9Cg=="
+    }
+  ]
+}

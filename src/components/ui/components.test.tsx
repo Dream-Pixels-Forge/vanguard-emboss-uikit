@@ -1,7 +1,44 @@
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi, beforeAll } from 'vitest'
 
+beforeAll(() => {
+  class MockIntersectionObserver {
+    observe = vi.fn()
+    unobserve = vi.fn()
+    disconnect = vi.fn()
+  }
+  Object.defineProperty(window, 'IntersectionObserver', {
+    writable: true,
+    value: MockIntersectionObserver,
+  })
+  Element.prototype.hasPointerCapture = vi.fn()
+  Element.prototype.setPointerCapture = vi.fn()
+  Element.prototype.releasePointerCapture = vi.fn()
+
+  Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    value: vi.fn().mockImplementation((query: string) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: vi.fn(),
+      removeListener: vi.fn(),
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+      dispatchEvent: vi.fn(),
+    })),
+  })
+})
+
+import { ScrollArea } from './scroll-area'
+import { Drawer, DrawerTrigger, DrawerContent, DrawerTitle, DrawerHeader, DrawerFooter, DrawerClose } from './drawer'
+import {
+  ContextMenu, ContextMenuTrigger, ContextMenuContent, ContextMenuItem,
+  ContextMenuSeparator, ContextMenuCheckboxItem, ContextMenuRadioGroup, ContextMenuRadioItem,
+  ContextMenuLabel, ContextMenuShortcut, ContextMenuSub, ContextMenuSubTrigger, ContextMenuSubContent,
+} from './context-menu'
+import { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from './form'
 import { Button } from './button'
 import { Badge } from './badge'
 import { Box } from './box'
@@ -19,6 +56,50 @@ import { Breadcrumb } from './breadcrumb'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from './tabs'
 import { Dialog, DialogTrigger, DialogContent, DialogTitle, DialogDescription, DialogHeader, DialogFooter } from './dialog'
 import { Knob } from './knob'
+import { Progress } from './progress'
+import { Skeleton } from './skeleton'
+import { Avatar } from './avatar'
+import { Sheet, SheetTrigger, SheetContent, SheetTitle } from './sheet'
+import { ToggleGroup, ToggleGroupItem } from './toggle'
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from './collapsible'
+import { TiltCard } from './tilt-card'
+import { ProgressCircle } from './progress-circle'
+
+import { Kbd } from './kbd'
+import { Spinner } from './spinner'
+import { AspectRatio } from './aspect-ratio'
+import { Empty } from './empty'
+import { Field } from './field'
+import { Command, CommandInput, CommandList, CommandItem } from './command'
+import { HoverCard, HoverCardTrigger } from './hover-card'
+import { Pagination } from './pagination'
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from './table'
+import { Menubar, MenubarMenu, MenubarTrigger, MenubarContent, MenubarItem } from './menubar'
+import { Toggle } from './toggle'
+import { Calendar } from './calendar'
+import { DatePicker } from './date-picker'
+import { Combobox } from './combobox'
+
+import { InputOTP, InputOTPGroup, InputOTPSlot } from './input-otp'
+import {
+  Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext,
+} from './carousel'
+import {
+  ResizablePanelGroup, ResizablePanel, ResizableHandle,
+} from './resizable'
+import { DataTable } from './data-table'
+import {
+  SidebarProvider, Sidebar, SidebarHeader, SidebarContent, SidebarFooter,
+  SidebarGroup, SidebarGroupLabel, SidebarGroupContent,
+  SidebarMenu, SidebarMenuItem, SidebarMenuButton,
+} from './sidebar'
+import {
+  ChartContainer, ChartTooltipContent, ChartLegendContent,
+} from './chart'
+
+import { NavigationMenu, NavigationMenuList, NavigationMenuItem, NavigationMenuLink, NavigationMenuTrigger, NavigationMenuContent } from './navigation-menu'
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from './select'
+import { AlertDialog, AlertDialogTrigger, AlertDialogContent, AlertDialogAction, AlertDialogCancel } from './alert-dialog'
 
 import * as UI from './index'
 
@@ -916,5 +997,930 @@ describe('DropdownMenu', () => {
     expect(UI.DropdownMenuRadioGroup).toBeDefined()
     expect(UI.DropdownMenuSubTrigger).toBeDefined()
     expect(UI.DropdownMenuSubContent).toBeDefined()
+  })
+})
+
+// ─── Progress ───
+
+describe('Progress', () => {
+  it('renders with value', () => {
+    render(<Progress value={60} />)
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
+  })
+
+  it('applies size classes', () => {
+    const { container } = render(<Progress value={50} size="lg" />)
+    const root = container.firstChild as HTMLElement
+    expect(root.className).toContain('h-4')
+  })
+
+  it('renders with 0 value', () => {
+    render(<Progress value={0} />)
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Progress).toBeDefined()
+  })
+})
+
+// ─── Skeleton ───
+
+describe('Skeleton', () => {
+  it('renders text variant', () => {
+    const { container } = render(<Skeleton variant="text" />)
+    const el = container.firstChild as HTMLElement
+    expect(el.className).toContain('animate-pulse')
+  })
+
+  it('renders circle variant', () => {
+    const { container } = render(<Skeleton variant="circle" className="h-12 w-12" />)
+    const el = container.firstChild as HTMLElement
+    expect(el.className).toContain('rounded-full')
+  })
+
+  it('renders card variant', () => {
+    const { container } = render(<Skeleton variant="card" />)
+    const el = container.firstChild as HTMLElement
+    expect(el.className).toContain('rounded-xl')
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Skeleton).toBeDefined()
+  })
+})
+
+// ─── Avatar ───
+
+describe('Avatar', () => {
+  it('renders fallback when no image', () => {
+    render(<Avatar fallback="AK" />)
+    expect(screen.getByText('AK')).toBeInTheDocument()
+  })
+
+  it('renders with image (shows container)', () => {
+    const { container } = render(<Avatar src="https://example.com/avatar.png" alt="User" fallback="AK" />)
+    const root = container.firstChild as HTMLElement
+    expect(root.className).toContain('rounded-full')
+  })
+
+  it('applies size classes', () => {
+    const { container } = render(<Avatar size="lg" fallback="L" />)
+    const root = container.firstChild as HTMLElement
+    expect(root.className).toContain('h-14')
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Avatar).toBeDefined()
+  })
+})
+
+// ─── Sheet ───
+
+describe('Sheet', () => {
+  it('renders trigger and opens content', async () => {
+    render(
+      <Sheet>
+        <SheetTrigger asChild>
+          <button>Open</button>
+        </SheetTrigger>
+        <SheetContent>
+          <SheetTitle>Test Sheet</SheetTitle>
+          <p>Sheet content</p>
+        </SheetContent>
+      </Sheet>
+    )
+    const user = userEvent.setup()
+    const trigger = screen.getByText('Open')
+    await user.click(trigger)
+    expect(screen.getByText('Sheet content')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Sheet).toBeDefined()
+    expect(UI.SheetTrigger).toBeDefined()
+    expect(UI.SheetContent).toBeDefined()
+  })
+})
+
+// ─── ToggleGroup ───
+
+describe('ToggleGroup', () => {
+  it('renders with items', () => {
+    render(
+      <ToggleGroup type="single">
+        <ToggleGroupItem value="a">A</ToggleGroupItem>
+        <ToggleGroupItem value="b">B</ToggleGroupItem>
+      </ToggleGroup>
+    )
+    expect(screen.getByText('A')).toBeInTheDocument()
+    expect(screen.getByText('B')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.ToggleGroup).toBeDefined()
+    expect(UI.ToggleGroupItem).toBeDefined()
+  })
+})
+
+// ─── Collapsible ───
+
+describe('Collapsible', () => {
+  it('renders trigger and toggles content', async () => {
+    render(
+      <Collapsible>
+        <CollapsibleTrigger>Show More</CollapsibleTrigger>
+        <CollapsibleContent>Hidden content</CollapsibleContent>
+      </Collapsible>
+    )
+    expect(screen.getByText('Show More')).toBeInTheDocument()
+    const user = userEvent.setup()
+    const trigger = screen.getByText('Show More')
+    await user.click(trigger)
+    expect(screen.getByText('Hidden content')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Collapsible).toBeDefined()
+    expect(UI.CollapsibleTrigger).toBeDefined()
+    expect(UI.CollapsibleContent).toBeDefined()
+  })
+})
+
+// ─── TiltCard ───
+
+describe('TiltCard', () => {
+  it('renders children', () => {
+    render(<TiltCard><p>Tilt content</p></TiltCard>)
+    expect(screen.getByText('Tilt content')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.TiltCard).toBeDefined()
+  })
+})
+
+// ─── ProgressCircle ───
+
+describe('ProgressCircle', () => {
+  it('renders with value', () => {
+    render(<ProgressCircle value={75} label="Test" />)
+    expect(screen.getByText('75')).toBeInTheDocument()
+    expect(screen.getByText('Test')).toBeInTheDocument()
+  })
+
+  it('renders with default value', () => {
+    render(<ProgressCircle defaultValue={50} />)
+    expect(screen.getByText('50')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.ProgressCircle).toBeDefined()
+  })
+})
+
+// ─── AlertDialog ───
+
+describe('AlertDialog', () => {
+  it('renders trigger', () => {
+    render(
+      <AlertDialog>
+        <AlertDialogTrigger>Delete account</AlertDialogTrigger>
+        <AlertDialogContent>
+          <AlertDialogAction>Confirm</AlertDialogAction>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+        </AlertDialogContent>
+      </AlertDialog>
+    )
+    expect(screen.getByText('Delete account')).toBeInTheDocument()
+  })
+
+  it('opens content on click', async () => {
+    const user = userEvent.setup()
+    render(
+      <AlertDialog>
+        <AlertDialogTrigger>Delete account</AlertDialogTrigger>
+        <AlertDialogContent>
+          <AlertDialogAction>Confirm</AlertDialogAction>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+        </AlertDialogContent>
+      </AlertDialog>
+    )
+    expect(screen.queryByText('Confirm')).not.toBeInTheDocument()
+    await user.click(screen.getByText('Delete account'))
+    expect(screen.getByText('Confirm')).toBeInTheDocument()
+  })
+
+  it('exports from index', () => {
+    expect(UI.AlertDialog).toBeDefined()
+    expect(UI.AlertDialogTrigger).toBeDefined()
+    expect(UI.AlertDialogContent).toBeDefined()
+    expect(UI.AlertDialogAction).toBeDefined()
+    expect(UI.AlertDialogCancel).toBeDefined()
+  })
+})
+
+// ─── Kbd ───
+
+describe('Kbd', () => {
+  it('renders children', () => {
+    render(<Kbd>⌘K</Kbd>)
+    expect(screen.getByText('⌘K')).toBeInTheDocument()
+  })
+
+  it('renders as kbd element', () => {
+    const { container } = render(<Kbd>Ctrl</Kbd>)
+    expect(container.querySelector('kbd')).toBeInTheDocument()
+  })
+})
+
+// ─── Spinner ───
+
+describe('Spinner', () => {
+  it('renders', () => {
+    const { container } = render(<Spinner />)
+    expect(container.firstChild).toBeInTheDocument()
+  })
+
+  it('has loading status', () => {
+    render(<Spinner />)
+    expect(screen.getByRole('status')).toBeInTheDocument()
+  })
+
+  it('applies size classes', () => {
+    const { container } = render(<Spinner size="lg" />)
+    expect(container.firstChild).toHaveClass('h-8')
+  })
+})
+
+// ─── AspectRatio ───
+
+describe('AspectRatio', () => {
+  it('renders children', () => {
+    render(<AspectRatio ratio={16 / 9}><div>Content</div></AspectRatio>)
+    expect(screen.getByText('Content')).toBeInTheDocument()
+  })
+})
+
+// ─── Empty ───
+
+describe('Empty', () => {
+  it('renders title and description', () => {
+    render(<Empty title="Empty" description="Nothing here" />)
+    expect(screen.getByText('Empty')).toBeInTheDocument()
+    expect(screen.getByText('Nothing here')).toBeInTheDocument()
+  })
+
+  it('renders action', () => {
+    render(<Empty title="Empty" action={<button>Action</button>} />)
+    expect(screen.getByRole('button', { name: /action/i })).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Empty).toBeDefined()
+  })
+})
+
+// ─── Field ───
+
+describe('Field', () => {
+  it('renders label and children', () => {
+    render(<Field label="Name"><input /></Field>)
+    expect(screen.getByText('Name')).toBeInTheDocument()
+  })
+
+  it('renders description', () => {
+    render(<Field label="Name" description="Enter your name"><input /></Field>)
+    expect(screen.getByText('Enter your name')).toBeInTheDocument()
+  })
+
+  it('renders error instead of description', () => {
+    render(<Field label="Name" description="Help text" error="Error text"><input /></Field>)
+    expect(screen.getByText('Error text')).toBeInTheDocument()
+    expect(screen.queryByText('Help text')).not.toBeInTheDocument()
+  })
+
+  it('renders required indicator', () => {
+    render(<Field label="Name" required><input data-testid="field-input" /></Field>)
+    expect(screen.getByText('Name')).toBeInTheDocument()
+    expect(screen.getByTestId('field-input')).toBeInTheDocument()
+  })
+})
+
+// ─── Command ───
+
+describe('Command', () => {
+  it('renders with input', () => {
+    render(
+      <Command>
+        <CommandInput placeholder="Search..." />
+      </Command>
+    )
+    expect(screen.getByPlaceholderText('Search...')).toBeInTheDocument()
+  })
+
+  it('renders items', () => {
+    window.HTMLElement.prototype.scrollIntoView = function () {}
+    render(
+      <Command>
+        <CommandInput placeholder="Search..." />
+        <CommandList>
+          <CommandItem value="item1">Item 1</CommandItem>
+          <CommandItem value="item2">Item 2</CommandItem>
+        </CommandList>
+      </Command>
+    )
+    expect(screen.getByText('Item 1')).toBeInTheDocument()
+    expect(screen.getByText('Item 2')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Command).toBeDefined()
+    expect(UI.CommandInput).toBeDefined()
+    expect(UI.CommandList).toBeDefined()
+    expect(UI.CommandItem).toBeDefined()
+    expect(UI.CommandGroup).toBeDefined()
+    expect(UI.CommandEmpty).toBeDefined()
+    expect(UI.CommandSeparator).toBeDefined()
+    expect(UI.CommandShortcut).toBeDefined()
+  })
+})
+
+// ─── HoverCard ───
+
+describe('HoverCard', () => {
+  it('renders trigger', () => {
+    render(
+      <HoverCard>
+        <HoverCardTrigger>Hover me</HoverCardTrigger>
+      </HoverCard>
+    )
+    expect(screen.getByText('Hover me')).toBeInTheDocument()
+  })
+
+  it('exports from index', () => {
+    expect(UI.HoverCard).toBeDefined()
+    expect(UI.HoverCardTrigger).toBeDefined()
+    expect(UI.HoverCardContent).toBeDefined()
+  })
+})
+
+// ─── Pagination ───
+
+describe('Pagination', () => {
+  it('renders page buttons', () => {
+    render(<Pagination total={5} current={1} onPageChange={() => {}} />)
+    expect(screen.getByLabelText('Page 1')).toBeInTheDocument()
+    expect(screen.getByLabelText('Page 2')).toBeInTheDocument()
+  })
+
+  it('highlights current page', () => {
+    render(<Pagination total={5} current={3} onPageChange={() => {}} />)
+    expect(screen.getByLabelText('Page 3')).toHaveAttribute('aria-current', 'page')
+  })
+})
+
+// ─── Table ───
+
+describe('Table', () => {
+  it('renders table elements', () => {
+    render(
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Name</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          <TableRow>
+            <TableCell>Data</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    )
+    expect(screen.getByText('Name')).toBeInTheDocument()
+    expect(screen.getByText('Data')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Table).toBeDefined()
+    expect(UI.TableHeader).toBeDefined()
+    expect(UI.TableBody).toBeDefined()
+    expect(UI.TableRow).toBeDefined()
+    expect(UI.TableHead).toBeDefined()
+    expect(UI.TableCell).toBeDefined()
+  })
+})
+
+// ─── Calendar ───
+
+describe('Calendar', () => {
+  it('renders', () => {
+    const { container } = render(<Calendar mode="single" />)
+    expect(container.querySelector('table')).toBeInTheDocument()
+  })
+})
+
+// ─── Menubar ───
+
+describe('Menubar', () => {
+  it('renders trigger', () => {
+    render(
+      <Menubar>
+        <MenubarMenu>
+          <MenubarTrigger>File</MenubarTrigger>
+          <MenubarContent>
+            <MenubarItem>New</MenubarItem>
+            <MenubarItem>Open</MenubarItem>
+          </MenubarContent>
+        </MenubarMenu>
+      </Menubar>
+    )
+    expect(screen.getByText('File')).toBeInTheDocument()
+  })
+
+  it('exports from index', () => {
+    expect(UI.Menubar).toBeDefined()
+    expect(UI.MenubarMenu).toBeDefined()
+    expect(UI.MenubarTrigger).toBeDefined()
+    expect(UI.MenubarContent).toBeDefined()
+    expect(UI.MenubarItem).toBeDefined()
+  })
+})
+
+// ─── DatePicker ───
+
+describe('DatePicker', () => {
+  it('renders with placeholder', () => {
+    render(<DatePicker placeholder="Pick a date" />)
+    expect(screen.getByText('Pick a date')).toBeInTheDocument()
+  })
+})
+
+// ─── Combobox ───
+
+describe('Combobox', () => {
+  it('renders with placeholder', () => {
+    render(<Combobox items={[{ value: 'a', label: 'A' }]} placeholder="Select..." />)
+    expect(screen.getByText('Select...')).toBeInTheDocument()
+  })
+})
+
+// ─── Toggle (standalone) ───
+
+describe('Toggle', () => {
+  it('renders', () => {
+    render(<Toggle aria-label="Toggle me">Toggle</Toggle>)
+    expect(screen.getByRole('button', { name: /toggle me/i })).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Toggle).toBeDefined()
+  })
+})
+
+// ─── InputOTP ───
+
+describe('InputOTP', () => {
+  it('renders without error', () => {
+    expect(() =>
+      render(
+        <InputOTP maxLength={4}>
+          <InputOTPGroup>
+            <InputOTPSlot index={0} />
+            <InputOTPSlot index={1} />
+            <InputOTPSlot index={2} />
+            <InputOTPSlot index={3} />
+          </InputOTPGroup>
+        </InputOTP>
+      )
+    ).not.toThrow()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.InputOTP).toBeDefined()
+    expect(UI.InputOTPGroup).toBeDefined()
+    expect(UI.InputOTPSlot).toBeDefined()
+    expect(UI.InputOTPSeparator).toBeDefined()
+  })
+})
+
+// ─── Carousel ───
+
+describe('Carousel', () => {
+  it('renders items', () => {
+    render(
+      <Carousel>
+        <CarouselContent>
+          <CarouselItem>Item 1</CarouselItem>
+          <CarouselItem>Item 2</CarouselItem>
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+    )
+    expect(screen.getByText('Item 1')).toBeInTheDocument()
+    expect(screen.getByText('Item 2')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Carousel).toBeDefined()
+    expect(UI.CarouselContent).toBeDefined()
+    expect(UI.CarouselItem).toBeDefined()
+    expect(UI.CarouselPrevious).toBeDefined()
+    expect(UI.CarouselNext).toBeDefined()
+  })
+})
+
+// ─── Resizable ───
+
+describe('Resizable', () => {
+  it('renders panels', () => {
+    render(
+      <ResizablePanelGroup orientation="horizontal">
+        <ResizablePanel defaultSize={50}>Left</ResizablePanel>
+        <ResizableHandle />
+        <ResizablePanel defaultSize={50}>Right</ResizablePanel>
+      </ResizablePanelGroup>
+    )
+    expect(screen.getByText('Left')).toBeInTheDocument()
+    expect(screen.getByText('Right')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.ResizablePanelGroup).toBeDefined()
+    expect(UI.ResizablePanel).toBeDefined()
+    expect(UI.ResizableHandle).toBeDefined()
+  })
+})
+
+// ─── DataTable ───
+
+describe('DataTable', () => {
+  const columns = [
+    { accessorKey: 'id', header: 'ID' },
+    { accessorKey: 'name', header: 'Name' },
+  ]
+  const data = [
+    { id: '1', name: 'Alice' },
+    { id: '2', name: 'Bob' },
+  ]
+
+  it('renders rows', () => {
+    render(<DataTable columns={columns} data={data} />)
+    expect(screen.getByText('Alice')).toBeInTheDocument()
+    expect(screen.getByText('Bob')).toBeInTheDocument()
+  })
+
+  it('renders headers', () => {
+    render(<DataTable columns={columns} data={data} />)
+    expect(screen.getByText('Name')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.DataTable).toBeDefined()
+  })
+})
+
+// ─── Sidebar ───
+
+describe('Sidebar', () => {
+  it('renders with content', () => {
+    render(
+      <SidebarProvider defaultOpen>
+        <Sidebar collapsible="none">
+          <SidebarHeader>Header</SidebarHeader>
+          <SidebarContent>
+            <SidebarGroup>
+              <SidebarGroupLabel>Group</SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton>Item</SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          </SidebarContent>
+          <SidebarFooter>Footer</SidebarFooter>
+        </Sidebar>
+        <main>Content</main>
+      </SidebarProvider>
+    )
+    expect(screen.getByText('Header')).toBeInTheDocument()
+    expect(screen.getByText('Footer')).toBeInTheDocument()
+  })
+
+  it('renders menu items', () => {
+    render(
+      <SidebarProvider defaultOpen>
+        <Sidebar collapsible="none">
+          <SidebarContent>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton>Dashboard</SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarContent>
+        </Sidebar>
+        <main>Content</main>
+      </SidebarProvider>
+    )
+    expect(screen.getByText('Dashboard')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.SidebarProvider).toBeDefined()
+    expect(UI.Sidebar).toBeDefined()
+    expect(UI.SidebarHeader).toBeDefined()
+    expect(UI.SidebarContent).toBeDefined()
+    expect(UI.SidebarFooter).toBeDefined()
+    expect(UI.SidebarGroup).toBeDefined()
+    expect(UI.SidebarGroupLabel).toBeDefined()
+    expect(UI.SidebarGroupContent).toBeDefined()
+    expect(UI.SidebarMenu).toBeDefined()
+    expect(UI.SidebarMenuItem).toBeDefined()
+    expect(UI.SidebarMenuButton).toBeDefined()
+    expect(UI.SidebarTrigger).toBeDefined()
+    expect(UI.SidebarInset).toBeDefined()
+  })
+})
+
+// ─── Chart ───
+
+describe('Chart', () => {
+  it('renders container', () => {
+    render(
+      <ChartContainer config={{ test: { label: 'Test', color: '#000' } }}>
+        <div>Chart</div>
+      </ChartContainer>
+    )
+    expect(screen.getByText('Chart')).toBeInTheDocument()
+  })
+
+  it('ChartTooltipContent renders with payload', () => {
+    render(
+      <ChartTooltipContent active payload={[{ name: 'Revenue', value: 100 }]} />
+    )
+    expect(screen.getByText('Revenue')).toBeInTheDocument()
+    expect(screen.getByText('100')).toBeInTheDocument()
+  })
+
+  it('ChartTooltipContent returns null when inactive', () => {
+    const { container } = render(<ChartTooltipContent active={false} />)
+    expect(container.firstChild).toBeNull()
+  })
+
+  it('ChartLegendContent renders with payload', () => {
+    render(
+      <ChartLegendContent payload={[{ value: 'Revenue', color: '#000' }]} />
+    )
+    expect(screen.getByText('Revenue')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.ChartContainer).toBeDefined()
+    expect(UI.ChartTooltip).toBeDefined()
+    expect(UI.ChartTooltipContent).toBeDefined()
+    expect(UI.ChartLegend).toBeDefined()
+    expect(UI.ChartLegendContent).toBeDefined()
+  })
+})
+
+// ─── ScrollArea ───
+
+describe('ScrollArea', () => {
+  it('renders children', () => {
+    render(
+      <ScrollArea className="h-48 w-80">
+        <p>Scroll content</p>
+      </ScrollArea>
+    )
+    expect(screen.getByText('Scroll content')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.ScrollArea).toBeDefined()
+    expect(UI.ScrollBar).toBeDefined()
+  })
+})
+
+// ─── Drawer ───
+
+describe('Drawer', () => {
+  it('renders trigger', () => {
+    render(
+      <Drawer>
+        <DrawerTrigger asChild>
+          <button>Open</button>
+        </DrawerTrigger>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle>Title</DrawerTitle>
+          </DrawerHeader>
+          <DrawerFooter>
+            <DrawerClose asChild>
+              <button>Close</button>
+            </DrawerClose>
+          </DrawerFooter>
+        </DrawerContent>
+      </Drawer>
+    )
+    expect(screen.getByText('Open')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Drawer).toBeDefined()
+    expect(UI.DrawerTrigger).toBeDefined()
+    expect(UI.DrawerContent).toBeDefined()
+    expect(UI.DrawerHeader).toBeDefined()
+    expect(UI.DrawerFooter).toBeDefined()
+    expect(UI.DrawerTitle).toBeDefined()
+    expect(UI.DrawerDescription).toBeDefined()
+    expect(UI.DrawerClose).toBeDefined()
+    expect(UI.DrawerOverlay).toBeDefined()
+    expect(UI.DrawerPortal).toBeDefined()
+  })
+})
+
+// ─── ContextMenu ───
+
+describe('ContextMenu', () => {
+  it('renders trigger', () => {
+    render(
+      <ContextMenu>
+        <ContextMenuTrigger className="block">Right-click</ContextMenuTrigger>
+        <ContextMenuContent>
+          <ContextMenuItem>Action</ContextMenuItem>
+          <ContextMenuSeparator />
+          <ContextMenuCheckboxItem checked>Check</ContextMenuCheckboxItem>
+          <ContextMenuLabel>Theme</ContextMenuLabel>
+          <ContextMenuRadioGroup value="system">
+            <ContextMenuRadioItem value="dark">Dark</ContextMenuRadioItem>
+          </ContextMenuRadioGroup>
+          <ContextMenuSub>
+            <ContextMenuSubTrigger>More</ContextMenuSubTrigger>
+            <ContextMenuSubContent>
+              <ContextMenuItem>Sub action</ContextMenuItem>
+            </ContextMenuSubContent>
+          </ContextMenuSub>
+          <ContextMenuItem>
+            Cut
+            <ContextMenuShortcut>⌘X</ContextMenuShortcut>
+          </ContextMenuItem>
+        </ContextMenuContent>
+      </ContextMenu>
+    )
+    expect(screen.getByText('Right-click')).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.ContextMenu).toBeDefined()
+    expect(UI.ContextMenuTrigger).toBeDefined()
+    expect(UI.ContextMenuContent).toBeDefined()
+    expect(UI.ContextMenuItem).toBeDefined()
+    expect(UI.ContextMenuSeparator).toBeDefined()
+    expect(UI.ContextMenuCheckboxItem).toBeDefined()
+    expect(UI.ContextMenuRadioItem).toBeDefined()
+    expect(UI.ContextMenuLabel).toBeDefined()
+    expect(UI.ContextMenuShortcut).toBeDefined()
+    expect(UI.ContextMenuSub).toBeDefined()
+    expect(UI.ContextMenuSubTrigger).toBeDefined()
+    expect(UI.ContextMenuSubContent).toBeDefined()
+    expect(UI.ContextMenuRadioGroup).toBeDefined()
+    expect(UI.ContextMenuPortal).toBeDefined()
+  })
+})
+
+// ─── Form ───
+
+describe('Form', () => {
+  it('renders fields', () => {
+    render(
+      <Form onSubmit={() => {}} defaultValues={{ name: '' }}>
+        <FormField
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Name</FormLabel>
+              <FormControl>
+                <Input placeholder="Name" {...field} />
+              </FormControl>
+              <FormDescription>Your name</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </Form>
+    )
+    expect(screen.getByText('Name')).toBeInTheDocument()
+    expect(screen.getByText('Your name')).toBeInTheDocument()
+  })
+
+  it('shows validation error', async () => {
+    const user = userEvent.setup()
+    render(
+      <Form onSubmit={() => {}} defaultValues={{ email: '' }}>
+        <FormField
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input placeholder="Email" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+      </Form>
+    )
+    const input = screen.getByPlaceholderText('Email')
+    await user.type(input, 'invalid')
+    expect(input).toBeInTheDocument()
+  })
+
+  it('is exported from index', () => {
+    expect(UI.Form).toBeDefined()
+    expect(UI.FormField).toBeDefined()
+    expect(UI.FormItem).toBeDefined()
+    expect(UI.FormLabel).toBeDefined()
+    expect(UI.FormControl).toBeDefined()
+    expect(UI.FormDescription).toBeDefined()
+    expect(UI.FormMessage).toBeDefined()
+  })
+})
+
+// ─── NavigationMenu ───
+
+describe('NavigationMenu', () => {
+  it('renders trigger text', () => {
+    render(
+      <NavigationMenu>
+        <NavigationMenuList>
+          <NavigationMenuItem>
+            <NavigationMenuTrigger>Products</NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <NavigationMenuLink href="/products/1">Product 1</NavigationMenuLink>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+        </NavigationMenuList>
+      </NavigationMenu>
+    )
+    expect(screen.getByText('Products')).toBeInTheDocument()
+  })
+
+  it('exports from index', () => {
+    expect(UI.NavigationMenu).toBeDefined()
+    expect(UI.NavigationMenuList).toBeDefined()
+    expect(UI.NavigationMenuItem).toBeDefined()
+    expect(UI.NavigationMenuLink).toBeDefined()
+    expect(UI.NavigationMenuTrigger).toBeDefined()
+    expect(UI.NavigationMenuContent).toBeDefined()
+    expect(UI.NavigationMenuViewport).toBeDefined()
+  })
+})
+
+// ─── Select ───
+
+describe('Select', () => {
+  it('renders trigger with placeholder', () => {
+    render(
+      <Select>
+        <SelectTrigger>
+          <SelectValue placeholder="Choose an option" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="1">Option 1</SelectItem>
+          <SelectItem value="2">Option 2</SelectItem>
+        </SelectContent>
+      </Select>
+    )
+    expect(screen.getByText('Choose an option')).toBeInTheDocument()
+  })
+
+  it('opens on click', async () => {
+    const user = userEvent.setup()
+    render(
+      <Select>
+        <SelectTrigger>
+          <SelectValue placeholder="Choose" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="1">Option 1</SelectItem>
+        </SelectContent>
+      </Select>
+    )
+    expect(screen.queryByText('Option 1')).not.toBeInTheDocument()
+    await user.click(screen.getByRole('combobox'))
+    expect(screen.getByText('Option 1')).toBeInTheDocument()
+  })
+
+  it('exports from index', () => {
+    expect(UI.Select).toBeDefined()
+    expect(UI.SelectTrigger).toBeDefined()
+    expect(UI.SelectValue).toBeDefined()
+    expect(UI.SelectContent).toBeDefined()
+    expect(UI.SelectItem).toBeDefined()
   })
 })

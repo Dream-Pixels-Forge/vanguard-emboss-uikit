@@ -1,5 +1,35 @@
 # Changelog
 
+## [0.4.0] - 2026-05-26
+
+### Added
+- **ScrollArea** — `@radix-ui/react-scroll-area` wrapper with custom scrollbar, vertical/horizontal orientation
+- **Drawer** — `vaul` mobile-first bottom drawer with overlay, drag handle, header/footer layout
+- **ContextMenu** — `@radix-ui/react-context-menu` wrapper with full sub-component API (items, checkboxes, radio, separator, shortcut, sub-menu)
+- **Form** — `react-hook-form` + zod wrapper with `FormField`/`FormItem`/`FormLabel`/`FormControl`/`FormDescription`/`FormMessage` context-based validation
+- Stories and tests for all 4 new components (51 total components, 201 unit tests)
+- Registry entries for all 4 components
+
+### Changed
+- Bundle: 116.25 KB ESM / 83.41 KB CJS (up from 105.47/75.49 due to 4 new components)
+- Externalized 5 new peer deps: `@radix-ui/react-scroll-area`, `vaul`, `@radix-ui/react-context-menu`, `react-hook-form`, `@hookform/resolvers`
+
+## [0.3.0] - 2026-05-26
+
+### Added
+- **Progress** — Embossed track with recessed shadow, raised accent fill, spring animation, 3 sizes
+- **Skeleton** — Loading placeholder with 3 variants (text/circle/card), embossed recessed shimmer
+- **Avatar** — Image avatar with embossed raised ring, fallback initials, 3 sizes
+- **Sheet** — Slide-over drawer (top/bottom/left/right), Radix Dialog-backed with backdrop blur
+- **ToggleGroup** — Segmented control with pressed/recessed state, single and multiple selection
+- **Collapsible** — Expand/collapse section with embossed trigger, animated content
+- **TiltCard** — Flagship 3D perspective tilt card with mouse-follow, glare overlay, spring reset
+- **ProgressCircle** — SVG circular progress with spring arc animation, sibling to Knob
+- Stories and tests for all 8 new components (27 total components, 147 unit tests)
+
+### Changed
+- Bundle: 57.42 KB ESM / 41.00 KB CJS (up from 44.76/32.65 due to 8 new components)
+
 ## [0.2.1] - 2026-05-26
 
 ### Fixed

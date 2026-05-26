@@ -14,7 +14,7 @@
       "state": "closed",
       "failures": 0,
       "lastFailure": null,
-      "lastSuccess": 1779747574797
+      "lastSuccess": 1779757155428
     },
     "review-inspector": {
       "state": "closed",
@@ -37,5 +37,5 @@
       "timestamp": "2026-05-25T22:05:20.350Z"
     }
   },
-  "version": 6
+  "version": 7
 }
