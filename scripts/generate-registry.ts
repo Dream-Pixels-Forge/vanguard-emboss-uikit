@@ -44,6 +44,30 @@ const components: ComponentMeta[] = [
   { name: 'collapsible', dependencies: ['@radix-ui/react-collapsible', 'lucide-react'] },
   { name: 'tilt-card' },
   { name: 'progress-circle' },
+  { name: 'alert-dialog', dependencies: ['@radix-ui/react-alert-dialog'] },
+  { name: 'kbd' },
+  { name: 'spinner' },
+  { name: 'aspect-ratio', dependencies: ['@radix-ui/react-aspect-ratio'] },
+  { name: 'empty' },
+  { name: 'field' },
+  { name: 'command', dependencies: ['cmdk', 'lucide-react'] },
+  { name: 'hover-card', dependencies: ['@radix-ui/react-hover-card'] },
+  { name: 'pagination', dependencies: ['lucide-react'] },
+  { name: 'table' },
+  { name: 'calendar', dependencies: ['react-day-picker', 'date-fns', 'lucide-react'] },
+  { name: 'menubar', dependencies: ['@radix-ui/react-menubar', 'lucide-react'] },
+  { name: 'date-picker', dependencies: ['date-fns', 'lucide-react'], registryDependencies: ['popover', 'calendar'] },
+  { name: 'combobox', dependencies: ['lucide-react'], registryDependencies: ['popover', 'command'] },
+  { name: 'input-otp', dependencies: ['input-otp', 'lucide-react'] },
+  { name: 'carousel', dependencies: ['embla-carousel-react', 'lucide-react'] },
+  { name: 'resizable', dependencies: ['react-resizable-panels', 'lucide-react'] },
+  { name: 'data-table', dependencies: ['@tanstack/react-table', 'lucide-react'], registryDependencies: ['input'] },
+  { name: 'sidebar', dependencies: ['@radix-ui/react-slot', 'lucide-react', 'react-resizable-panels'], registryDependencies: ['tooltip', 'separator', 'sheet'] },
+  { name: 'chart', dependencies: ['recharts'] },
+  { name: 'scroll-area', dependencies: ['@radix-ui/react-scroll-area'] },
+  { name: 'drawer', dependencies: ['vaul'] },
+  { name: 'context-menu', dependencies: ['@radix-ui/react-context-menu', 'lucide-react'] },
+  { name: 'form', dependencies: ['react-hook-form', '@hookform/resolvers'], registryDependencies: ['label'] },
 ]
 
 mkdirSync(REGISTRY_UI_DIR, { recursive: true })
@@ -81,10 +105,10 @@ for (const meta of components) {
   let category = 'other'
   if (['button', 'badge'].includes(meta.name)) category = 'general'
   else if (['box', 'card', 'text', 'emboss-box'].includes(meta.name)) category = 'layout'
-  else if (['input', 'textarea', 'label', 'checkbox', 'radio', 'switch', 'slider', 'select'].includes(meta.name)) category = 'forms'
-  else if (['tabs', 'dialog', 'breadcrumb', 'navigation-menu', 'alert', 'sheet'].includes(meta.name)) category = 'navigation'
-  else if (['progress', 'skeleton', 'progress-circle'].includes(meta.name)) category = 'feedback'
-  else if (['avatar', 'toggle', 'collapsible', 'tilt-card'].includes(meta.name)) category = 'general'
+  else if (['input', 'textarea', 'label', 'checkbox', 'radio', 'switch', 'slider', 'select', 'field', 'date-picker', 'combobox', 'form'].includes(meta.name)) category = 'forms'
+  else if (['tabs', 'dialog', 'breadcrumb', 'navigation-menu', 'alert', 'sheet', 'menubar', 'alert-dialog', 'hover-card', 'pagination'].includes(meta.name)) category = 'navigation'
+  else if (['progress', 'skeleton', 'progress-circle', 'spinner'].includes(meta.name)) category = 'feedback'
+  else if (['avatar', 'toggle', 'collapsible', 'tilt-card', 'empty', 'kbd', 'table', 'calendar', 'command', 'aspect-ratio', 'input-otp', 'carousel', 'resizable', 'data-table', 'sidebar', 'chart'].includes(meta.name)) category = 'general'
   
   if (!indexItems[category]) indexItems[category] = []
   indexItems[category].push({ name: meta.name, type: 'registry:ui' })

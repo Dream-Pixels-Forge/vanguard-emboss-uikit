@@ -1,0 +1,13 @@
+{
+  "name": "field",
+  "type": "registry:ui",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/field.tsx",
+      "type": "registry:ui",
+      "content": "aW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JwppbXBvcnQgeyBjbiB9IGZyb20gJy4uLy4uL2xpYi91dGlscycKaW1wb3J0IHsgTGFiZWwgfSBmcm9tICcuL2xhYmVsJwoKZXhwb3J0IHR5cGUgRmllbGRQcm9wcyA9IFJlYWN0LkhUTUxBdHRyaWJ1dGVzPEhUTUxEaXZFbGVtZW50PiAmIHsKICBsYWJlbD86IHN0cmluZwogIGh0bWxGb3I/OiBzdHJpbmcKICByZXF1aXJlZD86IGJvb2xlYW4KICBlcnJvcj86IHN0cmluZwogIGRlc2NyaXB0aW9uPzogc3RyaW5nCiAgY2hpbGRyZW46IFJlYWN0LlJlYWN0Tm9kZQp9CgpleHBvcnQgZnVuY3Rpb24gRmllbGQoeyBjbGFzc05hbWUsIGxhYmVsLCBodG1sRm9yLCByZXF1aXJlZCwgZXJyb3IsIGRlc2NyaXB0aW9uLCBjaGlsZHJlbiwgLi4ucHJvcHMgfTogRmllbGRQcm9wcykgewogIHJldHVybiAoCiAgICA8ZGl2IGNsYXNzTmFtZT17Y24oJ2ZsZXggZmxleC1jb2wgZ2FwLTInLCBjbGFzc05hbWUpfSB7Li4ucHJvcHN9PgogICAgICB7bGFiZWwgJiYgKAogICAgICAgIDxMYWJlbCBodG1sRm9yPXtodG1sRm9yfSByZXF1aXJlZD17cmVxdWlyZWR9PgogICAgICAgICAge2xhYmVsfQogICAgICAgIDwvTGFiZWw+CiAgICAgICl9CiAgICAgIHtjaGlsZHJlbn0KICAgICAge2Rlc2NyaXB0aW9uICYmICFlcnJvciAmJiAoCiAgICAgICAgPHAgY2xhc3NOYW1lPSJ0ZXh0LXhzIHRleHQtbXV0ZWQtZm9yZWdyb3VuZCI+e2Rlc2NyaXB0aW9ufTwvcD4KICAgICAgKX0KICAgICAge2Vycm9yICYmICgKICAgICAgICA8cCBjbGFzc05hbWU9InRleHQteHMgdGV4dC1yZWQtNTAwIiByb2xlPSJhbGVydCI+e2Vycm9yfTwvcD4KICAgICAgKX0KICAgIDwvZGl2PgogICkKfQo="
+    }
+  ]
+}

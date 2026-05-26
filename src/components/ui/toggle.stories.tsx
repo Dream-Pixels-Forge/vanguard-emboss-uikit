@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react-vite'
-import { ToggleGroup, ToggleGroupItem } from './toggle'
+import { ToggleGroup, ToggleGroupItem, Toggle } from './toggle'
+import { Bold, Italic, Underline, Heart } from 'lucide-react'
 
 const meta: Meta<typeof ToggleGroup> = {
   title: 'Components/ToggleGroup',
@@ -46,6 +47,25 @@ export const Sizes: Story = {
         <ToggleGroupItem size="lg" value="a">Large</ToggleGroupItem>
         <ToggleGroupItem size="lg" value="b">Items</ToggleGroupItem>
       </ToggleGroup>
+    </div>
+  ),
+}
+
+export const StandaloneToggle: StoryObj<typeof Toggle> = {
+  render: () => (
+    <div className="flex gap-4 items-center">
+      <Toggle aria-label="Toggle bold">
+        <Bold className="h-4 w-4" />
+      </Toggle>
+      <Toggle defaultPressed aria-label="Toggle italic">
+        <Italic className="h-4 w-4" />
+      </Toggle>
+      <Toggle aria-label="Toggle underline">
+        <Underline className="h-4 w-4" />
+      </Toggle>
+      <Toggle aria-label="Favorite">
+        <Heart className="h-4 w-4" />
+      </Toggle>
     </div>
   ),
 }

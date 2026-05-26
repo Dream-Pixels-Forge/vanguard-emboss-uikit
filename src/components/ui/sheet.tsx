@@ -10,15 +10,31 @@ export function Sheet({ ...props }: SheetProps) {
   return <DialogPrimitive.Root {...props} />
 }
 
-export const SheetTrigger = DialogPrimitive.Trigger
+export interface SheetTriggerProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Trigger> {}
 
-export const SheetClose = DialogPrimitive.Close
+export function SheetTrigger({ className, asChild, ...props }: SheetTriggerProps) {
+  return <DialogPrimitive.Trigger asChild={asChild} className={asChild ? undefined : cn(
+    getEmbossBackground(),
+    getEmbossShadow('out', 'small'),
+    'inline-flex items-center justify-center rounded-md px-4 py-2',
+    'text-sm font-medium transition-colors',
+    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
+    'disabled:pointer-events-none disabled:opacity-50',
+    className
+  )} {...props} />
+}
 
-export const SheetPortal = DialogPrimitive.Portal
+export interface SheetCloseProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Close> {}
 
-export type SheetTriggerProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Trigger>
-export type SheetCloseProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Close>
-export type SheetPortalProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Portal>
+export function SheetClose({ ...props }: SheetCloseProps) {
+  return <DialogPrimitive.Close {...props} />
+}
+
+export interface SheetPortalProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Portal> {}
+
+export function SheetPortal({ ...props }: SheetPortalProps) {
+  return <DialogPrimitive.Portal {...props} />
+}
 
 export interface SheetOverlayProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay> {}
 
@@ -33,6 +49,7 @@ export const SheetOverlay = forwardRef<React.ElementRef<typeof DialogPrimitive.O
           'data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0',
           className
         )}
+        aria-hidden="true"
         {...props}
       />
     )
@@ -66,7 +83,7 @@ export function SheetContent({
           getEmbossBackground(),
           getEmbossShadow('out'),
           getEmbossBorder(),
-          'fixed z-50 gap-4 p-6 shadow-lg',
+          'fixed z-50 gap-4 p-6',
           'duration-300 data-[state=open]:animate-in data-[state=closed]:animate-out',
           'data-[state=closed]:duration-200',
           sheetSideStyles[side],

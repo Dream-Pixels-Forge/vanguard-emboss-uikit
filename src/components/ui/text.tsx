@@ -71,7 +71,7 @@ export function Text({
   ...props
 }: TextProps) {
   const config = variantConfig[variant]
-  const Component = as || (['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(variant) ? variant : 'p') as React.ElementType
+  const Component = (as || (['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].includes(variant) ? variant : 'p')) as React.ElementType
   
   const weightClass = weight
     ? weightClasses[weight]
@@ -80,19 +80,19 @@ export function Text({
       : '')
   
   const accentClass = accent ? `text-emboss-accent-${accent}` : ''
-  
-  return React.createElement(
-    Component,
-    {
-      className: cn(
+
+  return (
+    <Component
+      className={cn(
         config.classes,
         weightClass,
         muted ? 'text-muted-foreground' : 'text-foreground',
         accentClass,
         className
-      ),
-      ...props,
-    },
-    children
+      )}
+      {...props}
+    >
+      {children}
+    </Component>
   )
 }

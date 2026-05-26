@@ -27,6 +27,54 @@
       {
         "name": "tilt-card",
         "type": "registry:ui"
+      },
+      {
+        "name": "kbd",
+        "type": "registry:ui"
+      },
+      {
+        "name": "aspect-ratio",
+        "type": "registry:ui"
+      },
+      {
+        "name": "empty",
+        "type": "registry:ui"
+      },
+      {
+        "name": "command",
+        "type": "registry:ui"
+      },
+      {
+        "name": "table",
+        "type": "registry:ui"
+      },
+      {
+        "name": "calendar",
+        "type": "registry:ui"
+      },
+      {
+        "name": "input-otp",
+        "type": "registry:ui"
+      },
+      {
+        "name": "carousel",
+        "type": "registry:ui"
+      },
+      {
+        "name": "resizable",
+        "type": "registry:ui"
+      },
+      {
+        "name": "data-table",
+        "type": "registry:ui"
+      },
+      {
+        "name": "sidebar",
+        "type": "registry:ui"
+      },
+      {
+        "name": "chart",
+        "type": "registry:ui"
       }
     ],
     "layout": [
@@ -71,6 +119,22 @@
       {
         "name": "sheet",
         "type": "registry:ui"
+      },
+      {
+        "name": "alert-dialog",
+        "type": "registry:ui"
+      },
+      {
+        "name": "hover-card",
+        "type": "registry:ui"
+      },
+      {
+        "name": "pagination",
+        "type": "registry:ui"
+      },
+      {
+        "name": "menubar",
+        "type": "registry:ui"
       }
     ],
     "forms": [
@@ -105,6 +169,22 @@
       {
         "name": "select",
         "type": "registry:ui"
+      },
+      {
+        "name": "field",
+        "type": "registry:ui"
+      },
+      {
+        "name": "date-picker",
+        "type": "registry:ui"
+      },
+      {
+        "name": "combobox",
+        "type": "registry:ui"
+      },
+      {
+        "name": "form",
+        "type": "registry:ui"
       }
     ],
     "feedback": [
@@ -118,6 +198,24 @@
       },
       {
         "name": "progress-circle",
+        "type": "registry:ui"
+      },
+      {
+        "name": "spinner",
+        "type": "registry:ui"
+      }
+    ],
+    "other": [
+      {
+        "name": "scroll-area",
+        "type": "registry:ui"
+      },
+      {
+        "name": "drawer",
+        "type": "registry:ui"
+      },
+      {
+        "name": "context-menu",
         "type": "registry:ui"
       }
     ]

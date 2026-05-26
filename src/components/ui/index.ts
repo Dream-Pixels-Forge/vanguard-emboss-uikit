@@ -1,4 +1,3 @@
-// Export all UI components
 export { Box } from './box'
 export { Text } from './text'
 export { Button } from './button'
@@ -6,14 +5,13 @@ export { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 export { Badge } from './badge'
 export { EmbossBox } from './emboss-box'
 
-// Form Components
 export { Input } from './input'
 export { Textarea } from './textarea'
 export { Label } from './label'
 export { Checkbox } from './checkbox'
 export { Radio, RadioGroup } from './radio'
 export { Switch } from './switch'
-export { 
+export {
   Select,
   SelectGroup,
   SelectValue,
@@ -26,18 +24,22 @@ export {
 export { Slider } from './slider'
 export { Separator } from './separator'
 
-// Input Enhancements
+export { Field } from './field'
+export { DatePicker } from './date-picker'
+export { Combobox } from './combobox'
+
 export { Knob } from './knob'
 
-// Progress & Loading
 export { Progress } from './progress'
 export { Skeleton } from './skeleton'
 export { ProgressCircle } from './progress-circle'
 
-// Data Display
 export { Avatar } from './avatar'
+export { Table, TableHeader, TableBody, TableFooter, TableRow, TableHead, TableCell, TableCaption } from './table'
+export { Pagination } from './pagination'
+export { Empty } from './empty'
+export { Calendar } from './calendar'
 
-// Overlay Variants
 export {
   Sheet,
   SheetTrigger,
@@ -51,18 +53,69 @@ export {
   SheetDescription,
 } from './sheet'
 
-// Toggle
-export { ToggleGroup, ToggleGroupItem } from './toggle'
+export {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogPortal,
+  AlertDialogOverlay,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogFooter,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogAction,
+  AlertDialogCancel,
+} from './alert-dialog'
 
-// Collapsible
+export { Toggle, ToggleGroup, ToggleGroupItem } from './toggle'
+
 export { Collapsible, CollapsibleTrigger, CollapsibleContent } from './collapsible'
 
-// Flagship
+export { HoverCard, HoverCardTrigger, HoverCardContent } from './hover-card'
+
+export {
+  Menubar,
+  MenubarMenu,
+  MenubarTrigger,
+  MenubarContent,
+  MenubarItem,
+  MenubarCheckboxItem,
+  MenubarRadioItem,
+  MenubarLabel,
+  MenubarSeparator,
+  MenubarShortcut,
+  MenubarGroup,
+  MenubarPortal,
+  MenubarSub,
+  MenubarSubContent,
+  MenubarSubTrigger,
+  MenubarRadioGroup,
+} from './menubar'
+
+export { Command, CommandDialog, CommandInput, CommandList, CommandEmpty, CommandGroup, CommandItem, CommandSeparator, CommandShortcut } from './command'
+
+export { Kbd } from './kbd'
+export { Spinner } from './spinner'
+export { AspectRatio } from './aspect-ratio'
+export { InputOTP, InputOTPGroup, InputOTPSlot, InputOTPSeparator } from './input-otp'
+export { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from './carousel'
+export { ResizablePanelGroup, ResizablePanel, ResizableHandle } from './resizable'
+export { DataTable } from './data-table'
+export {
+  SidebarProvider, Sidebar, SidebarHeader, SidebarContent, SidebarFooter,
+  SidebarGroup, SidebarGroupLabel, SidebarGroupContent,
+  SidebarMenu, SidebarMenuItem, SidebarMenuButton,
+  SidebarSeparator, SidebarTrigger, SidebarInset, SidebarRail,
+} from './sidebar'
+export {
+  ChartContainer, ChartTooltip, ChartTooltipContent,
+  ChartLegend, ChartLegendContent,
+} from './chart'
+
 export { TiltCard } from './tilt-card'
 
-// Advanced Components
 export { Tabs, TabsList, TabsTrigger, TabsContent } from './tabs'
-export { 
+export {
   NavigationMenu,
   NavigationMenuList,
   NavigationMenuItem,
@@ -73,7 +126,7 @@ export {
 } from './navigation-menu'
 export { Breadcrumb } from './breadcrumb'
 export { Alert } from './alert'
-export { 
+export {
   Dialog,
   DialogTrigger,
   DialogPortal,
@@ -85,17 +138,16 @@ export {
   DialogDescription
 } from './dialog'
 
-// Export types
 export type { BoxProps } from './box'
 export type { TextProps } from './text'
 export type { ButtonProps } from './button'
-export type { 
-  CardProps, 
-  CardHeaderProps, 
-  CardTitleProps, 
-  CardDescriptionProps, 
-  CardContentProps, 
-  CardFooterProps 
+export type {
+  CardProps,
+  CardHeaderProps,
+  CardTitleProps,
+  CardDescriptionProps,
+  CardContentProps,
+  CardFooterProps
 } from './card'
 export type { BadgeProps } from './badge'
 export type { InputProps } from './input'
@@ -104,7 +156,7 @@ export type { LabelProps } from './label'
 export type { CheckboxProps } from './checkbox'
 export type { RadioProps, RadioGroupProps } from './radio'
 export type { SwitchProps } from './switch'
-export type { 
+export type {
   SelectProps,
   SelectGroupProps,
   SelectValueProps,
@@ -118,7 +170,7 @@ export type { SliderProps } from './slider'
 export type { SeparatorProps } from './separator'
 export type { KnobProps } from './knob'
 export type { TabsProps, TabsListProps, TabsTriggerProps, TabsContentProps } from './tabs'
-export type { 
+export type {
   NavigationMenuProps,
   NavigationMenuListProps,
   NavigationMenuItemProps,
@@ -129,7 +181,7 @@ export type {
 } from './navigation-menu'
 export type { BreadcrumbProps, BreadcrumbItem } from './breadcrumb'
 export type { AlertProps } from './alert'
-export type { 
+export type {
   DialogProps,
   DialogTriggerProps,
   DialogPortalProps,
@@ -141,16 +193,85 @@ export type {
   DialogDescriptionProps
 } from './dialog'
 
-// Toast
+export { ScrollArea, ScrollBar } from './scroll-area'
+export type { ScrollAreaProps, ScrollBarProps } from './scroll-area'
+
+export {
+  Drawer,
+  DrawerTrigger,
+  DrawerPortal,
+  DrawerClose,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerHeader,
+  DrawerFooter,
+  DrawerTitle,
+  DrawerDescription,
+} from './drawer'
+export type {
+  DrawerProps,
+  DrawerTriggerProps,
+  DrawerPortalProps,
+  DrawerCloseProps,
+  DrawerOverlayProps,
+  DrawerContentProps,
+  DrawerHeaderProps,
+  DrawerFooterProps,
+  DrawerTitleProps,
+  DrawerDescriptionProps,
+} from './drawer'
+
+export {
+  ContextMenu,
+  ContextMenuTrigger,
+  ContextMenuPortal,
+  ContextMenuSub,
+  ContextMenuRadioGroup,
+  ContextMenuSubTrigger,
+  ContextMenuSubContent,
+  ContextMenuContent,
+  ContextMenuItem,
+  ContextMenuCheckboxItem,
+  ContextMenuRadioItem,
+  ContextMenuLabel,
+  ContextMenuSeparator,
+  ContextMenuShortcut,
+} from './context-menu'
+export type {
+  ContextMenuProps,
+  ContextMenuTriggerProps,
+  ContextMenuPortalProps,
+  ContextMenuSubProps,
+  ContextMenuRadioGroupProps,
+  ContextMenuSubTriggerProps,
+  ContextMenuSubContentProps,
+  ContextMenuContentProps,
+  ContextMenuItemProps,
+  ContextMenuCheckboxItemProps,
+  ContextMenuRadioItemProps,
+  ContextMenuLabelProps,
+  ContextMenuSeparatorProps,
+  ContextMenuShortcutProps,
+} from './context-menu'
+
+export { Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage } from './form'
+export type {
+  FormProps,
+  FormFieldProps,
+  FormItemProps,
+  FormLabelProps,
+  FormControlProps,
+  FormDescriptionProps,
+  FormMessageProps,
+} from './form'
+
 export { ToastProvider } from './toast'
 export { toast } from 'sonner'
 export type { ToastProviderProps } from './toast'
 
-// Tooltip
 export { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from './tooltip'
 export type { TooltipProps, TooltipTriggerProps, TooltipContentProps } from './tooltip'
 
-// Accordion
 export {
   Accordion,
   AccordionItem,
@@ -164,11 +285,9 @@ export type {
   AccordionContentProps,
 } from './accordion'
 
-// Overlay Components
 export { Popover, PopoverTrigger, PopoverContent } from './popover'
 export type { PopoverProps, PopoverTriggerProps, PopoverContentProps } from './popover'
 
-// Dropdown Menu Components
 export {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -204,7 +323,6 @@ export type {
   DropdownMenuSubContentProps,
 } from './dropdown-menu'
 
-// New Components (v0.3.0)
 export type { ProgressProps } from './progress'
 export type { SkeletonProps } from './skeleton'
 export type { AvatarProps } from './avatar'
@@ -220,7 +338,52 @@ export type {
   SheetTitleProps,
   SheetDescriptionProps,
 } from './sheet'
-export type { ToggleGroupProps, ToggleGroupItemProps } from './toggle'
+export type { ToggleProps, ToggleGroupProps, ToggleGroupItemProps } from './toggle'
 export type { CollapsibleProps, CollapsibleTriggerProps, CollapsibleContentProps } from './collapsible'
 export type { TiltCardProps } from './tilt-card'
 export type { ProgressCircleProps } from './progress-circle'
+export type { SpinnerProps } from './spinner'
+export type { KbdProps } from './kbd'
+export type { AspectRatioProps } from './aspect-ratio'
+export type { InputOTPProps, InputOTPGroupProps, InputOTPSlotProps, InputOTPSeparatorProps } from './input-otp'
+export type { CarouselProps, CarouselContentProps, CarouselItemProps, CarouselPreviousProps, CarouselNextProps } from './carousel'
+export type { ResizablePanelGroupProps, ResizablePanelProps, ResizableHandleProps } from './resizable'
+export type { DataTableProps } from './data-table'
+export type {
+  SidebarProviderProps, SidebarProps, SidebarHeaderProps, SidebarContentProps, SidebarFooterProps,
+  SidebarGroupProps, SidebarGroupLabelProps, SidebarGroupContentProps,
+  SidebarMenuProps, SidebarMenuItemProps, SidebarMenuButtonProps,
+  SidebarSeparatorProps, SidebarTriggerProps, SidebarInsetProps, SidebarRailProps,
+} from './sidebar'
+export type {
+  ChartContainerProps, ChartTooltipProps, ChartTooltipContentProps,
+  ChartLegendProps, ChartLegendContentProps,
+} from './chart'
+export type { EmptyProps } from './empty'
+export type { FieldProps } from './field'
+export type { PaginationProps } from './pagination'
+export type {
+  TableProps, TableHeaderProps, TableBodyProps, TableFooterProps,
+  TableRowProps, TableHeadProps, TableCellProps, TableCaptionProps
+} from './table'
+export type { CalendarProps } from './calendar'
+export type { DatePickerProps } from './date-picker'
+export type { ComboboxProps, ComboboxItem } from './combobox'
+export type {
+  AlertDialogProps, AlertDialogTriggerProps, AlertDialogOverlayProps, AlertDialogContentProps,
+  AlertDialogHeaderProps, AlertDialogFooterProps, AlertDialogTitleProps, AlertDialogDescriptionProps,
+  AlertDialogActionProps, AlertDialogCancelProps
+} from './alert-dialog'
+export type {
+  HoverCardProps, HoverCardTriggerProps, HoverCardContentProps
+} from './hover-card'
+export type {
+  MenubarProps, MenubarMenuProps, MenubarTriggerProps, MenubarContentProps,
+  MenubarItemProps, MenubarCheckboxItemProps, MenubarRadioItemProps, MenubarLabelProps,
+  MenubarSeparatorProps, MenubarShortcutProps, MenubarSubProps, MenubarSubTriggerProps,
+  MenubarSubContentProps, MenubarGroupProps, MenubarPortalProps, MenubarRadioGroupProps
+} from './menubar'
+export type {
+  CommandProps, CommandInputProps, CommandListProps, CommandEmptyProps,
+  CommandGroupProps, CommandSeparatorProps, CommandItemProps, CommandShortcutProps
+} from './command'

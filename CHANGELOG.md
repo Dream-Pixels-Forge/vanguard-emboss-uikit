@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.4.0] - 2026-05-26
+
+### Added
+- **ScrollArea** — `@radix-ui/react-scroll-area` wrapper with custom scrollbar, vertical/horizontal orientation
+- **Drawer** — `vaul` mobile-first bottom drawer with overlay, drag handle, header/footer layout
+- **ContextMenu** — `@radix-ui/react-context-menu` wrapper with full sub-component API (items, checkboxes, radio, separator, shortcut, sub-menu)
+- **Form** — `react-hook-form` + zod wrapper with `FormField`/`FormItem`/`FormLabel`/`FormControl`/`FormDescription`/`FormMessage` context-based validation
+- Stories and tests for all 4 new components (51 total components, 201 unit tests)
+- Registry entries for all 4 components
+
+### Changed
+- Bundle: 116.25 KB ESM / 83.41 KB CJS (up from 105.47/75.49 due to 4 new components)
+- Externalized 5 new peer deps: `@radix-ui/react-scroll-area`, `vaul`, `@radix-ui/react-context-menu`, `react-hook-form`, `@hookform/resolvers`
+
 ## [0.3.0] - 2026-05-26
 
 ### Added

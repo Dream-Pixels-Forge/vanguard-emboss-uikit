@@ -1,0 +1,15 @@
+{
+  "name": "aspect-ratio",
+  "type": "registry:ui",
+  "dependencies": [
+    "@radix-ui/react-aspect-ratio"
+  ],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/aspect-ratio.tsx",
+      "type": "registry:ui",
+      "content": "aW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JwppbXBvcnQgKiBhcyBBc3BlY3RSYXRpb1ByaW1pdGl2ZSBmcm9tICdAcmFkaXgtdWkvcmVhY3QtYXNwZWN0LXJhdGlvJwoKZXhwb3J0IHR5cGUgQXNwZWN0UmF0aW9Qcm9wcyA9IFJlYWN0LkNvbXBvbmVudFByb3BzV2l0aG91dFJlZjx0eXBlb2YgQXNwZWN0UmF0aW9QcmltaXRpdmUuUm9vdD4KCmV4cG9ydCBmdW5jdGlvbiBBc3BlY3RSYXRpbyh7IC4uLnByb3BzIH06IEFzcGVjdFJhdGlvUHJvcHMpIHsKICByZXR1cm4gPEFzcGVjdFJhdGlvUHJpbWl0aXZlLlJvb3Qgey4uLnByb3BzfSAvPgp9Cg=="
+    }
+  ]
+}
