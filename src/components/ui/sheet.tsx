@@ -4,13 +4,13 @@ import { X } from 'lucide-react'
 import { cn } from '../../lib/utils'
 import { getEmbossShadow, getEmbossBackground, getEmbossBorder } from '../../lib/tailwind-utils'
 
-export interface SheetProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root> {}
+export type SheetProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root>
 
 export function Sheet({ ...props }: SheetProps) {
   return <DialogPrimitive.Root {...props} />
 }
 
-export interface SheetTriggerProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Trigger> {}
+export type SheetTriggerProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Trigger>
 
 export function SheetTrigger({ className, asChild, ...props }: SheetTriggerProps) {
   return <DialogPrimitive.Trigger asChild={asChild} className={asChild ? undefined : cn(
@@ -24,19 +24,19 @@ export function SheetTrigger({ className, asChild, ...props }: SheetTriggerProps
   )} {...props} />
 }
 
-export interface SheetCloseProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Close> {}
+export type SheetCloseProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Close>
 
 export function SheetClose({ ...props }: SheetCloseProps) {
   return <DialogPrimitive.Close {...props} />
 }
 
-export interface SheetPortalProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Portal> {}
+export type SheetPortalProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Portal>
 
 export function SheetPortal({ ...props }: SheetPortalProps) {
   return <DialogPrimitive.Portal {...props} />
 }
 
-export interface SheetOverlayProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay> {}
+export type SheetOverlayProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
 
 export const SheetOverlay = forwardRef<React.ElementRef<typeof DialogPrimitive.Overlay>, SheetOverlayProps>(
   function SheetOverlay({ className, ...props }, ref) {
@@ -113,7 +113,7 @@ export function SheetContent({
   )
 }
 
-export interface SheetHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type SheetHeaderProps = React.HTMLAttributes<HTMLDivElement>
 
 export function SheetHeader({ className, ...props }: SheetHeaderProps) {
   return (
@@ -124,7 +124,7 @@ export function SheetHeader({ className, ...props }: SheetHeaderProps) {
   )
 }
 
-export interface SheetFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type SheetFooterProps = React.HTMLAttributes<HTMLDivElement>
 
 export function SheetFooter({ className, ...props }: SheetFooterProps) {
   return (
@@ -135,7 +135,7 @@ export function SheetFooter({ className, ...props }: SheetFooterProps) {
   )
 }
 
-export interface SheetTitleProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title> {}
+export type SheetTitleProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
 
 export function SheetTitle({ className, ...props }: SheetTitleProps) {
   return (
@@ -146,7 +146,7 @@ export function SheetTitle({ className, ...props }: SheetTitleProps) {
   )
 }
 
-export interface SheetDescriptionProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description> {}
+export type SheetDescriptionProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
 
 export function SheetDescription({ className, ...props }: SheetDescriptionProps) {
   return (

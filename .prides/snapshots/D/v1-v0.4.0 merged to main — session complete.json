@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "phase": "D",
+  "label": "v0.4.0 merged to main — session complete",
+  "data": {
+    "action": "merge-v0.4.0",
+    "pr": 15,
+    "commit": "52bce47",
+    "branch": "main",
+    "tests": 210,
+    "build": "116.86KB ESM / 83.90KB CJS",
+    "registry": 51,
+    "remainingComponents": [
+      "Button Group",
+      "Direction",
+      "Input Group",
+      "Item",
+      "Native Select",
+      "Typography"
+    ]
+  },
+  "created": "2026-05-26T02:23:41.667Z",
+  "immutable": true
+}

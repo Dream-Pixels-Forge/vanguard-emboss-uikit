@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0020",
+  "title": "MODERATE: Sidebar setOpen has Strict Mode double-cookie-write risk",
+  "description": "M4: src/components/ui/sidebar.tsx:72 — `document.cookie` is written synchronously inside the `setOpen` callback. React 18 Strict Mode double-invokes callbacks on initial mount, potentially writing the cookie twice.",
+  "phase": "I",
+  "agent": "review-critic",
+  "severity": "medium",
+  "status": "closed",
+  "blocking": false,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-26T02:46:51.989Z",
+  "updated": "2026-05-26T02:58:16.168Z",
+  "closedAt": "2026-05-26T02:58:16.168Z",
+  "closedBy": "prides-coordinator",
+  "resolution": "Moved document.cookie write to useEffect to avoid React 18 Strict Mode double-invocation",
+  "comments": []
+}

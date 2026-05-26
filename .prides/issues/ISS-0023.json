@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0023",
+  "title": "MODERATE: InputGroup border-radius uses fragile sibling selectors",
+  "description": "M7: src/components/ui/input-group.tsx:20-22 — CSS uses `[&>*:first-child]:rounded-l-lg [&>*:first-child]:rounded-r-none` selectors. If children are in the wrong order or wrapped in a fragment/div, border-radius breaks silently with no error.",
+  "phase": "I",
+  "agent": "review-critic",
+  "severity": "medium",
+  "status": "closed",
+  "blocking": false,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-26T02:46:55.088Z",
+  "updated": "2026-05-26T02:58:17.642Z",
+  "closedAt": "2026-05-26T02:58:17.642Z",
+  "closedBy": "prides-coordinator",
+  "resolution": "Added warning comment about fragile sibling selectors and documented direct-child requirement",
+  "comments": []
+}

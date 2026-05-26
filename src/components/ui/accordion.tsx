@@ -15,7 +15,7 @@ export function Accordion({ className, ...props }: AccordionProps) {
   )
 }
 
-export interface AccordionItemProps extends React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item> {}
+export type AccordionItemProps = React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
 
 export function AccordionItem({ className, ...props }: AccordionItemProps) {
   return (
@@ -30,7 +30,7 @@ export function AccordionItem({ className, ...props }: AccordionItemProps) {
   )
 }
 
-export interface AccordionTriggerProps extends React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> {}
+export type AccordionTriggerProps = React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
 
 export const AccordionTrigger = forwardRef<React.ElementRef<typeof AccordionPrimitive.Trigger>, AccordionTriggerProps>(
   function AccordionTrigger({ className, children, ...props }, ref) {
@@ -53,7 +53,7 @@ export const AccordionTrigger = forwardRef<React.ElementRef<typeof AccordionPrim
   }
 )
 
-export interface AccordionContentProps extends React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content> {}
+export type AccordionContentProps = React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
 
 export const AccordionContent = forwardRef<React.ElementRef<typeof AccordionPrimitive.Content>, AccordionContentProps>(
   function AccordionContent({ className, children, ...props }, ref) {

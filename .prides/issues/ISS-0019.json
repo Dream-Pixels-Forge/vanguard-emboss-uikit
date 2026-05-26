@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0019",
+  "title": "MODERATE: Kbd has redundant opacity-100 class",
+  "description": "M3: src/components/ui/kbd.tsx:14 includes `opacity-100` which is the default opacity. It has zero effect and adds noise.",
+  "phase": "I",
+  "agent": "review-critic",
+  "severity": "low",
+  "status": "closed",
+  "blocking": false,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-26T02:46:51.011Z",
+  "updated": "2026-05-26T02:58:15.705Z",
+  "closedAt": "2026-05-26T02:58:15.705Z",
+  "closedBy": "prides-coordinator",
+  "resolution": "Removed redundant opacity-100 class from Kbd component",
+  "comments": []
+}

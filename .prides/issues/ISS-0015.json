@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0015",
+  "title": "HIGH: toast re-export creates hard sonner dependency in public API",
+  "description": "H6: src/components/ui/index.ts line 279:\n```tsx\nexport { toast } from 'sonner'\n```\nThis exports sonner's raw toast function directly into the library's public API. If sonner makes a breaking change (v3→v4), this library breaks too. Consumers can't tell where `toast` comes from. Fix: Create a thin wrapper that re-exports the toast type signature but insulates from sonner internals.",
+  "phase": "I",
+  "agent": "review-critic",
+  "severity": "high",
+  "status": "closed",
+  "blocking": true,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-26T02:46:42.873Z",
+  "updated": "2026-05-26T02:58:13.858Z",
+  "closedAt": "2026-05-26T02:58:13.858Z",
+  "closedBy": "prides-coordinator",
+  "resolution": "Created typed ToastAPI wrapper isolating consumers from sonner internal types",
+  "comments": []
+}

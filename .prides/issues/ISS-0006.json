@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0006",
+  "title": "CRITICAL: globals.css not delivered to consumers — library unusable out of the box",
+  "description": "C1: src/styles/globals.css is only imported in src/main.tsx and .storybook/preview.tsx — NEVER imported by the library entry point (src/components/ui/index.ts). The CSS contains all emboss color tokens, shadcn semantic vars, @layer base, and spring utilities. None of these are in the dist/ bundle. A consumer who installs the library gets zero design tokens. Components render with no emboss colors, no shadcn semantic colors, no body defaults. Complete showstopper.\n\nAdditionally (C2): The README says `import 'vanguard-emboss-uikit/styles'` but the package.json exports field has no `\"./styles\"` entry and no CSS file exists in dist/. Every consumer gets a compile error on first import.",
+  "phase": "I",
+  "agent": "review-critic",
+  "severity": "critical",
+  "status": "closed",
+  "blocking": true,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-26T02:46:25.873Z",
+  "updated": "2026-05-26T02:58:05.475Z",
+  "closedAt": "2026-05-26T02:58:05.475Z",
+  "closedBy": "prides-coordinator",
+  "resolution": "Imported globals.css in library entry point, added ./styles export in package.json",
+  "comments": []
+}

@@ -4,8 +4,7 @@ import { cn } from '../../lib/utils'
 import { getEmbossBackground, getEmbossShadow } from '../../lib/tailwind-utils'
 import { ChevronDown } from 'lucide-react'
 
-export interface CollapsibleProps
-  extends React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Root> {}
+export type CollapsibleProps = React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Root>
 
 export function Collapsible({ className, ...props }: CollapsibleProps) {
   return <CollapsiblePrimitive.Root className={cn('w-full', className)} {...props} />
@@ -48,8 +47,7 @@ export function CollapsibleTrigger({
   )
 }
 
-export interface CollapsibleContentProps
-  extends React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Content> {}
+export type CollapsibleContentProps = React.ComponentPropsWithoutRef<typeof CollapsiblePrimitive.Content>
 
 export function CollapsibleContent({ className, children, ...props }: CollapsibleContentProps) {
   return (

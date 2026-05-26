@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0011",
+  "title": "HIGH: DataTable filter column null-safety hole — runtime crash possible",
+  "description": "H2 (was labeled H2 but recategorized as HIGH): src/components/ui/data-table.tsx:57\n```tsx\nconst filterCol = filterColumn || (columns[0]?.id as string) || ''\n```\n- `columns[0]?.id` is `string | undefined` but cast with `as string`\n- Fallback to `''` means `table.getColumn('')` returns `undefined`\n- `table.getColumn('').setFilterValue(...)` throws TypeError at runtime\n- Only triggers if consumer doesn't provide `filterColumn` and `columns[0]` has no `id`\n\nFix: Add proper null-guard or use optional chaining on the getColumn call.",
+  "phase": "I",
+  "agent": "review-critic",
+  "severity": "high",
+  "status": "closed",
+  "blocking": true,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-26T02:46:36.354Z",
+  "updated": "2026-05-26T02:58:07.999Z",
+  "closedAt": "2026-05-26T02:58:07.999Z",
+  "closedBy": "prides-coordinator",
+  "resolution": "Added hasValidFilterColumn guard, filter input only renders when column exists",
+  "comments": []
+}

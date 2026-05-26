@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0022",
+  "title": "MODERATE: Combobox trigger has no accessible label",
+  "description": "M6: src/components/ui/combobox.tsx:41-55 — the trigger `<button>` has `role=\"combobox\"` and `aria-expanded` but no `aria-label` or `aria-labelledby`. Screen readers have no context for what this combobox selects.",
+  "phase": "I",
+  "agent": "review-critic",
+  "severity": "medium",
+  "status": "closed",
+  "blocking": false,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-26T02:46:54.041Z",
+  "updated": "2026-05-26T02:58:17.144Z",
+  "closedAt": "2026-05-26T02:58:17.144Z",
+  "closedBy": "prides-coordinator",
+  "resolution": "Added aria-label={selectedLabel ?? placeholder} to combobox trigger button",
+  "comments": []
+}

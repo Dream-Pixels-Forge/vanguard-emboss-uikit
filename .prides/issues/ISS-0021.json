@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0021",
+  "title": "MODERATE: form.tsx uses as-unknown-as-undefined type hack",
+  "description": "M5: src/components/ui/form.tsx:80 — `useFormState({ name: name as unknown as undefined })` double-cast is a workaround for mismatched types between the component's generic parameter and react-hook-form's API. Fragile — a react-hook-form version bump could break it silently.",
+  "phase": "I",
+  "agent": "review-critic",
+  "severity": "medium",
+  "status": "closed",
+  "blocking": false,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-26T02:46:53.131Z",
+  "updated": "2026-05-26T02:58:16.699Z",
+  "closedAt": "2026-05-26T02:58:16.699Z",
+  "closedBy": "prides-coordinator",
+  "resolution": "Replaced as unknown as undefined cast with proper Parameters-based type cast in useFormState call",
+  "comments": []
+}

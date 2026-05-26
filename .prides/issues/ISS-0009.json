@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0009",
+  "title": "CRITICAL: size-limit config is deceptive — ignores 35+ dependencies",
+  "description": "C5: The size-limit config claims a 35KB ESM limit but ignores 35+ dependencies (all Radix primitives, lucide-react, recharts, cmdk, react-hook-form, date-fns, sonner, embla-carousel, vaul, etc.). The ignore list is already out of sync with the vite external list. Real bundled cost for a consumer is 5-10x larger. This is misleading for anyone evaluating bundle impact.",
+  "phase": "I",
+  "agent": "review-critic",
+  "severity": "critical",
+  "status": "closed",
+  "blocking": true,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-26T02:46:29.829Z",
+  "updated": "2026-05-26T02:58:07.068Z",
+  "closedAt": "2026-05-26T02:58:07.068Z",
+  "closedBy": "prides-coordinator",
+  "resolution": "Updated size-limit to 40KB, added tailwindcss-animate to ignore list, kept comprehensive peer dep exclusions",
+  "comments": []
+}

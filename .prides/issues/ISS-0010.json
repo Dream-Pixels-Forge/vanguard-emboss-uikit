@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0010",
+  "title": "CRITICAL: InputGroupAddon dead side prop — rendered as unrecognized DOM attribute",
+  "description": "H1: `InputGroupAddonProps` defines `side?: 'left' | 'right'` but the implementation does `{ className, children, ...props }` — the `side` prop is never consumed, instead absorbed into `...props` and rendered as an unrecognized DOM attribute `side=\"left\"` on the div. React logs a console warning. The prop has absolutely zero effect on styling or behavior.",
+  "phase": "I",
+  "agent": "review-critic",
+  "severity": "critical",
+  "status": "closed",
+  "blocking": true,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-26T02:46:31.263Z",
+  "updated": "2026-05-26T02:58:07.534Z",
+  "closedAt": "2026-05-26T02:58:07.534Z",
+  "closedBy": "prides-coordinator",
+  "resolution": "Destructured side prop from InputGroupAddon to prevent DOM attribute leak",
+  "comments": []
+}

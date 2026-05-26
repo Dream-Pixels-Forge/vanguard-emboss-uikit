@@ -1,0 +1,16 @@
+{
+  "version": 3,
+  "phase": "I",
+  "label": "v0.4.0 PR created on GitHub",
+  "data": {
+    "action": "pr-created",
+    "branch": "v0.4.0",
+    "pr": "https://github.com/Dream-Pixels-Forge/vanguard-emboss-uikit/pull/15",
+    "base": "main",
+    "version": "0.4.0",
+    "components": 51,
+    "tests": 210
+  },
+  "created": "2026-05-26T02:18:11.109Z",
+  "immutable": true
+}

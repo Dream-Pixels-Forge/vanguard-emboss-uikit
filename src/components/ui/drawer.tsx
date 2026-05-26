@@ -56,7 +56,7 @@ export function DrawerClose({ ...props }: DrawerCloseProps) {
   return <DrawerPrimitive.Close {...props} />
 }
 
-export interface DrawerOverlayProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type DrawerOverlayProps = React.HTMLAttributes<HTMLDivElement>
 
 export function DrawerOverlay({ className, ...props }: DrawerOverlayProps) {
   return (
@@ -94,7 +94,7 @@ export function DrawerContent({ className, children, showHandle = true, ...props
   )
 }
 
-export interface DrawerHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type DrawerHeaderProps = React.HTMLAttributes<HTMLDivElement>
 
 export function DrawerHeader({ className, ...props }: DrawerHeaderProps) {
   return (
@@ -105,7 +105,7 @@ export function DrawerHeader({ className, ...props }: DrawerHeaderProps) {
   )
 }
 
-export interface DrawerFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type DrawerFooterProps = React.HTMLAttributes<HTMLDivElement>
 
 export function DrawerFooter({ className, ...props }: DrawerFooterProps) {
   return (
@@ -116,7 +116,7 @@ export function DrawerFooter({ className, ...props }: DrawerFooterProps) {
   )
 }
 
-export interface DrawerTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {}
+export type DrawerTitleProps = React.HTMLAttributes<HTMLHeadingElement>
 
 export function DrawerTitle({ className, ...props }: DrawerTitleProps) {
   return (
@@ -127,7 +127,7 @@ export function DrawerTitle({ className, ...props }: DrawerTitleProps) {
   )
 }
 
-export interface DrawerDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
+export type DrawerDescriptionProps = React.HTMLAttributes<HTMLParagraphElement>
 
 export function DrawerDescription({ className, ...props }: DrawerDescriptionProps) {
   return (

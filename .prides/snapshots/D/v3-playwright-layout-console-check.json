@@ -1,0 +1,22 @@
+{
+  "version": 3,
+  "phase": "D",
+  "label": "playwright-layout-console-check",
+  "data": {
+    "tool": "playwright-layout-tester",
+    "project": "vanguard-emboss-uikit",
+    "verdict": "PASS",
+    "errors": 0,
+    "warnings": 2,
+    "warning_source": "Storybook internal UI (v11 migration)",
+    "components_checked": [
+      "Accordion",
+      "Button",
+      "Card",
+      "DataTable",
+      "DataTable (Filter)"
+    ]
+  },
+  "created": "2026-05-26T03:24:37.271Z",
+  "immutable": true
+}

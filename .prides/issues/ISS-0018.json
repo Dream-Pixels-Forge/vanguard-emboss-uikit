@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0018",
+  "title": "MODERATE: EmbossBox still exported despite being deprecated since v0.1.0",
+  "description": "M2: src/components/ui/emboss-box.tsx was replaced by plain Box component but is still exported from index.ts with no `@deprecated` JSDoc tag. Consumers have no way to know it's deprecated.",
+  "phase": "I",
+  "agent": "review-critic",
+  "severity": "medium",
+  "status": "closed",
+  "blocking": false,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-26T02:46:50.062Z",
+  "updated": "2026-05-26T02:58:15.284Z",
+  "closedAt": "2026-05-26T02:58:15.284Z",
+  "closedBy": "prides-coordinator",
+  "resolution": "Added @deprecated JSDoc to EmbossBox export in index.ts",
+  "comments": []
+}

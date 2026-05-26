@@ -4,19 +4,19 @@ import { Check, ChevronDown, ChevronUp } from 'lucide-react'
 import { cn } from '../../lib/utils'
 import { getEmbossShadow, getEmbossBackground } from '../../lib/tailwind-utils'
 
-export interface SelectProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root> {}
+export type SelectProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root>
 
 export function Select({ ...props }: SelectProps) {
   return <SelectPrimitive.Root {...props} />
 }
 
-export interface SelectGroupProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Group> {}
+export type SelectGroupProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Group>
 
 export function SelectGroup({ ...props }: SelectGroupProps) {
   return <SelectPrimitive.Group {...props} />
 }
 
-export interface SelectValueProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Value> {}
+export type SelectValueProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Value>
 
 export function SelectValue({ ...props }: SelectValueProps) {
   return <SelectPrimitive.Value {...props} />
@@ -51,7 +51,7 @@ export function SelectTrigger({ className, error, children, ...props }: SelectTr
   )
 }
 
-export interface SelectContentProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content> {}
+export type SelectContentProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
 
 export function SelectContent({ className, children, position = 'popper', ...props }: SelectContentProps) {
   return (
@@ -93,7 +93,7 @@ export function SelectContent({ className, children, position = 'popper', ...pro
   )
 }
 
-export interface SelectItemProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> {}
+export type SelectItemProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item>
 
 export function SelectItem({ className, children, ...props }: SelectItemProps) {
   return (
@@ -118,7 +118,7 @@ export function SelectItem({ className, children, ...props }: SelectItemProps) {
   )
 }
 
-export interface SelectLabelProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label> {}
+export type SelectLabelProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Label>
 
 export function SelectLabel({ className, ...props }: SelectLabelProps) {
   return (
@@ -129,7 +129,7 @@ export function SelectLabel({ className, ...props }: SelectLabelProps) {
   )
 }
 
-export interface SelectSeparatorProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator> {}
+export type SelectSeparatorProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Separator>
 
 export function SelectSeparator({ className, ...props }: SelectSeparatorProps) {
   return (

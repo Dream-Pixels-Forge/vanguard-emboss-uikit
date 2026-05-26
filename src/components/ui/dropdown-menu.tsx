@@ -8,43 +8,37 @@ import { Check, ChevronRight, Circle } from 'lucide-react'
 // Simple pass-through wrappers (no forwardRef needed)
 // ---------------------------------------------------------------------------
 
-export interface DropdownMenuProps
-  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Root> {}
+export type DropdownMenuProps = React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Root>
 
 export function DropdownMenu({ ...props }: DropdownMenuProps) {
   return <DropdownMenuPrimitive.Root {...props} />
 }
 
-export interface DropdownMenuTriggerProps
-  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Trigger> {}
+export type DropdownMenuTriggerProps = React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Trigger>
 
 export function DropdownMenuTrigger({ ...props }: DropdownMenuTriggerProps) {
   return <DropdownMenuPrimitive.Trigger {...props} />
 }
 
-export interface DropdownMenuGroupProps
-  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Group> {}
+export type DropdownMenuGroupProps = React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Group>
 
 export function DropdownMenuGroup({ ...props }: DropdownMenuGroupProps) {
   return <DropdownMenuPrimitive.Group {...props} />
 }
 
-export interface DropdownMenuPortalProps
-  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Portal> {}
+export type DropdownMenuPortalProps = React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Portal>
 
 export function DropdownMenuPortal({ ...props }: DropdownMenuPortalProps) {
   return <DropdownMenuPrimitive.Portal {...props} />
 }
 
-export interface DropdownMenuSubProps
-  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Sub> {}
+export type DropdownMenuSubProps = React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Sub>
 
 export function DropdownMenuSub({ ...props }: DropdownMenuSubProps) {
   return <DropdownMenuPrimitive.Sub {...props} />
 }
 
-export interface DropdownMenuRadioGroupProps
-  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.RadioGroup> {}
+export type DropdownMenuRadioGroupProps = React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.RadioGroup>
 
 export function DropdownMenuRadioGroup({ ...props }: DropdownMenuRadioGroupProps) {
   return <DropdownMenuPrimitive.RadioGroup {...props} />
@@ -54,8 +48,7 @@ export function DropdownMenuRadioGroup({ ...props }: DropdownMenuRadioGroupProps
 // DropdownMenuContent
 // ---------------------------------------------------------------------------
 
-export interface DropdownMenuContentProps
-  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content> {}
+export type DropdownMenuContentProps = React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Content>
 
 export const DropdownMenuContent = forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Content>,
@@ -118,8 +111,7 @@ export const DropdownMenuItem = forwardRef<
 // DropdownMenuCheckboxItem
 // ---------------------------------------------------------------------------
 
-export interface DropdownMenuCheckboxItemProps
-  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem> {}
+export type DropdownMenuCheckboxItemProps = React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.CheckboxItem>
 
 export const DropdownMenuCheckboxItem = forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.CheckboxItem>,
@@ -151,8 +143,7 @@ export const DropdownMenuCheckboxItem = forwardRef<
 // DropdownMenuRadioItem
 // ---------------------------------------------------------------------------
 
-export interface DropdownMenuRadioItemProps
-  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.RadioItem> {}
+export type DropdownMenuRadioItemProps = React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.RadioItem>
 
 export const DropdownMenuRadioItem = forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.RadioItem>,
@@ -210,8 +201,7 @@ export const DropdownMenuLabel = forwardRef<
 // DropdownMenuSeparator
 // ---------------------------------------------------------------------------
 
-export interface DropdownMenuSeparatorProps
-  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Separator> {}
+export type DropdownMenuSeparatorProps = React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Separator>
 
 export const DropdownMenuSeparator = forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Separator>,
@@ -230,8 +220,7 @@ export const DropdownMenuSeparator = forwardRef<
 // DropdownMenuShortcut
 // ---------------------------------------------------------------------------
 
-export interface DropdownMenuShortcutProps
-  extends React.HTMLAttributes<HTMLSpanElement> {}
+export type DropdownMenuShortcutProps = React.HTMLAttributes<HTMLSpanElement>
 
 export function DropdownMenuShortcut({ className, ...props }: DropdownMenuShortcutProps) {
   return (
@@ -278,8 +267,7 @@ export const DropdownMenuSubTrigger = forwardRef<
 // DropdownMenuSubContent
 // ---------------------------------------------------------------------------
 
-export interface DropdownMenuSubContentProps
-  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubContent> {}
+export type DropdownMenuSubContentProps = React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.SubContent>
 
 export const DropdownMenuSubContent = forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.SubContent>,

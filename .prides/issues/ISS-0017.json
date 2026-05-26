@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0017",
+  "title": "MODERATE: useDirection silently returns 'ltr' instead of throwing on missing provider",
+  "description": "M1: src/components/ui/direction.tsx:23-29 — `useDirection()` silently defaults to 'ltr' when no DirectionProvider is in the tree. Contrast with `useSidebar()` which correctly throws an error. This hides provider bugs and makes debugging harder.",
+  "phase": "I",
+  "agent": "review-critic",
+  "severity": "medium",
+  "status": "closed",
+  "blocking": false,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-26T02:46:49.203Z",
+  "updated": "2026-05-26T02:58:14.862Z",
+  "closedAt": "2026-05-26T02:58:14.862Z",
+  "closedBy": "prides-coordinator",
+  "resolution": "Changed DirectionContext default to undefined, useDirection now throws error on missing provider",
+  "comments": []
+}

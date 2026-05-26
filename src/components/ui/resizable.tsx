@@ -3,7 +3,7 @@ import { Group, Panel, Separator } from 'react-resizable-panels'
 import { cn } from '../../lib/utils'
 import { GripVertical } from 'lucide-react'
 
-export interface ResizablePanelGroupProps extends React.ComponentProps<typeof Group> {}
+export type ResizablePanelGroupProps = React.ComponentProps<typeof Group>
 
 export function ResizablePanelGroup({ className, orientation = 'horizontal', ...props }: ResizablePanelGroupProps) {
   return (
@@ -19,7 +19,7 @@ export function ResizablePanelGroup({ className, orientation = 'horizontal', ...
   )
 }
 
-export interface ResizablePanelProps extends React.ComponentProps<typeof Panel> {}
+export type ResizablePanelProps = React.ComponentProps<typeof Panel>
 
 export function ResizablePanel({ ...props }: ResizablePanelProps) {
   return <Panel {...props} />

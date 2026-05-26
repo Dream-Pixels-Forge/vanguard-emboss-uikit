@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0016",
+  "title": "HIGH: DataTable pagination uses hardcoded shadow strings instead of utility",
+  "description": "H7: src/components/ui/data-table.tsx lines 136, 148-149:\n```tsx\n'shadow-emboss-out-light-sm dark:shadow-emboss-out-dark-sm'\n```\nUses literal shadow classes instead of `getEmbossShadow('out', 'small')`. Every other component uses the utility function. This is an inconsistent hardcoded duplicate that won't update if shadow tokens change.",
+  "phase": "I",
+  "agent": "review-critic",
+  "severity": "high",
+  "status": "closed",
+  "blocking": true,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-26T02:46:44.103Z",
+  "updated": "2026-05-26T02:58:14.368Z",
+  "closedAt": "2026-05-26T02:58:14.368Z",
+  "closedBy": "prides-coordinator",
+  "resolution": "Replaced hardcoded shadow strings with getEmbossShadow('out', 'small') utility call",
+  "comments": []
+}

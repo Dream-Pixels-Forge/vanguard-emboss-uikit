@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0008",
+  "title": "CRITICAL: tailwindcss-animate plugin missing — 77 animation classes silently broken",
+  "description": "C4: The tailwindcss-animate plugin provides classes like `animate-in`, `animate-out`, `fade-in-0`, `zoom-in-95`, `slide-in-from-*`, `slide-out-to-*`. These are used 77 times across Dialog, Select, Menubar, ContextMenu, AlertDialog, DropdownMenu, Sheet, NavigationMenu, Popover, and more. The plugin is:\n- NOT in dependencies\n- NOT in peerDependencies  \n- NOT in tailwind.config.js plugins\n- NOT mentioned in README\n\nAll entry/exit animations silently render as static no-ops with zero motion. No errors or warnings — just dead animations.",
+  "phase": "I",
+  "agent": "review-critic",
+  "severity": "critical",
+  "status": "closed",
+  "blocking": true,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-26T02:46:28.719Z",
+  "updated": "2026-05-26T02:58:06.494Z",
+  "closedAt": "2026-05-26T02:58:06.494Z",
+  "closedBy": "prides-coordinator",
+  "resolution": "Installed tailwindcss-animate, added to tailwind.config.js plugins and vite external list",
+  "comments": []
+}

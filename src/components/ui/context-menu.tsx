@@ -4,13 +4,13 @@ import { cn } from '../../lib/utils'
 import { getEmbossBackground, getEmbossShadow, getEmbossBorder } from '../../lib/tailwind-utils'
 import { Check, ChevronRight, Circle } from 'lucide-react'
 
-export interface ContextMenuProps extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Root> {}
+export type ContextMenuProps = React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Root>
 
 export function ContextMenu({ ...props }: ContextMenuProps) {
   return <ContextMenuPrimitive.Root {...props} />
 }
 
-export interface ContextMenuTriggerProps extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Trigger> {}
+export type ContextMenuTriggerProps = React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Trigger>
 
 export function ContextMenuTrigger({ className, ...props }: ContextMenuTriggerProps) {
   return (
@@ -21,19 +21,19 @@ export function ContextMenuTrigger({ className, ...props }: ContextMenuTriggerPr
   )
 }
 
-export interface ContextMenuPortalProps extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Portal> {}
+export type ContextMenuPortalProps = React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Portal>
 
 export function ContextMenuPortal({ ...props }: ContextMenuPortalProps) {
   return <ContextMenuPrimitive.Portal {...props} />
 }
 
-export interface ContextMenuSubProps extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Sub> {}
+export type ContextMenuSubProps = React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Sub>
 
 export function ContextMenuSub({ ...props }: ContextMenuSubProps) {
   return <ContextMenuPrimitive.Sub {...props} />
 }
 
-export interface ContextMenuRadioGroupProps extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.RadioGroup> {}
+export type ContextMenuRadioGroupProps = React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.RadioGroup>
 
 export function ContextMenuRadioGroup({ ...props }: ContextMenuRadioGroupProps) {
   return <ContextMenuPrimitive.RadioGroup {...props} />
@@ -62,7 +62,7 @@ export function ContextMenuSubTrigger({ className, inset, children, ...props }: 
   )
 }
 
-export interface ContextMenuSubContentProps extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.SubContent> {}
+export type ContextMenuSubContentProps = React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.SubContent>
 
 export function ContextMenuSubContent({ className, ...props }: ContextMenuSubContentProps) {
   return (
@@ -81,7 +81,7 @@ export function ContextMenuSubContent({ className, ...props }: ContextMenuSubCon
   )
 }
 
-export interface ContextMenuContentProps extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Content> {}
+export type ContextMenuContentProps = React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Content>
 
 export function ContextMenuContent({ className, ...props }: ContextMenuContentProps) {
   return (
@@ -121,7 +121,7 @@ export function ContextMenuItem({ className, inset, ...props }: ContextMenuItemP
   )
 }
 
-export interface ContextMenuCheckboxItemProps extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.CheckboxItem> {}
+export type ContextMenuCheckboxItemProps = React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.CheckboxItem>
 
 export function ContextMenuCheckboxItem({ className, children, checked, ...props }: ContextMenuCheckboxItemProps) {
   return (
@@ -145,7 +145,7 @@ export function ContextMenuCheckboxItem({ className, children, checked, ...props
   )
 }
 
-export interface ContextMenuRadioItemProps extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.RadioItem> {}
+export type ContextMenuRadioItemProps = React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.RadioItem>
 
 export function ContextMenuRadioItem({ className, children, ...props }: ContextMenuRadioItemProps) {
   return (
@@ -185,7 +185,7 @@ export function ContextMenuLabel({ className, inset, ...props }: ContextMenuLabe
   )
 }
 
-export interface ContextMenuSeparatorProps extends React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Separator> {}
+export type ContextMenuSeparatorProps = React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Separator>
 
 export function ContextMenuSeparator({ className, ...props }: ContextMenuSeparatorProps) {
   return (
@@ -196,7 +196,7 @@ export function ContextMenuSeparator({ className, ...props }: ContextMenuSeparat
   )
 }
 
-export interface ContextMenuShortcutProps extends React.HTMLAttributes<HTMLSpanElement> {}
+export type ContextMenuShortcutProps = React.HTMLAttributes<HTMLSpanElement>
 
 export function ContextMenuShortcut({ className, ...props }: ContextMenuShortcutProps) {
   return (

@@ -4,7 +4,7 @@ import { ChevronDown } from 'lucide-react'
 import { cn } from '../../lib/utils'
 import { getEmbossShadow, getEmbossBackground, withDataStateShadow } from '../../lib/tailwind-utils'
 
-export interface NavigationMenuProps extends React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root> {}
+export type NavigationMenuProps = React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
 
 export function NavigationMenu({ className, children, ...props }: NavigationMenuProps) {
   return (
@@ -18,7 +18,7 @@ export function NavigationMenu({ className, children, ...props }: NavigationMenu
   )
 }
 
-export interface NavigationMenuListProps extends React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.List> {}
+export type NavigationMenuListProps = React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.List>
 
 export function NavigationMenuList({ className, ...props }: NavigationMenuListProps) {
   return (
@@ -32,7 +32,7 @@ export function NavigationMenuList({ className, ...props }: NavigationMenuListPr
   )
 }
 
-export interface NavigationMenuItemProps extends React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Item> {}
+export type NavigationMenuItemProps = React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Item>
 
 export function NavigationMenuItem({ className, ...props }: NavigationMenuItemProps) {
   return (
@@ -43,7 +43,7 @@ export function NavigationMenuItem({ className, ...props }: NavigationMenuItemPr
   )
 }
 
-export interface NavigationMenuTriggerProps extends React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger> {}
+export type NavigationMenuTriggerProps = React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger>
 
 export function NavigationMenuTrigger({ className, children, ...props }: NavigationMenuTriggerProps) {
   return (
@@ -69,7 +69,7 @@ export function NavigationMenuTrigger({ className, children, ...props }: Navigat
   )
 }
 
-export interface NavigationMenuContentProps extends React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Content> {}
+export type NavigationMenuContentProps = React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Content>
 
 export function NavigationMenuContent({ className, ...props }: NavigationMenuContentProps) {
   return (
@@ -89,7 +89,7 @@ export function NavigationMenuContent({ className, ...props }: NavigationMenuCon
   )
 }
 
-export interface NavigationMenuLinkProps extends React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Link> {}
+export type NavigationMenuLinkProps = React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Link>
 
 export function NavigationMenuLink({ className, ...props }: NavigationMenuLinkProps) {
   return (
@@ -108,7 +108,7 @@ export function NavigationMenuLink({ className, ...props }: NavigationMenuLinkPr
   )
 }
 
-export interface NavigationMenuViewportProps extends React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport> {}
+export type NavigationMenuViewportProps = React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
 
 export function NavigationMenuViewport({ className, ...props }: NavigationMenuViewportProps) {
   return (

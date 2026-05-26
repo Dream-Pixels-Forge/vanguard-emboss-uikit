@@ -26,7 +26,7 @@ export function Item({
   )
 }
 
-export interface ItemMediaProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type ItemMediaProps = React.HTMLAttributes<HTMLDivElement>
 
 export function ItemMedia({
   className,
@@ -43,7 +43,7 @@ export function ItemMedia({
   )
 }
 
-export interface ItemContentProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type ItemContentProps = React.HTMLAttributes<HTMLDivElement>
 
 export function ItemContent({
   className,
@@ -60,7 +60,7 @@ export function ItemContent({
   )
 }
 
-export interface ItemTitleProps extends React.HTMLAttributes<HTMLHeadingElement> {}
+export type ItemTitleProps = React.HTMLAttributes<HTMLHeadingElement>
 
 export function ItemTitle({
   className,
@@ -77,7 +77,7 @@ export function ItemTitle({
   )
 }
 
-export interface ItemDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
+export type ItemDescriptionProps = React.HTMLAttributes<HTMLParagraphElement>
 
 export function ItemDescription({
   className,
@@ -94,7 +94,7 @@ export function ItemDescription({
   )
 }
 
-export interface ItemActionsProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type ItemActionsProps = React.HTMLAttributes<HTMLDivElement>
 
 export function ItemActions({
   className,

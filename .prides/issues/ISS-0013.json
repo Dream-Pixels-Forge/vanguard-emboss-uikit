@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0013",
+  "title": "HIGH: tailwind-utils.ts has 3x DRY violation — 24 shadow strings for 8 unique values",
+  "description": "H4: src/lib/tailwind-utils.ts has three functions (getEmbossShadow, withActiveShadow, withDataStateShadow) that each contain identical 8-line shadow string building logic. Combined total: 24 shadow string definitions across 3 functions when there are only 8 unique shadow values. Every shadow change requires edits in 3 separate places.\n\n```tsx\n// Appears verbatim 3 times across 3 functions\nif (type === 'out') {\n  return size === 'standard'\n    ? 'shadow-emboss-out-light dark:shadow-emboss-out-dark'\n    : 'shadow-emboss-out-light-sm dark:shadow-emboss-out-dark-sm'\n}\n```\n\nFix: Extract a shared `getShadowString(type, size)` helper and call it from all three functions.",
+  "phase": "I",
+  "agent": "review-critic",
+  "severity": "high",
+  "status": "closed",
+  "blocking": true,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-26T02:46:40.020Z",
+  "updated": "2026-05-26T02:58:09.068Z",
+  "closedAt": "2026-05-26T02:58:09.068Z",
+  "closedBy": "prides-coordinator",
+  "resolution": "Extracted shared getShadowString() helper, eliminated 3x DRY violation in tailwind-utils.ts",
+  "comments": []
+}

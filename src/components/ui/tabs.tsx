@@ -3,7 +3,7 @@ import * as TabsPrimitive from '@radix-ui/react-tabs'
 import { cn } from '../../lib/utils'
 import { getEmbossShadow, getEmbossBackground, withDataStateShadow } from '../../lib/tailwind-utils'
 
-export interface TabsProps extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root> {}
+export type TabsProps = React.ComponentPropsWithoutRef<typeof TabsPrimitive.Root>
 
 export function Tabs({ className, ...props }: TabsProps) {
   return (
@@ -14,7 +14,7 @@ export function Tabs({ className, ...props }: TabsProps) {
   )
 }
 
-export interface TabsListProps extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.List> {}
+export type TabsListProps = React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
 
 export function TabsList({ className, ...props }: TabsListProps) {
   return (
@@ -30,7 +30,7 @@ export function TabsList({ className, ...props }: TabsListProps) {
   )
 }
 
-export interface TabsTriggerProps extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger> {}
+export type TabsTriggerProps = React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
 
 export function TabsTrigger({ className, ...props }: TabsTriggerProps) {
   return (
@@ -49,7 +49,7 @@ export function TabsTrigger({ className, ...props }: TabsTriggerProps) {
   )
 }
 
-export interface TabsContentProps extends React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content> {}
+export type TabsContentProps = React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
 
 export function TabsContent({ className, ...props }: TabsContentProps) {
   return (

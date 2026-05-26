@@ -56,7 +56,7 @@ export function Carousel({ opts, plugins, className, children, ...props }: Carou
   )
 }
 
-export interface CarouselContentProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type CarouselContentProps = React.HTMLAttributes<HTMLDivElement>
 
 export const CarouselContent = React.forwardRef<HTMLDivElement, CarouselContentProps>(
   function CarouselContent({ className, ...props }, ref) {
@@ -69,7 +69,7 @@ export const CarouselContent = React.forwardRef<HTMLDivElement, CarouselContentP
   }
 )
 
-export interface CarouselItemProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type CarouselItemProps = React.HTMLAttributes<HTMLDivElement>
 
 export function CarouselItem({ className, ...props }: CarouselItemProps) {
   return (
@@ -82,7 +82,7 @@ export function CarouselItem({ className, ...props }: CarouselItemProps) {
   )
 }
 
-export interface CarouselPreviousProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+export type CarouselPreviousProps = React.ButtonHTMLAttributes<HTMLButtonElement>
 
 export function CarouselPrevious({ className, ...props }: CarouselPreviousProps) {
   const { canScrollPrev, scrollPrev } = useCarousel()
@@ -107,7 +107,7 @@ export function CarouselPrevious({ className, ...props }: CarouselPreviousProps)
   )
 }
 
-export interface CarouselNextProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+export type CarouselNextProps = React.ButtonHTMLAttributes<HTMLButtonElement>
 
 export function CarouselNext({ className, ...props }: CarouselNextProps) {
   const { canScrollNext, scrollNext } = useCarousel()

@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0014",
+  "title": "HIGH: ChartTooltip and ChartLegend are empty wrapper components with zero behavior",
+  "description": "H5: src/components/ui/chart.tsx\n```tsx\nexport function ChartTooltip({ children }: ChartTooltipProps) {\n  return <>{children}</>\n}\nexport function ChartLegend({ children }: ChartLegendProps) {\n  return <>{children}</>\n}\n```\nThese provide no functionality. The container/Content split is non-functional — ChartTooltipContent and ChartLegendContent are pure-presentational with no recharts hook integration. Consumers must wire recharts tooltip/legend manually. These components are misleading — they look like they provide integration but don't.",
+  "phase": "I",
+  "agent": "review-critic",
+  "severity": "high",
+  "status": "closed",
+  "blocking": true,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-26T02:46:41.531Z",
+  "updated": "2026-05-26T02:58:09.484Z",
+  "closedAt": "2026-05-26T02:58:09.484Z",
+  "closedBy": "prides-coordinator",
+  "resolution": "Added @deprecated JSDoc to ChartTooltip and ChartLegend with guidance to use recharts primitives",
+  "comments": []
+}

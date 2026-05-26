@@ -7,19 +7,19 @@ export function TooltipProvider({ delayDuration = 300, skipDelayDuration = 300, 
   return <TooltipPrimitive.Provider delayDuration={delayDuration} skipDelayDuration={skipDelayDuration} {...props}>{children}</TooltipPrimitive.Provider>
 }
 
-export interface TooltipProps extends React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Root> {}
+export type TooltipProps = React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Root>
 
 export function Tooltip({ ...props }: TooltipProps) {
   return <TooltipPrimitive.Root {...props} />
 }
 
-export interface TooltipTriggerProps extends React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Trigger> {}
+export type TooltipTriggerProps = React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Trigger>
 
 export function TooltipTrigger({ className, ...props }: TooltipTriggerProps) {
   return <TooltipPrimitive.Trigger className={cn('inline-flex', className)} {...props} />
 }
 
-export interface TooltipContentProps extends React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content> {}
+export type TooltipContentProps = React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Content>
 
 export const TooltipContent = React.forwardRef<React.ElementRef<typeof TooltipPrimitive.Content>, TooltipContentProps>(
   function TooltipContent({ className, sideOffset = 4, ...props }, ref) {

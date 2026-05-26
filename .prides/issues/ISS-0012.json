@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0012",
+  "title": "HIGH: Text and Typography are duplicate components — confusing API surface",
+  "description": "H3: Two near-identical text rendering components with different API conventions:\n- Text (v0.1.0): 13 size variants, accent prop, muted prop, config-map-based\n- Typography (v0.5.0): 9 semantic variants, `as` prop for element override\n\nBoth exported from index.ts. Different naming patterns (accent=\"blue\" vs no accent). Different element-override patterns. This confuses consumers (\"which one should I use?\") and doubles maintenance surface. Should either merge, deprecate one, or clearly document the distinction.",
+  "phase": "I",
+  "agent": "review-critic",
+  "severity": "high",
+  "status": "closed",
+  "blocking": true,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-26T02:46:38.015Z",
+  "updated": "2026-05-26T02:58:08.535Z",
+  "closedAt": "2026-05-26T02:58:08.535Z",
+  "closedBy": "prides-coordinator",
+  "resolution": "Added @deprecated JSDoc to Typography component, types, and export pointing users to Text",
+  "comments": []
+}

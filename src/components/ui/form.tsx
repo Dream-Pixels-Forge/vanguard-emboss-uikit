@@ -94,7 +94,7 @@ export function useFormField() {
   }
 }
 
-export interface FormItemProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type FormItemProps = React.HTMLAttributes<HTMLDivElement>
 
 export function FormItem({ className, ...props }: FormItemProps) {
   const id = React.useId()
@@ -106,7 +106,7 @@ export function FormItem({ className, ...props }: FormItemProps) {
   )
 }
 
-export interface FormLabelProps extends React.ComponentPropsWithoutRef<typeof Label> {}
+export type FormLabelProps = React.ComponentPropsWithoutRef<typeof Label>
 
 export function FormLabel({ className, ...props }: FormLabelProps) {
   const { formItemId, error } = useFormField()
@@ -120,7 +120,7 @@ export function FormLabel({ className, ...props }: FormLabelProps) {
   )
 }
 
-export interface FormControlProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type FormControlProps = React.HTMLAttributes<HTMLDivElement>
 
 export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>(
   function FormControl({ ...props }, ref) {
@@ -138,7 +138,7 @@ export const FormControl = React.forwardRef<HTMLDivElement, FormControlProps>(
   }
 )
 
-export interface FormDescriptionProps extends React.HTMLAttributes<HTMLParagraphElement> {}
+export type FormDescriptionProps = React.HTMLAttributes<HTMLParagraphElement>
 
 export function FormDescription({ className, ...props }: FormDescriptionProps) {
   const { formDescriptionId } = useFormField()
@@ -152,7 +152,7 @@ export function FormDescription({ className, ...props }: FormDescriptionProps) {
   )
 }
 
-export interface FormMessageProps extends React.HTMLAttributes<HTMLParagraphElement> {}
+export type FormMessageProps = React.HTMLAttributes<HTMLParagraphElement>
 
 export function FormMessage({ className, children, ...props }: FormMessageProps) {
   const { formMessageId, error } = useFormField()

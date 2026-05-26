@@ -4,13 +4,13 @@ import { X } from 'lucide-react'
 import { cn } from '../../lib/utils'
 import { getEmbossShadow, getEmbossBackground, getEmbossBorder } from '../../lib/tailwind-utils'
 
-export interface DialogProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root> {}
+export type DialogProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Root>
 
 export function Dialog({ ...props }: DialogProps) {
   return <DialogPrimitive.Root {...props} />
 }
 
-export interface DialogTriggerProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Trigger> {}
+export type DialogTriggerProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Trigger>
 
 export function DialogTrigger({ className, asChild, ...props }: DialogTriggerProps) {
   return <DialogPrimitive.Trigger asChild={asChild} className={asChild ? undefined : cn(
@@ -24,13 +24,13 @@ export function DialogTrigger({ className, asChild, ...props }: DialogTriggerPro
   )} {...props} />
 }
 
-export interface DialogPortalProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Portal> {}
+export type DialogPortalProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Portal>
 
 export function DialogPortal({ ...props }: DialogPortalProps) {
   return <DialogPrimitive.Portal {...props} />
 }
 
-export interface DialogOverlayProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay> {}
+export type DialogOverlayProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay>
 
 export const DialogOverlay = forwardRef<React.ElementRef<typeof DialogPrimitive.Overlay>, DialogOverlayProps>(
   function DialogOverlay({ className, ...props }, ref) {
@@ -94,7 +94,7 @@ export function DialogContent({ className, children, showClose = true, ...props 
   )
 }
 
-export interface DialogHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type DialogHeaderProps = React.HTMLAttributes<HTMLDivElement>
 
 export function DialogHeader({ className, ...props }: DialogHeaderProps) {
   return (
@@ -105,7 +105,7 @@ export function DialogHeader({ className, ...props }: DialogHeaderProps) {
   )
 }
 
-export interface DialogFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type DialogFooterProps = React.HTMLAttributes<HTMLDivElement>
 
 export function DialogFooter({ className, ...props }: DialogFooterProps) {
   return (
@@ -116,7 +116,7 @@ export function DialogFooter({ className, ...props }: DialogFooterProps) {
   )
 }
 
-export interface DialogTitleProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title> {}
+export type DialogTitleProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title>
 
 export function DialogTitle({ className, ...props }: DialogTitleProps) {
   return (
@@ -127,7 +127,7 @@ export function DialogTitle({ className, ...props }: DialogTitleProps) {
   )
 }
 
-export interface DialogDescriptionProps extends React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description> {}
+export type DialogDescriptionProps = React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description>
 
 export function DialogDescription({ className, ...props }: DialogDescriptionProps) {
   return (

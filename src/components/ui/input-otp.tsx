@@ -31,7 +31,7 @@ export const InputOTP = React.forwardRef<HTMLInputElement, InputOTPProps>(
   }
 )
 
-export interface InputOTPGroupProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type InputOTPGroupProps = React.HTMLAttributes<HTMLDivElement>
 
 export function InputOTPGroup({ className, ...props }: InputOTPGroupProps) {
   return <div className={cn('flex items-center', className)} {...props} />
@@ -71,7 +71,7 @@ export const InputOTPSlot = React.forwardRef<HTMLDivElement, InputOTPSlotProps>(
   }
 )
 
-export interface InputOTPSeparatorProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type InputOTPSeparatorProps = React.HTMLAttributes<HTMLDivElement>
 
 export function InputOTPSeparator({ ...props }: InputOTPSeparatorProps) {
   return (

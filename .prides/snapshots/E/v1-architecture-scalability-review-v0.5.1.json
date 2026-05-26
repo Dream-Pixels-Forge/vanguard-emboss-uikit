@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "phase": "E",
+  "label": "architecture-scalability-review-v0.5.1",
+  "data": {
+    "project": "vanguard-emboss-uikit v0.5.1",
+    "healthScore": "B+",
+    "componentCount": 64,
+    "barrelFileLines": 404,
+    "testFileLines": 2261,
+    "testFiles": 1,
+    "peerDeps": 47,
+    "concerns": [
+      "single barrel export at 404 lines",
+      "no subpath exports in package.json",
+      "monolithic 2261-line test file",
+      "inconsistent forwardRef usage across components",
+      "no hooks directory or pattern established",
+      "missing CSS variables for orange/green accent colors",
+      "duplicated color values (HEX in tailwind.config vs HSL in globals.css)",
+      "47 external peer dependencies"
+    ]
+  },
+  "created": "2026-05-26T03:26:21.758Z",
+  "immutable": true
+}

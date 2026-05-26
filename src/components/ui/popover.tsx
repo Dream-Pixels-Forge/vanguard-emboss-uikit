@@ -3,13 +3,13 @@ import * as PopoverPrimitive from '@radix-ui/react-popover'
 import { cn } from '../../lib/utils'
 import { getEmbossBackground, getEmbossShadow, getEmbossBorder } from '../../lib/tailwind-utils'
 
-export interface PopoverProps extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Root> {}
+export type PopoverProps = React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Root>
 
 export function Popover({ ...props }: PopoverProps) {
   return <PopoverPrimitive.Root {...props} />
 }
 
-export interface PopoverTriggerProps extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Trigger> {}
+export type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Trigger>
 
 export function PopoverTrigger({ className, asChild, ...props }: PopoverTriggerProps) {
   return (
@@ -28,7 +28,7 @@ export function PopoverTrigger({ className, asChild, ...props }: PopoverTriggerP
   )
 }
 
-export interface PopoverContentProps extends React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content> {}
+export type PopoverContentProps = React.ComponentPropsWithoutRef<typeof PopoverPrimitive.Content>
 
 export const PopoverContent = forwardRef<React.ElementRef<typeof PopoverPrimitive.Content>, PopoverContentProps>(
   function PopoverContent({ className, align = 'center', sideOffset = 4, ...props }, ref) {

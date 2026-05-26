@@ -166,31 +166,31 @@ export function Sidebar({
   )
 }
 
-export interface SidebarHeaderProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type SidebarHeaderProps = React.HTMLAttributes<HTMLDivElement>
 
 export function SidebarHeader({ className, ...props }: SidebarHeaderProps) {
   return <div className={cn('flex flex-col gap-2 p-4', className)} {...props} />
 }
 
-export interface SidebarContentProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type SidebarContentProps = React.HTMLAttributes<HTMLDivElement>
 
 export function SidebarContent({ className, ...props }: SidebarContentProps) {
   return <div className={cn('flex-1 overflow-y-auto px-4 py-2', className)} {...props} />
 }
 
-export interface SidebarFooterProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type SidebarFooterProps = React.HTMLAttributes<HTMLDivElement>
 
 export function SidebarFooter({ className, ...props }: SidebarFooterProps) {
   return <div className={cn('flex flex-col gap-2 p-4', className)} {...props} />
 }
 
-export interface SidebarGroupProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type SidebarGroupProps = React.HTMLAttributes<HTMLDivElement>
 
 export function SidebarGroup({ className, ...props }: SidebarGroupProps) {
   return <div className={cn('flex flex-col gap-1', className)} {...props} />
 }
 
-export interface SidebarGroupLabelProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type SidebarGroupLabelProps = React.HTMLAttributes<HTMLDivElement>
 
 export function SidebarGroupLabel({ className, ...props }: SidebarGroupLabelProps) {
   return (
@@ -204,19 +204,19 @@ export function SidebarGroupLabel({ className, ...props }: SidebarGroupLabelProp
   )
 }
 
-export interface SidebarGroupContentProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type SidebarGroupContentProps = React.HTMLAttributes<HTMLDivElement>
 
 export function SidebarGroupContent({ className, ...props }: SidebarGroupContentProps) {
   return <div className={cn('flex flex-col gap-0.5', className)} {...props} />
 }
 
-export interface SidebarMenuProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type SidebarMenuProps = React.HTMLAttributes<HTMLDivElement>
 
 export function SidebarMenu({ className, ...props }: SidebarMenuProps) {
   return <div className={cn('flex flex-col gap-0.5', className)} {...props} />
 }
 
-export interface SidebarMenuItemProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type SidebarMenuItemProps = React.HTMLAttributes<HTMLDivElement>
 
 export function SidebarMenuItem({ className, ...props }: SidebarMenuItemProps) {
   return <div className={cn('group/menu-item relative', className)} {...props} />
@@ -270,13 +270,13 @@ export function SidebarMenuButton({
   return button
 }
 
-export interface SidebarSeparatorProps extends React.HTMLAttributes<HTMLHRElement> {}
+export type SidebarSeparatorProps = React.HTMLAttributes<HTMLHRElement>
 
 export function SidebarSeparator({ className, ...props }: SidebarSeparatorProps) {
   return <Separator className={cn('my-2', className)} {...props} />
 }
 
-export interface SidebarTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+export type SidebarTriggerProps = React.ButtonHTMLAttributes<HTMLButtonElement>
 
 export function SidebarTrigger({ className, ...props }: SidebarTriggerProps) {
   const { toggleSidebar, open } = useSidebar()
@@ -298,7 +298,7 @@ export function SidebarTrigger({ className, ...props }: SidebarTriggerProps) {
   )
 }
 
-export interface SidebarInsetProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type SidebarInsetProps = React.HTMLAttributes<HTMLDivElement>
 
 export function SidebarInset({ className, ...props }: SidebarInsetProps) {
   return (
@@ -306,7 +306,7 @@ export function SidebarInset({ className, ...props }: SidebarInsetProps) {
   )
 }
 
-export interface SidebarRailProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type SidebarRailProps = React.HTMLAttributes<HTMLDivElement>
 
 export function SidebarRail({ className, ...props }: SidebarRailProps) {
   const { toggleSidebar } = useSidebar()

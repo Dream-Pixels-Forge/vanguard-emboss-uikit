@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "phase": "D",
+  "label": "Deploy verification v0.5.1",
+  "data": {
+    "version": "0.5.1",
+    "package_checks": "PASS",
+    "size_limit": "3.2 KB brotlied (limit: 40 KB)",
+    "built_output": "PASS - ESM 123KB, CJS 88KB, 133 .d.ts files, style.css",
+    "readme": "PASS",
+    "npm_dry_run": "PASS",
+    "externals": "PASS - 47 packages externalized",
+    "verdict": "DEPLOY READY"
+  },
+  "created": "2026-05-26T03:07:57.154Z",
+  "immutable": true
+}

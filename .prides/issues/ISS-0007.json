@@ -1,0 +1,18 @@
+{
+  "id": "ISS-0007",
+  "title": "CRITICAL: ThemeProvider not exported from library entry point",
+  "description": "C3: The README tells users to `import { Button, Card, ThemeProvider } from 'vanguard-emboss-uikit'` but ThemeProvider lives in src/providers/theme-provider.tsx and is NOT exported from src/components/ui/index.ts — the library's sole entry point. Every new user following README gets a TypeScript/build error immediately.",
+  "phase": "I",
+  "agent": "review-critic",
+  "severity": "critical",
+  "status": "closed",
+  "blocking": true,
+  "assignee": null,
+  "tags": [],
+  "created": "2026-05-26T02:46:26.973Z",
+  "updated": "2026-05-26T02:58:05.994Z",
+  "closedAt": "2026-05-26T02:58:05.994Z",
+  "closedBy": "prides-coordinator",
+  "resolution": "Added ThemeProvider and useTheme exports to index.ts with proper import path",
+  "comments": []
+}
