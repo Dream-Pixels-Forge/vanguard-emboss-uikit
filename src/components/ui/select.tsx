@@ -4,11 +4,9 @@ import { Check, ChevronDown, ChevronUp } from 'lucide-react'
 import { cn } from '../../lib/utils'
 import { getEmbossShadow, getEmbossBackground } from '../../lib/tailwind-utils'
 
-export interface SelectProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root> {
-  error?: boolean
-}
+export interface SelectProps extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root> {}
 
-export function Select({ error, ...props }: SelectProps) {
+export function Select({ ...props }: SelectProps) {
   return <SelectPrimitive.Root {...props} />
 }
 

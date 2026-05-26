@@ -76,7 +76,7 @@ export function SidebarProvider({
   React.useEffect(() => {
     try {
       document.cookie = `${SIDEBAR_COOKIE_NAME}=${open}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
-    } catch {}
+    } catch { /* cookie write may fail silently */ }
   }, [open])
 
   const toggleSidebar = React.useCallback(() => {

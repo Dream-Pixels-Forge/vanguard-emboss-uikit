@@ -49,6 +49,8 @@ export function InputGroupAddon({
         'inline-flex items-center px-3 text-sm text-muted-foreground',
         'bg-emboss-bg-light dark:bg-emboss-bg-dark',
         'border border-emboss-shadow-light/30 dark:border-emboss-shadow-dark/30',
+        side === 'left' && 'rounded-l-md border-r-0',
+        side === 'right' && 'rounded-r-md border-l-0',
         className
       )}
       {...props}

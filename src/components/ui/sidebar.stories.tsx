@@ -28,7 +28,7 @@ type Story = StoryObj<typeof SidebarProvider>
 export const Default: Story = {
   render: () => (
     <SidebarProvider defaultOpen>
-      <Group direction="horizontal" className="flex w-full">
+      <Group orientation="horizontal" className="flex w-full">
         <Sidebar>
           <SidebarHeader>
             <div className="flex items-center gap-2 px-2">

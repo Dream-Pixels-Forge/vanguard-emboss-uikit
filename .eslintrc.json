@@ -20,5 +20,13 @@
   ],
   "rules": {
     "react-refresh/only-export-components": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.stories.tsx"],
+      "rules": {
+        "storybook/no-renderer-packages": "off"
+      }
+    }
+  ]
 }

@@ -38,23 +38,31 @@ export function Toggle({ className, size = 'md', ...props }: ToggleProps) {
 
 // ─── Toggle Group ───
 
+type ToggleGroupContextValue = {
+  size: 'sm' | 'md' | 'lg'
+}
+
+const ToggleGroupContext = React.createContext<ToggleGroupContextValue>({ size: 'md' })
+
 export type ToggleGroupProps = React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Root> & {
   size?: 'sm' | 'md' | 'lg'
 }
 
 export function ToggleGroup({ className, size = 'md', children, ...props }: ToggleGroupProps) {
   return (
-    <ToggleGroupPrimitive.Root
-      className={cn(
-        getEmbossBackground(),
-        getEmbossShadow('in', 'small'),
-        'inline-flex items-center justify-center rounded-lg gap-1 p-1',
-        className
-      )}
-      {...props}
-    >
-      {children}
-    </ToggleGroupPrimitive.Root>
+    <ToggleGroupContext.Provider value={{ size }}>
+      <ToggleGroupPrimitive.Root
+        className={cn(
+          getEmbossBackground(),
+          getEmbossShadow('in', 'small'),
+          'inline-flex items-center justify-center rounded-lg gap-1 p-1',
+          className
+        )}
+        {...props}
+      >
+        {children}
+      </ToggleGroupPrimitive.Root>
+    </ToggleGroupContext.Provider>
   )
 }
 
@@ -62,12 +70,14 @@ export type ToggleGroupItemProps = React.ComponentPropsWithoutRef<typeof ToggleG
   size?: 'sm' | 'md' | 'lg'
 }
 
-export function ToggleGroupItem({ className, size = 'md', children, ...props }: ToggleGroupItemProps) {
+export function ToggleGroupItem({ className, size: sizeProp, children, ...props }: ToggleGroupItemProps) {
+  const { size } = React.useContext(ToggleGroupContext)
+  const activeSize = sizeProp ?? size
   return (
     <ToggleGroupPrimitive.Item
       className={cn(
         getEmbossBackground(),
-        toggleSizeMap[size],
+        toggleSizeMap[activeSize],
         'inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium',
         'ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring',
         'disabled:pointer-events-none disabled:opacity-50',

@@ -3,7 +3,7 @@ import { Drawer as DrawerPrimitive } from 'vaul'
 import { cn } from '../../lib/utils'
 import { getEmbossBackground, getEmbossBorder } from '../../lib/tailwind-utils'
 
-/* Drawer root — uses as any cast because vaul's DialogProps is a
+/* Drawer root — uses cast through unknown because vaul's DialogProps is a
    discriminated union (WithFadeFromProps | WithoutFadeFromProps) that
    makes strict prop typing impractical for a pass-through wrapper. */
 export interface DrawerProps {
@@ -26,8 +26,10 @@ export interface DrawerProps {
   scrollLockTimeout?: number
 }
 
+type VaulRootProps = React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Root>
+
 export function Drawer(props: DrawerProps) {
-  return <DrawerPrimitive.Root {...(props as any)} />
+  return <DrawerPrimitive.Root {...(props as unknown as VaulRootProps)} />
 }
 
 export interface DrawerTriggerProps extends React.HTMLAttributes<HTMLButtonElement> {
