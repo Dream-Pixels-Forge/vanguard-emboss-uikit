@@ -26,30 +26,34 @@ export interface SelectTriggerProps extends React.ComponentPropsWithoutRef<typeo
   error?: boolean
 }
 
-export function SelectTrigger({ className, error, children, ...props }: SelectTriggerProps) {
-  return (
-    <SelectPrimitive.Trigger
-      aria-invalid={error ? true : undefined}
-      className={cn(
-        getEmbossBackground(),
-        getEmbossShadow('in', 'small'),
-        'flex h-10 w-full items-center justify-between rounded-lg px-3 py-2',
-        'text-sm text-foreground',
-        'border border-transparent',
-        'focus:outline-none focus:ring-2 focus:ring-emboss-accent-blue',
-        'disabled:cursor-not-allowed disabled:opacity-50',
-        error && 'ring-2 ring-red-500',
-        className
-      )}
-      {...props}
-    >
-      {children}
-      <SelectPrimitive.Icon asChild>
-        <ChevronDown className="h-4 w-4 opacity-50" />
-      </SelectPrimitive.Icon>
-    </SelectPrimitive.Trigger>
-  )
-}
+export const SelectTrigger = React.forwardRef<HTMLButtonElement, SelectTriggerProps>(
+  function SelectTrigger({ className, error, children, ...props }, ref) {
+    return (
+      <SelectPrimitive.Trigger
+        ref={ref}
+        aria-invalid={error ? true : undefined}
+        className={cn(
+          getEmbossBackground(),
+          getEmbossShadow('in', 'small'),
+          'flex h-10 w-full items-center justify-between rounded-lg px-3 py-2',
+          'text-sm text-foreground',
+          'border border-transparent',
+          'focus:outline-none focus:ring-2 focus:ring-emboss-accent-blue',
+          'disabled:cursor-not-allowed disabled:opacity-50',
+          error && 'ring-2 ring-red-500',
+          className
+        )}
+        {...props}
+      >
+        {children}
+        <SelectPrimitive.Icon asChild>
+          <ChevronDown className="h-4 w-4 opacity-50" />
+        </SelectPrimitive.Icon>
+      </SelectPrimitive.Trigger>
+    )
+  }
+)
+SelectTrigger.displayName = 'SelectTrigger'
 
 export type SelectContentProps = React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content>
 

@@ -7,16 +7,18 @@ export interface SliderProps extends React.ComponentPropsWithoutRef<typeof Slide
   error?: boolean
 }
 
-export function Slider({ className, error, ...props }: SliderProps) {
-  return (
-    <SliderPrimitive.Root
-      className={cn(
-        'relative flex w-full touch-none select-none items-center',
-        error && 'space-y-1',
-        className
-      )}
-      {...props}
-    >
+export const Slider = React.forwardRef<HTMLSpanElement, SliderProps>(
+  function Slider({ className, error, ...props }, ref) {
+    return (
+      <SliderPrimitive.Root
+        ref={ref}
+        className={cn(
+          'relative flex w-full touch-none select-none items-center',
+          error && 'space-y-1',
+          className
+        )}
+        {...props}
+      >
       <SliderPrimitive.Track
         className={cn(
           getEmbossBackground(),
@@ -37,5 +39,7 @@ export function Slider({ className, error, ...props }: SliderProps) {
         )}
       />
     </SliderPrimitive.Root>
-  )
-}
+    )
+  }
+)
+Slider.displayName = 'Slider'

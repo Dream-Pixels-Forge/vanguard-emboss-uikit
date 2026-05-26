@@ -1,0 +1,49 @@
+/* ─── Vanguard Emboss Animation Utility Classes ───
+ *
+ * Import this file for ready-to-use animation utility classes:
+ *
+ *   import 'vanguard-emboss-uikit/presets'
+ *
+ * These classes use the animation CSS custom properties defined
+ * in globals.css to create consistent, preset-driven animations.
+ * ================================================================ */
+
+@layer utilities {
+  .anim-fade-in {
+    animation: anim-keyframe-fade-in var(--anim-duration-normal) var(--anim-ease-out) forwards;
+  }
+  .anim-fade-out {
+    animation: anim-keyframe-fade-out var(--anim-duration-normal) var(--anim-ease-in) forwards;
+  }
+  .anim-scale-in {
+    animation: anim-keyframe-scale-in var(--anim-duration-normal) var(--anim-ease-spring) forwards;
+  }
+  .anim-slide-up-in {
+    animation: anim-keyframe-slide-up var(--anim-duration-normal) var(--anim-ease-out) forwards;
+  }
+  .anim-slide-down-in {
+    animation: anim-keyframe-slide-down var(--anim-duration-normal) var(--anim-ease-out) forwards;
+  }
+}
+
+/* Keyframes for utility classes */
+@keyframes anim-keyframe-fade-in {
+  from { opacity: var(--anim-opacity-enter); }
+  to { opacity: 1; }
+}
+@keyframes anim-keyframe-fade-out {
+  from { opacity: 1; }
+  to { opacity: var(--anim-opacity-exit); }
+}
+@keyframes anim-keyframe-scale-in {
+  from { opacity: var(--anim-opacity-enter); transform: var(--anim-scale-enter); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes anim-keyframe-slide-up {
+  from { opacity: var(--anim-opacity-enter); transform: var(--anim-slide-up); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes anim-keyframe-slide-down {
+  from { opacity: var(--anim-opacity-enter); transform: var(--anim-slide-down); }
+  to { opacity: 1; transform: translateY(0); }
+}

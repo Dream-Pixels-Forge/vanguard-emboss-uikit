@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "phase": "S",
+  "label": "Security audit v0.5.1",
+  "data": {
+    "verdict": "SAFE",
+    "runtime_vulnerabilities": "0",
+    "xss_surface": "NONE - no dangerouslySetInnerHTML, no eval",
+    "secrets": "NONE found",
+    "license_compliance": "ALL PASS - MIT compatible",
+    "dependency_cves": "2 moderate (dev-only Vite + esbuild, not exploitable at runtime)",
+    "production_deps": "40 packages, all clean",
+    "code_injection": "NONE - React JSX auto-escape throughout",
+    "recommendations": "Add .env to .gitignore, consider removing package-lock.json"
+  },
+  "created": "2026-05-26T03:35:16.410Z",
+  "immutable": true
+}

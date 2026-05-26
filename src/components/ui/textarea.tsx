@@ -7,24 +7,28 @@ export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextArea
   resizable?: boolean
 }
 
-export function Textarea({ className, error, resizable = false, ...props }: TextareaProps) {
-  return (
-    <textarea
-      aria-invalid={error ? true : undefined}
-      className={cn(
-        getEmbossBackground(),
-        getEmbossShadow('in', 'small'),
-        'flex min-h-[80px] w-full rounded-lg px-3 py-2',
-        'text-sm text-foreground',
-        'border border-transparent',
-        'placeholder:text-muted-foreground',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emboss-accent-blue',
-        'disabled:cursor-not-allowed disabled:opacity-50',
-        !resizable && 'resize-none',
-        error && 'ring-2 ring-red-500',
-        className
-      )}
-      {...props}
-    />
-  )
-}
+export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+  function Textarea({ className, error, resizable = false, ...props }, ref) {
+    return (
+      <textarea
+        ref={ref}
+        aria-invalid={error ? true : undefined}
+        className={cn(
+          getEmbossBackground(),
+          getEmbossShadow('in', 'small'),
+          'flex min-h-[80px] w-full rounded-lg px-3 py-2',
+          'text-sm text-foreground',
+          'border border-transparent',
+          'placeholder:text-muted-foreground',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emboss-accent-blue',
+          'disabled:cursor-not-allowed disabled:opacity-50',
+          !resizable && 'resize-none',
+          error && 'ring-2 ring-red-500',
+          className
+        )}
+        {...props}
+      />
+    )
+  }
+)
+Textarea.displayName = 'Textarea'

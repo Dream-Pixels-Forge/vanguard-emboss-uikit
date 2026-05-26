@@ -121,3 +121,54 @@
     will-change: transform;
   }
 }
+
+/* ============================
+   Animation Presets
+   Use these CSS custom properties to create consistent animations
+   across your application without remembering animation syntax.
+   ============================ */
+
+@layer base {
+  :root {
+    /* Duration */
+    --anim-duration-instant: 0ms;
+    --anim-duration-fast: 150ms;
+    --anim-duration-normal: 250ms;
+    --anim-duration-slow: 400ms;
+    --anim-duration-slower: 700ms;
+
+    /* Easing Curves */
+    --anim-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    --anim-ease-in: cubic-bezier(0.4, 0, 0.68, 0.06);
+    --anim-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    --anim-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --anim-ease-bounce: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+    --anim-ease-emphasis: cubic-bezier(0.22, 1, 0.36, 1);
+    --anim-ease-enter: cubic-bezier(0, 0, 0.2, 1);
+    --anim-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+    /* Scale Presets */
+    --anim-scale-enter: scale(0.95);
+    --anim-scale-exit: scale(0.95);
+    --anim-scale-active: scale(0.98);
+
+    /* Slide Presets (for directional entrances/exits) */
+    --anim-slide-up: translateY(8px);
+    --anim-slide-down: translateY(-8px);
+    --anim-slide-left: translateX(8px);
+    --anim-slide-right: translateX(-8px);
+
+    /* Combined Transition Shorthand */
+    --anim-transition-fast: all var(--anim-duration-fast) var(--anim-ease-out);
+    --anim-transition-normal: all var(--anim-duration-normal) var(--anim-ease-out);
+    --anim-transition-slow: all var(--anim-duration-slow) var(--anim-ease-out);
+    --anim-transition-spring: all var(--anim-duration-normal) var(--anim-ease-spring);
+    --anim-transition-bounce: all var(--anim-duration-slow) var(--anim-ease-bounce);
+
+    /* Opacity Presets */
+    --anim-opacity-enter: 0;
+    --anim-opacity-exit: 0;
+    --anim-opacity-dim: 0.6;
+    --anim-opacity-fade: 0.3;
+  }
+}

@@ -32,7 +32,7 @@
       "state": "closed",
       "failures": 0,
       "lastFailure": null,
-      "lastSuccess": 1779766136768
+      "lastSuccess": 1779766681494
     },
     "review-inspector": {
       "state": "closed",
@@ -45,6 +45,12 @@
       "failures": 0,
       "lastFailure": null,
       "lastSuccess": 1779765976121
+    },
+    "implement-coder": {
+      "state": "closed",
+      "failures": 0,
+      "lastFailure": null,
+      "lastSuccess": 1779767690239
     }
   },
   "gateResults": {
@@ -95,7 +101,19 @@
       "failures": [],
       "blockingIssues": [],
       "timestamp": "2026-05-26T03:28:47.227Z"
+    },
+    "S→DONE": {
+      "gate": "S→DONE",
+      "blocked": false,
+      "passes": [
+        "no_vulns",
+        "compliance_met",
+        "security_signed_off"
+      ],
+      "failures": [],
+      "blockingIssues": [],
+      "timestamp": "2026-05-26T03:37:47.000Z"
     }
   },
-  "version": 24
+  "version": 28
 }

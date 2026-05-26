@@ -8,28 +8,32 @@ export interface RadioProps extends React.ComponentPropsWithoutRef<typeof RadioG
   error?: boolean
 }
 
-export function Radio({ className, error, ...props }: RadioProps) {
-  return (
-    <RadioGroupPrimitive.Item
-      aria-invalid={error ? true : undefined}
-      className={cn(
-        getEmbossBackground(),
-        getEmbossShadow('in', 'small'),
-        'aspect-square h-5 w-5 rounded-full',
-        'border border-emboss-shadow-light/30 dark:border-emboss-shadow-dark/30',
-        'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emboss-accent-blue',
-        'disabled:cursor-not-allowed disabled:opacity-50',
-        error && 'ring-2 ring-red-500',
-        className
-      )}
-      {...props}
-    >
-      <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
-        <Circle className="h-2.5 w-2.5 fill-emboss-accent-blue" />
-      </RadioGroupPrimitive.Indicator>
-    </RadioGroupPrimitive.Item>
-  )
-}
+export const Radio = React.forwardRef<HTMLButtonElement, RadioProps>(
+  function Radio({ className, error, ...props }, ref) {
+    return (
+      <RadioGroupPrimitive.Item
+        ref={ref}
+        aria-invalid={error ? true : undefined}
+        className={cn(
+          getEmbossBackground(),
+          getEmbossShadow('in', 'small'),
+          'aspect-square h-5 w-5 rounded-full',
+          'border border-emboss-shadow-light/30 dark:border-emboss-shadow-dark/30',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emboss-accent-blue',
+          'disabled:cursor-not-allowed disabled:opacity-50',
+          error && 'ring-2 ring-red-500',
+          className
+        )}
+        {...props}
+      >
+        <RadioGroupPrimitive.Indicator className="flex items-center justify-center">
+          <Circle className="h-2.5 w-2.5 fill-emboss-accent-blue" />
+        </RadioGroupPrimitive.Indicator>
+      </RadioGroupPrimitive.Item>
+    )
+  }
+)
+Radio.displayName = 'Radio'
 
 export interface RadioGroupProps extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> {
   error?: boolean
