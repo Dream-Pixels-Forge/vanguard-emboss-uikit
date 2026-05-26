@@ -1,6 +1,5 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
 
 /*
  * ─── Vanguard Emboss Design Tokens ───
@@ -29,6 +28,65 @@
  * No !important needed — your :root will have higher specificity than
  * the library's stylesheet.
  */
+
+/* ─── Tailwind v4 Theme Tokens ───
+ * Migrated from tailwind.config.js theme.extend.
+ */
+@theme {
+  /* Emboss Color Tokens */
+  --color-emboss-bg-light: #eceef1;
+  --color-emboss-highlight-light: #ffffff;
+  --color-emboss-shadow-light: #cbd2db;
+  --color-emboss-bg-dark: #282e38;
+  --color-emboss-highlight-dark: #353d4a;
+  --color-emboss-shadow-dark: #13171c;
+
+  /* Accent Colors (via CSS variables for consumer overrides) */
+  --color-emboss-accent-blue: hsl(var(--emboss-accent-blue));
+  --color-emboss-accent-orange: hsl(var(--emboss-accent-orange));
+  --color-emboss-accent-green: hsl(var(--emboss-accent-green));
+
+  /* Shadcn/ui Semantic Colors (referenced from CSS variables) */
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  /* Border Radius */
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+
+  /* Light Theme (Clay) Emboss Shadows */
+  --shadow-emboss-out-light: 9px 9px 16px rgb(203, 210, 219), -9px -9px 16px rgb(255, 255, 255);
+  --shadow-emboss-out-light-sm: 4px 4px 8px rgb(203, 210, 219), -4px -4px 8px rgb(255, 255, 255);
+  --shadow-emboss-in-light: inset 6px 6px 10px rgb(203, 210, 219), inset -6px -6px 10px rgb(255, 255, 255);
+  --shadow-emboss-in-light-sm: inset 3px 3px 6px rgb(203, 210, 219), inset -3px -3px 6px rgb(255, 255, 255);
+
+  /* Dark Theme (Slate) Emboss Shadows */
+  --shadow-emboss-out-dark: 9px 9px 16px rgb(19, 23, 28), -9px -9px 16px rgb(53, 61, 74);
+  --shadow-emboss-out-dark-sm: 4px 4px 8px rgb(19, 23, 28), -4px -4px 8px rgb(53, 61, 74);
+  --shadow-emboss-in-dark: inset 6px 6px 10px rgb(19, 23, 28), inset -6px -6px 10px rgb(53, 61, 74);
+  --shadow-emboss-in-dark-sm: inset 3px 3px 6px rgb(19, 23, 28), inset -3px -3px 6px rgb(53, 61, 74);
+}
+
+/* Enable class-based dark mode (equivalent to darkMode: 'class' in v3) */
+@variant dark (&:is(.dark *));
 
 @layer base {
   :root {

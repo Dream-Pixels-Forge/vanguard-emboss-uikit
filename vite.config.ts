@@ -1,10 +1,12 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
 import dts from 'vite-plugin-dts'
 import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     react(),
     dts({
       include: ['src'],
@@ -48,7 +50,6 @@ export default defineConfig({
         '@radix-ui/react-avatar',
         '@radix-ui/react-toggle-group',
         '@radix-ui/react-collapsible',
-        'sonner',
         '@radix-ui/react-alert-dialog',
         '@radix-ui/react-toggle',
         '@radix-ui/react-hover-card',
@@ -67,7 +68,7 @@ export default defineConfig({
         '@radix-ui/react-context-menu',
         'react-hook-form',
         '@hookform/resolvers',
-        'tailwindcss-animate',
+        'tw-animate-css',
       ],
     },
     cssCodeSplit: false,

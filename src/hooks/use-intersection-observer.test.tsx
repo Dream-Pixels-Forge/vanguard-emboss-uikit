@@ -14,23 +14,25 @@ interface MockIOInstance {
 describe('useIntersectionObserver', () => {
   let instances: MockIOInstance[]
   let originalIO: typeof IntersectionObserver | undefined
+  let mockCalls: Array<{ callback: IOCallback; options?: IntersectionObserverInit }>
 
   beforeEach(() => {
     vi.restoreAllMocks()
     instances = []
+    mockCalls = []
 
-    const MockIntersectionObserver = vi.fn().mockImplementation(
-      (callback: IOCallback) => {
-        const instance: MockIOInstance = {
-          callback,
-          observe: vi.fn(),
-          unobserve: vi.fn(),
-          disconnect: vi.fn(),
-        }
-        instances.push(instance)
-        return instance
+    class MockIntersectionObserver {
+      callback: IOCallback
+      observe = vi.fn()
+      unobserve = vi.fn()
+      disconnect = vi.fn()
+
+      constructor(callback: IOCallback, options?: IntersectionObserverInit) {
+        this.callback = callback
+        mockCalls.push({ callback, options })
+        instances.push(this)
       }
-    )
+    }
 
     originalIO = globalThis.IntersectionObserver
     Object.defineProperty(globalThis, 'IntersectionObserver', {
@@ -135,10 +137,8 @@ describe('useIntersectionObserver', () => {
 
     render(<TestComponent />)
 
-    expect(globalThis.IntersectionObserver).toHaveBeenCalledWith(
-      expect.any(Function),
-      options
-    )
+    expect(mockCalls.length).toBeGreaterThan(0)
+    expect(mockCalls[mockCalls.length - 1].options).toEqual(options)
   })
 
   it('works without any options (uses defaults)', () => {
@@ -149,10 +149,8 @@ describe('useIntersectionObserver', () => {
 
     render(<TestComponent />)
 
-    expect(globalThis.IntersectionObserver).toHaveBeenCalledWith(
-      expect.any(Function),
-      undefined
-    )
+    expect(mockCalls.length).toBeGreaterThan(0)
+    expect(mockCalls[mockCalls.length - 1].options).toBeUndefined()
   })
 
   it('handles SSR safely when IntersectionObserver is not defined', () => {

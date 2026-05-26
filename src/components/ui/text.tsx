@@ -15,7 +15,7 @@ export interface TextProps extends React.HTMLAttributes<HTMLElement> {
   muted?: boolean
   accent?: 'blue' | 'orange' | 'green'
   className?: string
-  as?: keyof JSX.IntrinsicElements
+  as?: keyof React.JSX.IntrinsicElements
 }
 
 interface VariantConfig {

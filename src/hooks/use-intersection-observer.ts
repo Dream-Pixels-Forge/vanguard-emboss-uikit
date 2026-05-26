@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from 'react'
 function useIntersectionObserver<T extends HTMLElement = HTMLElement>(
   options?: IntersectionObserverInit
 ): {
-  ref: React.RefObject<T>
+  ref: React.RefObject<T | null>
   entry: IntersectionObserverEntry | null
   isIntersecting: boolean
   intersectionRatio: number

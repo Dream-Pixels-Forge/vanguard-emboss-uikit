@@ -3,3 +3,23 @@ dist/
 *.tsbuildinfo
 vite.config.d.ts
 .DS_Store
+package-lock.json
+
+# PRIDES artifacts
+.prides/
+
+# Test coverage
+coverage/
+
+# Vite cache
+.vite/
+
+# Storybook build output
+storybook-static/
+
+# Local npm tarballs
+*.tgz
+
+# Screenshots
+*.png
+

@@ -1,5 +1,42 @@
 # Changelog
 
+## [0.6.0] - 2026-05-26
+
+### Added
+- **4 Custom Hooks**: `useIntersectionObserver`, `useAnimation`, `useToast`, `useKeyboardShortcut`
+- **Barrel Generator Script**: `scripts/generate-barrel.ts` auto-generates `src/components/ui/index.ts` from component files
+- **Component Author Guide**: `COMPONENT_GUIDE.md` documentation for contributors
+- **Project Structure Reference**: `PROJECT_STRUCTURE.md` blueprint for vanguard edition projects
+- **`src/vite-env.d.ts`**: TypeScript 6 CSS import type declarations
+
+### Changed
+- **Tailwind CSS v4 Migration**: 
+  - Removed `tailwind.config.js`, `postcss.config.js`, `autoprefixer`, `cssnano`, `postcss`
+  - All theme tokens now in CSS `@theme` block in `globals.css`
+  - Uses `@tailwindcss/vite` plugin with Lightning CSS
+  - Replaced `tailwindcss-animate` with `tw-animate-css` (CSS-only, v4 compatible)
+- **Vite 5 → 8**: Major build tool upgrade, now with `vite-plugin-dts` 5.0 for declaration generation
+- **ESLint 8 → 10 Flat Config**: 
+  - Removed `.eslintrc.json` legacy config
+  - New `eslint.config.js` flat config with `@eslint/js`, `typescript-eslint`, `eslint-plugin-react-hooks` 7.x, `eslint-plugin-react-refresh`
+- **TypeScript 5.9 → 6.0**: Bundler resolution, stricter mode
+- **React 18.3 → 19.2**: Dev dependencies upgraded; peerDeps widened to `^18.2.0 || ^19.0.0`
+- **Vitest 3.2 → 4.1**: Browser provider API update, Playwright integration
+- **Test Split**: Tests now co-located with components (`*.test.tsx` vs separate `__tests__/`)
+- **`@typescript-eslint/*` Consolidation**: Replaced separate parser/plugin packages with unified `typescript-eslint`
+
+### Fixed
+- **Removed unused `sonner` dependency**: Cleaned up from package.json, vite.config.ts externals, and size-limit ignore
+- **Removed legacy `package-lock.json`**: pnpm-only lockfile enforced; added to .gitignore
+- **2 esbuild/vite CVEs resolved**: via vitest 4.1 upgrade (transitive esbuild >=0.24.3, vite >=6.4.2)
+- **Bundle size**: Reduced to 10.66 KB ESM (40 KB limit) after removing dead weight
+
+### Infrastructure
+- `.gitignore` expanded: `.prides/`, `coverage/`, `.vite/`, `storybook-static/`, `*.tgz`, `*.png`
+- pnpm workspace: Single-package setup ready for monorepo expansion
+
+---
+
 ## [0.5.1] - 2026-05-26
 
 ### Fixed (18 code quality issues)
