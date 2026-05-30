@@ -23,14 +23,24 @@ const sizeMap = {
   lg: { knob: 'w-24 h-24', indicator: 'h-7 w-1', text: 'text-base', label: 'text-sm' },
 }
 
-function toDegrees(value: number, min: number, max: number): number {
-  const ratio = (value - min) / (max - min)
-  return -135 + ratio * 270
+// atan2 angle (clockwise from right) → ratio 0-1 for a 270° sweep
+// Dead zone at the bottom (45°–135° and -45°–-135° physical sides)
+function angleToRatio(angle: number): number {
+  // Clamp to sweep boundaries
+  if (angle >= 45 && angle <= 180) angle = 45
+  else if (angle >= -180 && angle < -135) angle = -135
+  // atan2(135°) = min, atan2(-135°) = max
+  return (135 - angle) / 270
 }
 
-function fromDegrees(degrees: number, min: number, max: number, step: number): number {
-  const ratio = (degrees + 135) / 270
-  const raw = min + ratio * (max - min)
+function toDegrees(value: number, min: number, max: number): number {
+  const ratio = (value - min) / (max - min)
+  return 135 - ratio * 270
+}
+
+function fromRatio(ratio: number, min: number, max: number, step: number): number {
+  const clamped = Math.min(1, Math.max(0, ratio))
+  const raw = min + clamped * (max - min)
   const stepped = Math.round(raw / step) * step
   return Math.min(max, Math.max(min, stepped))
 }
@@ -63,24 +73,41 @@ export function Knob({
   useEffect(() => {
     if (!isDragging || !knobRef.current) return
     const knob = knobRef.current
-    const handleMouseMove = (e: MouseEvent) => {
+
+    const handleMove = (clientX: number, clientY: number) => {
       const rect = knob.getBoundingClientRect()
       const cx = rect.left + rect.width / 2
       const cy = rect.top + rect.height / 2
-      const angle = Math.atan2(e.clientY - cy, e.clientX - cx) * (180 / Math.PI)
-      const degrees = Math.max(-135, Math.min(135, angle))
-      setValue(fromDegrees(degrees, min, max, step))
+      const angle = Math.atan2(clientY - cy, clientX - cx) * (180 / Math.PI)
+      const ratio = angleToRatio(angle)
+      setValue(fromRatio(ratio, min, max, step))
     }
-    const handleMouseUp = () => setIsDragging(false)
+
+    const handleMouseMove = (e: MouseEvent) => {
+      e.preventDefault()
+      handleMove(e.clientX, e.clientY)
+    }
+
+    const handleTouchMove = (e: TouchEvent) => {
+      e.preventDefault()
+      handleMove(e.touches[0].clientX, e.touches[0].clientY)
+    }
+
+    const handleEnd = () => setIsDragging(false)
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') setIsDragging(false)
     }
+
     window.addEventListener('mousemove', handleMouseMove)
-    window.addEventListener('mouseup', handleMouseUp)
+    window.addEventListener('mouseup', handleEnd)
+    window.addEventListener('touchmove', handleTouchMove, { passive: false })
+    window.addEventListener('touchend', handleEnd)
     window.addEventListener('keydown', handleKeyDown)
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)
-      window.removeEventListener('mouseup', handleMouseUp)
+      window.removeEventListener('mouseup', handleEnd)
+      window.removeEventListener('touchmove', handleTouchMove)
+      window.removeEventListener('touchend', handleEnd)
       window.removeEventListener('keydown', handleKeyDown)
     }
   }, [isDragging, min, max, step, setValue])
@@ -101,6 +128,7 @@ export function Knob({
         aria-valuenow={value}
         aria-disabled={disabled}
         onMouseDown={() => { if (!disabled) setIsDragging(true) }}
+        onTouchStart={() => { if (!disabled) setIsDragging(true) }}
         onKeyDown={(e) => {
           if (disabled) return
           if (e.key === 'ArrowUp' || e.key === 'ArrowRight') {
