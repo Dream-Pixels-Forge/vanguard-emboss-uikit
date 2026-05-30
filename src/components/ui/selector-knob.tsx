@@ -1,21 +1,19 @@
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import { cn } from '../../lib/utils'
 import { getEmbossShadow, getEmbossBackground } from '../../lib/tailwind-utils'
 
 export interface SelectorKnobItem {
-  /** Display label */
+  /** Display label (used as fallback when no icon) */
   label: string
-  /** Icon element (rendered at ~20×20) */
-  icon?: React.ReactNode
+  /** Icon element — recommended ~20×20 */
+  icon?: ReactNode
   /** Unique value */
   value: string
 }
 
 export interface SelectorKnobProps {
   items: SelectorKnobItem[]
-  /** Controlled selected value */
   value?: string
-  /** Uncontrolled default */
   defaultValue?: string
   onChange?: (value: string) => void
   size?: 'sm' | 'md' | 'lg'
@@ -25,9 +23,9 @@ export interface SelectorKnobProps {
 }
 
 const sizeMap = {
-  sm: { outer: 80, cap: 56, indicatorH: 10, indicatorW: 2, icon: 16 },
-  md: { outer: 112, cap: 76, indicatorH: 14, indicatorW: 3, icon: 20 },
-  lg: { outer: 160, cap: 110, indicatorH: 18, indicatorW: 3, icon: 24 },
+  sm: { outer: 72, cap: 48, indicator: { w: 2, h: 10, top: 0.12 }, icon: 14 },
+  md: { outer: 100, cap: 64, indicator: { w: 2, h: 16, top: 0.1 }, icon: 18 },
+  lg: { outer: 140, cap: 92, indicator: { w: 3, h: 22, top: 0.1 }, icon: 22 },
 }
 
 const N = 6
@@ -50,17 +48,17 @@ export function SelectorKnob({
 
   const selectedIdx = Math.max(0, items.findIndex(i => i.value === currentValue))
 
-  // Dynamic HSL accent — mirrors the CSS reference's angle → color mapping
+  // HSL accent from selection angle (mirrors CSS --angle → color)
   const angle = selectedIdx * (360 / N)
   const hue = ((angle % 360) + 360) % 360
   const accent = `hsl(${hue} 100% 72%)`
   const accentDark = `hsl(${hue} 98% 61%)`
 
-  const toggle = () => {
+  const handleToggle = () => {
     if (!disabled) setIsActive(a => !a)
   }
 
-  const select = (val: string) => {
+  const handleSelect = (val: string) => {
     if (!isControlled) setInternalValue(val)
     onChange?.(val)
     setIsActive(false)
@@ -70,11 +68,11 @@ export function SelectorKnob({
 
   return (
     <div
-      className={cn('relative', className)}
+      className={cn('relative select-none', className)}
       style={{ width: s.outer, height: s.outer }}
       data-active={isActive || undefined}
     >
-      {/* ── Outer ring (border + glow) ── */}
+      {/* Outer ring */}
       <div
         className="absolute inset-0 m-auto rounded-full transition-all duration-300"
         style={{
@@ -82,141 +80,138 @@ export function SelectorKnob({
           height: isActive ? '112%' : '100%',
           background: 'hsl(0 0% 85%)',
           boxShadow: isActive
-            ? `0 0 2px ${accentDark}, 0 0 6px ${accent}, ` +
-              `inset 0 0 10px rgba(0,0,0,.2), ` +
-              `0 0 2px -.5px rgba(0,0,0,.125), 0 1px 5px -1px rgba(0,0,0,.125), ` +
-              `0 4px 12px -1.5px rgba(0,0,0,.125), 0 9px 28px -2px rgba(0,0,0,.125)`
-            : `inset rgba(0,0,0,.13) 0 0 2px -1px, ` +
-              `inset rgba(0,0,0,.13) 0 2px 8px -2px, ` +
-              `inset rgba(0,0,0,.13) 0 8px 34px -2px`,
-          zIndex: 1,
+            ? `0 0 2px ${accentDark}, 0 0 6px ${accent}, inset 0 0 10px rgba(0,0,0,.2)`
+            : 'inset rgba(0,0,0,.13) 0 0 2px -1px, inset rgba(0,0,0,.13) 0 2px 8px -2px, inset rgba(0,0,0,.13) 0 8px 34px -2px',
         }}
       />
 
-      {/* ── Inner surface ── */}
+      {/* Inner surface */}
       <div
-        className={cn(
-          'absolute inset-0 m-auto rounded-full transition-all duration-300',
-          getEmbossBackground(),
-        )}
+        className="absolute inset-0 m-auto rounded-full transition-all duration-300"
         style={{
           width: isActive ? '106%' : '90%',
           height: isActive ? '106%' : '90%',
+          background: 'hsl(0 0% 91%)',
           boxShadow: isActive
             ? 'inset 0 0 10px rgba(0,0,0,.2)'
             : 'inset rgba(0,0,0,.13) 0 0 2px -1px, inset rgba(0,0,0,.13) 0 2px 8px -2px',
-          zIndex: 2,
         }}
       />
 
-      {/* ── Radial items ── */}
+      {/* Radial items */}
       {items.slice(0, N).map((item, i) => {
         const isSelected = i === selectedIdx
         const deg = i * (360 / N)
 
         return (
-          <button
+          <div
             key={item.value}
-            type="button"
-            aria-label={item.label}
-            aria-selected={isSelected}
-            disabled={disabled}
-            onClick={() => select(item.value)}
-            className={cn(
-              'absolute inset-0 m-auto rounded-full cursor-pointer',
-              'flex items-center justify-center',
-              'transition-all duration-500',
-              disabled && 'pointer-events-none',
-            )}
+            className="absolute inset-0 pointer-events-none"
             style={{
-              // Each item sits in a small circle that can slide outward
-              width: '24%',
-              height: '24%',
               opacity: isActive ? 1 : 0,
-              transform: isActive
-                ? `rotate(${deg}deg) translateY(-140%) rotate(-${deg}deg) scale(1)`
-                : `rotate(${deg}deg) translateY(-20%) rotate(-${deg}deg) scale(0.6)`,
+              transition: 'opacity 0.5s ease',
               transitionDelay: isActive ? `${i * 35}ms` : '0ms',
-              zIndex: 10,
-              background: getEmbossBackground().includes('dark')
-                ? 'hsl(200 15% 11%)'
-                : 'hsl(0 0% 91%)',
-              boxShadow: isSelected
-                ? `inset 0 0 6px rgba(0,0,0,.15), 0 0 8px ${accent}80, 0 0 20px ${accent}40`
-                : getEmbossShadow('out', 'small'),
             }}
           >
-            {/* Selected glow halo */}
-            {isSelected && (
-              <div
-                className="absolute inset-[-4px] rounded-full blur-md pointer-events-none"
-                style={{ background: accent, opacity: 0.35 }}
-              />
-            )}
-            {/* Icon / label */}
-            {item.icon ? (
-              <span
-                className={cn(
-                  'relative z-[1] flex items-center justify-center',
-                  isSelected ? 'opacity-100' : 'opacity-45',
-                  'transition-opacity duration-300',
-                )}
-                style={{ width: s.icon, height: s.icon }}
-              >
-                {item.icon}
-              </span>
-            ) : (
-              <span
-                className={cn(
-                  'relative z-[1] text-xs font-medium',
-                  isSelected ? 'opacity-100' : 'opacity-45',
-                )}
-                style={{ color: isSelected ? accent : undefined }}
-              >
-                {item.label}
-              </span>
-            )}
-          </button>
+            <button
+              type="button"
+              aria-label={item.label}
+              aria-selected={isSelected}
+              disabled={disabled}
+              onClick={() => handleSelect(item.value)}
+              className={cn(
+                'absolute rounded-full cursor-pointer',
+                'flex items-center justify-center',
+                getEmbossBackground(),
+                getEmbossShadow(isSelected ? 'in' : 'out', 'small'),
+                'transition-all duration-300',
+                disabled && 'pointer-events-none opacity-50',
+              )}
+              style={{
+                width: s.icon * 2,
+                height: s.icon * 2,
+                top: '50%',
+                left: '50%',
+                transform: `translate(-50%, -50%) rotate(${deg}deg) translateY(${isActive ? -s.outer * 0.44 : -s.outer * 0.08}px) rotate(-${deg}deg)`,
+                transition: `transform 0.5s cubic-bezier(0.44, -0.9, 0.31, 1.55)`,
+                transitionDelay: isActive ? `${i * 35}ms` : '0ms',
+                boxShadow: isSelected
+                  ? `0 0 8px ${accent}80, 0 0 20px ${accent}40, inset 0 0 3px rgba(0,0,0,.1)`
+                  : undefined,
+              }}
+            >
+              {/* Glow halo for selected */}
+              {isSelected && (
+                <div
+                  className="absolute -inset-1.5 rounded-full blur-md pointer-events-none"
+                  style={{ background: accent, opacity: 0.3 }}
+                />
+              )}
+              {/* Icon */}
+              {item.icon ? (
+                <span
+                  className={cn(
+                    'relative z-[1] flex items-center justify-center',
+                    isSelected ? 'opacity-100' : 'opacity-40',
+                  )}
+                  style={{
+                    width: s.icon,
+                    height: s.icon,
+                    color: isSelected ? accent : undefined,
+                  }}
+                >
+                  {item.icon}
+                </span>
+              ) : (
+                <span
+                  className={cn(
+                    'relative z-[1] text-[10px] font-medium',
+                    isSelected ? 'opacity-100' : 'opacity-40',
+                  )}
+                  style={{ color: isSelected ? accent : undefined }}
+                >
+                  {item.label}
+                </span>
+              )}
+            </button>
+          </div>
         )
       })}
 
-      {/* ── Knob cap (raised circle on top) ── */}
+      {/* Knob cap */}
       <button
         type="button"
-        onClick={toggle}
+        onClick={handleToggle}
         disabled={disabled}
         aria-label={ariaLabel}
         aria-expanded={isActive}
         aria-disabled={disabled}
         className={cn(
           'absolute inset-0 m-auto rounded-full cursor-pointer z-20',
-          'flex items-center justify-center',
           getEmbossBackground(),
           getEmbossShadow(isActive ? 'in' : 'out'),
-          'transition-transform duration-200',
+          'transition-all duration-200',
           isActive && 'scale-[0.97]',
           disabled && 'opacity-50 cursor-not-allowed',
         )}
         style={{
           width: s.cap,
           height: s.cap,
-          backgroundImage: `linear-gradient(to bottom, hsl(0 0% 94%), hsl(0 0% 87%))`,
+          backgroundImage: 'linear-gradient(to bottom, hsl(0 0% 94%), hsl(0 0% 87%))',
         }}
       >
-        {/* Knob indicator */}
+        {/* Indicator */}
         <div
-          className="absolute rounded-full transition-all duration-300"
+          className="absolute left-1/2 rounded-full transition-all duration-300"
           style={{
-            width: s.indicatorW,
-            height: s.indicatorH,
-            top: Math.round(s.cap * 0.12),
-            left: '50%',
+            width: s.indicator.w,
+            height: s.indicator.h,
+            top: `${s.indicator.top * 100}%`,
             transformOrigin: 'center bottom',
             transform: `translateX(-50%) rotate(${angle}deg)`,
             background: `linear-gradient(to bottom, ${accent}, ${accentDark})`,
             boxShadow: isActive
-              ? `0 0 1px rgba(0,0,0,.4), 0 0 2px 1px rgba(0,0,0,.2), ` +
-                `0 0 4px ${accent}, 0 0 16px hsl(${hue} 100% 72% / .5)`
+              ? `0 0 1px rgba(0,0,0,.4), 0 0 2px 1px rgba(0,0,0,.2), 0 0 4px ${accent}, 0 0 16px hsl(${hue} 100% 72% / .5)`
               : '0 0 1px rgba(0,0,0,.4), 0 0 2px 1px rgba(0,0,0,.2)',
             opacity: isActive ? 1 : 0.5,
           }}
