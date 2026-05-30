@@ -232,6 +232,7 @@ export {
   SelectSeparator,
   SelectTrigger
 } from './select'
+export { SelectorKnob } from './selector-knob'
 export { Separator } from './separator'
 export {
   Sheet,
@@ -538,6 +539,10 @@ export type {
   SelectLabelProps,
   SelectSeparatorProps
 } from './select'
+export type {
+  SelectorKnobItem,
+  SelectorKnobProps
+} from './selector-knob'
 export type { SeparatorProps } from './separator'
 export type {
   SheetProps,
@@ -614,14 +619,3 @@ export type {
   TypographyVariant,
   TypographyProps
 } from './typography'
-
-// ─── Hooks ───
-export { useAnimation } from '../../hooks/use-animation'
-export { useToast, toast } from '../../hooks/use-toast'
-export { useKeyboardShortcut } from '../../hooks/use-keyboard-shortcut'
-export type { KeyboardShortcutOptions, KeyModifier } from '../../hooks/use-keyboard-shortcut'
-
-// ─── Animation Presets ───
-// CSS utility classes are available at:
-//   import 'vanguard-emboss-uikit/presets'
-// (Requires bundler CSS support for sub-path imports.)
