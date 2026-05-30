@@ -30,7 +30,7 @@ jobs:
 
       - run: pnpm lint
 
-      - run: pnpm exec playwright install --with-deps chromium chromium_headless_shell
+      - run: pnpm exec playwright install --with-deps chromium chromium-headless-shell
 
       - run: pnpm test
 
