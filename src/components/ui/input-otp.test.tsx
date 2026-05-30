@@ -1,9 +1,11 @@
-import { render } from '@testing-library/react'
+import { render, cleanup } from '@testing-library/react'
 import * as UI from './index'
-import { describe, it, expect } from 'vitest'
+import { describe, it, expect, afterEach } from 'vitest'
 import { InputOTP, InputOTPGroup, InputOTPSlot } from './input-otp'
 
 describe('InputOTP', () => {
+  afterEach(() => cleanup())
+
   it('renders without error', () => {
     expect(() =>
       render(
